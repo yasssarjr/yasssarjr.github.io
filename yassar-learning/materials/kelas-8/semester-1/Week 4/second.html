@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Session 8: Nested IF & Collaboration</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; overflow: hidden; }
+        .slide {
+            transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+            position: absolute; width: 100%; height: 100%; top: 0; left: 0;
+        }
+    </style>
+</head>
+<body class="bg-gray-200">
+
+    <main class="relative w-full h-screen overflow-hidden">
+        
+        <section class="slide flex flex-col justify-center items-center text-center bg-white p-4 sm:p-8">
+            <p class="text-base md:text-lg font-semibold text-green-600">Session 8</p>
+            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black text-gray-800 my-4 tracking-tight">Collaboration & The Nested IF Challenge</h1>
+            <p class="max-w-3xl mx-auto text-lg sm:text-xl text-gray-600 mt-4">Level up your decision-making skills with multiple conditions.</p>
+        </section>
+
+        <section class="slide flex flex-col justify-center items-center bg-white p-4 sm:p-8">
+            <h2 class="text-2xl sm:text-4xl font-extrabold text-gray-800 mb-6 text-center">🎯 Today's Learning Objectives</h2>
+            <ul class="space-y-3 text-base sm:text-lg max-w-2xl w-full">
+                <li class="flex items-start p-3 sm:p-4 bg-gray-50 rounded-lg"><span class="mr-3 text-xl">1️⃣</span> <span>Collaborate with peers to test and validate spreadsheet formulas.</span></li>
+                <li class="flex items-start p-3 sm:p-4 bg-gray-50 rounded-lg"><span class="mr-3 text-xl">2️⃣</span> <span>Apply the Nested IF function to solve problems with multiple conditions.</span></li>
+            </ul>
+        </section>
+
+        <section class="slide flex flex-col justify-center items-center bg-gray-50 p-4 sm:p-8 text-center">
+            <h2 class="text-2xl sm:text-4xl font-extrabold text-gray-800 mb-8">Quick Review & Team Up!</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl">
+                <div class="bg-white p-6 rounded-xl shadow-lg border">
+                    <h3 class="text-2xl font-bold text-blue-700">Remember the Basic IF?</h3>
+                    <code class="mt-4 block bg-gray-800 text-green-400 p-3 rounded-md font-mono text-left">=IF(C2>=75, "Passed", "Failed")</code>
+                    <p class="mt-2 text-gray-600">It handles one condition with two outcomes.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg border">
+                    <h3 class="text-2xl font-bold text-purple-700">Today's First Task</h3>
+                    <p class="mt-2 text-gray-600">Share your sheet with a partner. Test each other's formulas. Do they work correctly? Give feedback!</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="slide flex flex-col justify-center items-center bg-white p-4 sm:p-8">
+            <h2 class="text-2xl sm:text-4xl font-extrabold text-gray-800 mb-4 text-center">The Nested IF Challenge</h2>
+            <p class="text-lg text-gray-600 mb-6 text-center max-w-3xl">What if we need more than two outcomes? We "nest" an IF function inside another one!</p>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 w-full max-w-5xl items-center">
+                <div class="bg-gray-50 p-6 rounded-lg border">
+                    <h3 class="font-bold text-lg">Your Challenge:</h3>
+                    <p class="mb-4">Assign a grade based on a score:</p>
+                    <ul class="list-disc list-inside space-y-2">
+                        <li>Score >= 90: <strong class="text-green-600">"Excellent"</strong></li>
+                        <li>Score >= 75: <strong class="text-blue-600">"Good"</strong></li>
+                        <li>Otherwise: <strong class="text-red-600">"Needs Guidance"</strong></li>
+                    </ul>
+                     <div class="mt-4 p-3 bg-gray-800 text-yellow-300 rounded-lg font-mono text-sm overflow-x-auto">
+                        =IF(B2>=90, "Excellent", <span class="text-cyan-400">IF(B2>=75, "Good", "Needs Guidance")</span>)
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg border">
+                    <h3 class="text-xl font-bold text-center">Try It Live!</h3>
+                    <p class="mt-1 text-center text-gray-600">Enter a score to see the grade.</p>
+                    <table class="w-full my-4 text-left border-collapse text-lg">
+                        <thead><tr class="bg-gray-100"><th class="p-3 border">Name</th><th class="p-3 border">Score</th><th class="p-3 border">Grade</th></tr></thead>
+                        <tbody><tr><td class="p-3 border">Jamie</td><td class="p-3 border"><input type="number" id="nestedScoreInput" class="w-full p-1 bg-yellow-100 border-2 border-yellow-400 rounded" value="95"></td><td id="nestedStatusOutput" class="p-3 border font-bold"></td></tr></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+        
+        <section class="slide flex flex-col justify-center items-center bg-white p-4 sm:p-8 text-center">
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-800">🤔 Let's Reflect</h2>
+            <p class="mt-4 text-lg sm:text-xl max-w-2xl text-gray-600">Based on today's challenge:</p>
+            <div class="mt-8 space-y-4 text-left max-w-2xl w-full">
+                <div class="bg-gray-50 p-4 rounded-lg"><p class="font-semibold">When is it better to use a simple IF vs. a Nested IF?</p></div>
+                <div class="bg-gray-50 p-4 rounded-lg"><p class="font-semibold">How did collaborating with a partner help you solve the challenge?</p></div>
+            </div>
+        </section>
+
+        <section class="slide flex flex-col justify-center items-center bg-green-600 text-white p-4 sm:p-8 text-center">
+            <h2 class="text-3xl sm:text-5xl font-black tracking-tight">Challenge Complete!</h2>
+            <p class="mt-4 text-lg sm:text-xl max-w-3xl mx-auto italic">"Collaboration allows us to know more than we are capable of knowing by ourselves." - Paul Solarz</p>
+            <p class="mt-8 font-bold text-2xl">You are now ready to build smarter spreadsheets!</p>
+        </section>
+    </main>
+
+    <div id="slideCounter" class="fixed bottom-4 left-4 bg-black/50 text-white text-sm px-3 py-1 rounded-full z-10"></div>
+    <div class="fixed bottom-4 right-4 flex gap-2 z-10">
+        <button id="prevBtn" class="bg-white p-3 rounded-full shadow-lg hover:bg-gray-200 disabled:opacity-50"><svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg></button>
+        <button id="nextBtn" class="bg-white p-3 rounded-full shadow-lg hover:bg-gray-200 disabled:opacity-50"><svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg></button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const slides = document.querySelectorAll('.slide'); let currentSlide = 0;
+            const prevBtn = document.getElementById('prevBtn'); const nextBtn = document.getElementById('nextBtn'); const slideCounter = document.getElementById('slideCounter');
+            
+            function updateSlides() {
+                slides.forEach((slide, index) => {
+                    slide.classList.remove('opacity-100', 'translate-x-0', '-translate-x-full', 'translate-x-full');
+                    if (index === currentSlide) { slide.classList.add('opacity-100', 'translate-x-0'); } 
+                    else if (index < currentSlide) { slide.classList.add('opacity-0', '-translate-x-full'); } 
+                    else { slide.classList.add('opacity-0', 'translate-x-full'); }
+                });
+                slideCounter.textContent = `${currentSlide + 1} / ${slides.length}`;
+                prevBtn.disabled = currentSlide === 0; nextBtn.disabled = currentSlide === slides.length - 1;
+            }
+            function showNextSlide() { if (currentSlide < slides.length - 1) { currentSlide++; updateSlides(); } }
+            function showPrevSlide() { if (currentSlide > 0) { currentSlide--; updateSlides(); } }
+            
+            nextBtn.addEventListener('click', showNextSlide);
+            prevBtn.addEventListener('click', showPrevSlide);
+            document.addEventListener('keydown', (e) => { if (e.key === 'ArrowRight') showNextSlide(); if (e.key === 'ArrowLeft') showPrevSlide(); });
+
+            // Interactive Nested IF Activity
+            const nestedScoreInput = document.getElementById('nestedScoreInput');
+            const nestedStatusOutput = document.getElementById('nestedStatusOutput');
+            
+            function updateNestedStatus() {
+                const score = parseFloat(nestedScoreInput.value) || 0;
+                if (score >= 90) {
+                    nestedStatusOutput.textContent = "Excellent";
+                    nestedStatusOutput.className = "p-3 border font-bold text-green-600 bg-green-50";
+                } else if (score >= 75) {
+                    nestedStatusOutput.textContent = "Good";
+                    nestedStatusOutput.className = "p-3 border font-bold text-blue-600 bg-blue-50";
+                } else {
+                    nestedStatusOutput.textContent = "Needs Guidance";
+                    nestedStatusOutput.className = "p-3 border font-bold text-red-600 bg-red-50";
+                }
+            }
+            
+            nestedScoreInput.addEventListener('input', updateNestedStatus);
+            
+            updateSlides();
+            updateNestedStatus(); // Initial call
+        });
+    </script>
+</body>
+</html>

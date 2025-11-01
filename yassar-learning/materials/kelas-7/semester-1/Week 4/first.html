@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Session 3: Spreadsheet Formulas & Functions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; overflow: hidden; }
+        .slide {
+            transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+            position: absolute; width: 100%; height: 100%; top: 0; left: 0;
+        }
+    </style>
+</head>
+<body class="bg-gray-200">
+
+    <main class="relative w-full h-screen overflow-hidden">
+        
+        <section class="slide flex flex-col justify-center items-center text-center bg-white p-4 sm:p-8">
+            <p class="text-base md:text-lg font-semibold text-blue-600">Session 3</p>
+            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black text-gray-800 my-4 tracking-tight">Intro to Basic Formulas & Functions</h1>
+            <p class="max-w-3xl mx-auto text-lg sm:text-xl text-gray-600 mt-4">The core foundation for becoming a Google Sheets master!</p>
+        </section>
+
+        <section class="slide flex flex-col justify-center items-center bg-white p-4 sm:p-8">
+            <h2 class="text-2xl sm:text-4xl font-extrabold text-gray-800 mb-6 text-center">🎯 Today's Learning Objectives</h2>
+            <ul class="space-y-3 text-base sm:text-lg max-w-2xl w-full">
+                <li class="flex items-start p-3 sm:p-4 bg-gray-50 rounded-lg"><span class="mr-3 text-xl">1️⃣</span> <span>Distinguish between a <strong class="text-blue-600">formula</strong> (self-made) and a <strong class="text-green-600">function</strong> (built-in).</span></li>
+                <li class="flex items-start p-3 sm:p-4 bg-gray-50 rounded-lg"><span class="mr-3 text-xl">2️⃣</span> <span>Apply 4 basic arithmetic functions: <code class="bg-gray-200 px-2 py-1 rounded">SUM</code>, <code class="bg-gray-200 px-2 py-1 rounded">AVERAGE</code>, <code class="bg-gray-200 px-2 py-1 rounded">MAX</code>, and <code class="bg-gray-200 px-2 py-1 rounded">MIN</code>.</span></li>
+                <li class="flex items-start p-3 sm:p-4 bg-gray-50 rounded-lg"><span class="mr-3 text-xl">3️⃣</span> <span>Use basic math operators (+, -, *, /) in a formula.</span></li>
+            </ul>
+        </section>
+
+        <section class="slide flex flex-col justify-center items-center bg-gray-50 p-4 sm:p-8">
+            <h2 class="text-2xl sm:text-4xl font-extrabold text-gray-800 mb-8 text-center">Formula vs. Function: What's the Difference?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-4xl text-center">
+                <div class="bg-white p-6 rounded-xl shadow-lg border"><h3 class="text-2xl font-bold text-blue-700">Formula</h3><p class="mt-2 text-base md:text-lg">An equation you create yourself.</p><code class="mt-4 inline-block bg-blue-50 text-blue-800 text-lg px-4 py-2 rounded-md font-mono">=B2 - C2</code></div>
+                <div class="bg-white p-6 rounded-xl shadow-lg border"><h3 class="text-2xl font-bold text-green-700">Function</h3><p class="mt-2 text-base md:text-lg">A ready-made equation from Sheets.</p><code class="mt-4 inline-block bg-green-50 text-green-800 text-lg px-4 py-2 rounded-md font-mono">=SUM(B2:B6)</code></div>
+            </div>
+        </section>
+
+        <section class="slide flex flex-col justify-center items-center bg-gray-50 p-4 sm:p-8">
+             <div class="w-full max-w-3xl bg-white p-6 sm:p-8 rounded-xl shadow-lg border">
+                <h3 class="text-xl sm:text-2xl font-bold">Quiz: Calculating Pocket Money</h3><p class="mt-2 text-gray-600">Which formula is correct for cell D2?</p>
+                <div class="w-full overflow-x-auto mt-4"><table class="w-full min-w-[400px] text-left border-collapse"><thead><tr class="bg-gray-100"><th class="p-3 border">A (Day)</th><th class="p-3 border">B (Income)</th><th class="p-3 border">C (Expense)</th><th class="p-3 border">D (Balance)</th></tr></thead><tbody><tr><td class="p-3 border">2. Monday</td><td class="p-3 border">20,000</td><td class="p-3 border">10,000</td><td class="p-3 border bg-yellow-100 font-bold">?</td></tr></tbody></table></div>
+                <div id="formulaQuiz" class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3"><button class="text-left p-4 bg-gray-100 rounded-lg hover:bg-gray-200 transition font-mono border-2 border-transparent">A. =B2+C2</button><button class="text-left p-4 bg-gray-100 rounded-lg hover:bg-gray-200 transition font-mono border-2 border-transparent">B. =B2-C2</button><button class="text-left p-4 bg-gray-100 rounded-lg hover:bg-gray-200 transition font-mono border-2 border-transparent">C. =B2*C2</button></div>
+                <p id="formulaFeedback" class="mt-4 font-semibold h-6"></p>
+            </div>
+        </section>
+
+        <section class="slide flex flex-col justify-center items-center bg-white p-4 sm:p-8">
+            <h2 class="text-2xl sm:text-4xl font-extrabold text-gray-800 mb-8 text-center">4 Magical Functions You Must Know</h2>
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 w-full max-w-4xl">
+                <div class="bg-green-50 p-4 rounded-lg text-center"><h3 class="font-bold text-lg text-green-800">SUM</h3><p class="text-green-700 text-sm">Adds all numbers</p></div>
+                <div class="bg-green-50 p-4 rounded-lg text-center"><h3 class="font-bold text-lg text-green-800">AVERAGE</h3><p class="text-green-700 text-sm">Calculates the average</p></div>
+                <div class="bg-green-50 p-4 rounded-lg text-center"><h3 class="font-bold text-lg text-green-800">MAX</h3><p class="text-green-700 text-sm">Finds the highest value</p></div>
+                <div class="bg-green-50 p-4 rounded-lg text-center"><h3 class="font-bold text-lg text-green-800">MIN</h3><p class="text-green-700 text-sm">Finds the lowest value</p></div>
+            </div>
+        </section>
+        
+        <section class="slide flex flex-col justify-center items-center bg-gray-50 p-4 sm:p-8">
+            <div class="w-full max-w-3xl bg-white p-6 sm:p-8 rounded-xl shadow-lg border">
+                <h3 class="text-xl sm:text-2xl font-bold">Quiz: Choose the Right Function</h3><p class="mt-2 text-gray-600">To find the "Total Income" (range B2:B6), which function is most appropriate?</p>
+                <div id="functionQuiz" class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3"><button class="text-left p-4 bg-gray-100 rounded-lg hover:bg-gray-200 transition font-mono border-2 border-transparent">A. =AVERAGE(B2:B6)</button><button class="text-left p-4 bg-gray-100 rounded-lg hover:bg-gray-200 transition font-mono border-2 border-transparent">B. =MAX(B2:B6)</button><button class="text-left p-4 bg-gray-100 rounded-lg hover:bg-gray-200 transition font-mono border-2 border-transparent">C. =SUM(B2:B6)</button></div>
+                <p id="functionFeedback" class="mt-4 font-semibold h-6"></p>
+            </div>
+        </section>
+
+        <section class="slide flex flex-col justify-center items-center bg-white p-4 sm:p-8 text-center">
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-800">🤔 Let's Reflect</h2>
+            <p class="mt-4 text-lg sm:text-xl max-w-2xl text-gray-600">After today's lesson, try to answer in your heart:</p>
+            <div class="mt-8 space-y-4 text-left max-w-2xl w-full">
+                <div class="bg-gray-50 p-4 rounded-lg"><p class="font-semibold">What is one new thing you learned today?</p></div>
+                <div class="bg-gray-50 p-4 rounded-lg"><p class="font-semibold">Besides pocket money, what else could you use a spreadsheet for?</p></div>
+            </div>
+        </section>
+
+        <section class="slide flex flex-col justify-center items-center bg-blue-600 text-white p-4 sm:p-8 text-center">
+            <h2 class="text-3xl sm:text-5xl font-black tracking-tight">Great Work!</h2>
+            <p class="mt-4 text-lg sm:text-xl max-w-3xl mx-auto text-blue-100">"Knowledge is power. Information is liberating." - Kofi Annan</p>
+            <p class="mt-8 font-bold text-2xl">See you in Session 4 👋</p>
+        </section>
+    </main>
+
+    <div id="slideCounter" class="fixed bottom-4 left-4 bg-black/50 text-white text-sm px-3 py-1 rounded-full z-10"></div>
+    <div class="fixed bottom-4 right-4 flex gap-2 z-10">
+        <button id="prevBtn" class="bg-white p-3 rounded-full shadow-lg hover:bg-gray-200 disabled:opacity-50"><svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg></button>
+        <button id="nextBtn" class="bg-white p-3 rounded-full shadow-lg hover:bg-gray-200 disabled:opacity-50"><svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg></button>
+    </div>
+
+    <script>
+        // CORE SCRIPT (UNCHANGED)
+        document.addEventListener('DOMContentLoaded', () => {
+            const slides = document.querySelectorAll('.slide'); let currentSlide = 0;
+            const prevBtn = document.getElementById('prevBtn'); const nextBtn = document.getElementById('nextBtn'); const slideCounter = document.getElementById('slideCounter');
+            function updateSlides() {
+                slides.forEach((slide, index) => {
+                    slide.classList.remove('opacity-100', 'translate-x-0', '-translate-x-full', 'translate-x-full');
+                    if (index === currentSlide) { slide.classList.add('opacity-100', 'translate-x-0'); } 
+                    else if (index < currentSlide) { slide.classList.add('opacity-0', '-translate-x-full'); } 
+                    else { slide.classList.add('opacity-0', 'translate-x-full'); }
+                });
+                slideCounter.textContent = `${currentSlide + 1} / ${slides.length}`;
+                prevBtn.disabled = currentSlide === 0; nextBtn.disabled = currentSlide === slides.length - 1;
+            }
+            function showNextSlide() { if (currentSlide < slides.length - 1) { currentSlide++; updateSlides(); } }
+            function showPrevSlide() { if (currentSlide > 0) { currentSlide--; updateSlides(); } }
+            nextBtn.addEventListener('click', showNextSlide); prevBtn.addEventListener('click', showPrevSlide);
+            document.addEventListener('keydown', (e) => { if (e.key === 'ArrowRight') showNextSlide(); if (e.key === 'ArrowLeft') showPrevSlide(); });
+            document.getElementById('formulaQuiz').addEventListener('click', (e) => {
+                if (e.target.tagName === 'BUTTON') {
+                    const feedback = document.getElementById('formulaFeedback');
+                    e.currentTarget.querySelectorAll('button').forEach(b => b.classList.remove('bg-green-200','border-green-500','bg-red-200','border-red-500'));
+                    if (e.target.textContent.includes('=B2-C2')) {
+                        e.target.classList.add('bg-green-200','border-green-500');
+                        feedback.textContent = 'That is correct!'; feedback.className = 'mt-4 font-semibold h-6 text-green-600';
+                    } else {
+                        e.target.classList.add('bg-red-200','border-red-500');
+                        feedback.textContent = 'Not quite. Try again!'; feedback.className = 'mt-4 font-semibold h-6 text-red-600';
+                    }
+                }
+            });
+            document.getElementById('functionQuiz').addEventListener('click', (e) => {
+                 if (e.target.tagName === 'BUTTON') {
+                    const feedback = document.getElementById('functionFeedback');
+                    e.currentTarget.querySelectorAll('button').forEach(b => b.classList.remove('bg-green-200','border-green-500','bg-red-200','border-red-500'));
+                    if (e.target.textContent.includes('=SUM(B2:B6)')) {
+                        e.target.classList.add('bg-green-200','border-green-500');
+                        feedback.textContent = 'Perfect! SUM is for totals.'; feedback.className = 'mt-4 font-semibold h-6 text-green-600';
+                    } else {
+                        e.target.classList.add('bg-red-200','border-red-500');
+                        feedback.textContent = 'That\'s another function. Try again!'; feedback.className = 'mt-4 font-semibold h-6 text-red-600';
+                    }
+                }
+            });
+            updateSlides();
+        });
+    </script>
+</body>
+</html>

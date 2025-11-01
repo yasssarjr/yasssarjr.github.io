@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Session 7: The IF Logical Function</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; overflow: hidden; }
+        .slide {
+            transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+            position: absolute; width: 100%; height: 100%; top: 0; left: 0;
+        }
+    </style>
+</head>
+<body class="bg-gray-200">
+
+    <main class="relative w-full h-screen overflow-hidden">
+        
+        <section class="slide flex flex-col justify-center items-center text-center bg-white p-4 sm:p-8">
+            <p class="text-base md:text-lg font-semibold text-blue-600">Session 7</p>
+            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black text-gray-800 my-4 tracking-tight">Making Smart Decisions with the IF Function</h1>
+            <p class="max-w-3xl mx-auto text-lg sm:text-xl text-gray-600 mt-4">Learn how spreadsheets can think and make choices automatically.</p>
+        </section>
+
+        <section class="slide flex flex-col justify-center items-center bg-white p-4 sm:p-8">
+            <h2 class="text-2xl sm:text-4xl font-extrabold text-gray-800 mb-6 text-center">🎯 Today's Learning Objectives</h2>
+            <ul class="space-y-3 text-base sm:text-lg max-w-2xl w-full">
+                <li class="flex items-start p-3 sm:p-4 bg-gray-50 rounded-lg"><span class="mr-3 text-xl">1️⃣</span> <span>Understand the core concept of "if..., then..." logic in data processing.</span></li>
+                <li class="flex items-start p-3 sm:p-4 bg-gray-50 rounded-lg"><span class="mr-3 text-xl">2️⃣</span> <span>Apply the basic IF function to make automatic decisions based on a single condition.</span></li>
+            </ul>
+        </section>
+
+        <section class="slide flex flex-col justify-center items-center bg-gray-50 p-4 sm:p-8 text-center">
+            <h2 class="text-2xl sm:text-4xl font-extrabold text-gray-800 mb-8">It's All About Logic: "If..., Then..."</h2>
+            <div class="space-y-4 w-full max-w-2xl">
+                <div class="bg-white p-6 rounded-xl shadow-lg border text-left text-lg flex items-center">
+                    <span class="text-3xl mr-4">🌧️</span>
+                    <p><strong class="text-blue-600">IF</strong> it is raining, <strong class="text-green-600">THEN</strong> I will bring an umbrella.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg border text-left text-lg flex items-center">
+                    <span class="text-3xl mr-4">💯</span>
+                    <p><strong class="text-blue-600">IF</strong> a student's score is >= 75, <strong class="text-green-600">THEN</strong> they have "Passed".</p>
+                </div>
+            </div>
+            <p class="mt-8 text-xl text-gray-700">The IF function does the exact same thing inside your spreadsheet!</p>
+        </section>
+
+        <section class="slide flex flex-col justify-center items-center bg-white p-4 sm:p-8">
+            <h2 class="text-2xl sm:text-4xl font-extrabold text-gray-800 mb-8 text-center">The Anatomy of an IF Function</h2>
+            <div class="w-full max-w-4xl bg-gray-800 text-white p-6 rounded-lg font-mono text-lg sm:text-2xl text-center shadow-2xl">
+                =IF(<span class="text-blue-400">logical_test</span>, <span class="text-green-400">value_if_true</span>, <span class="text-red-400">value_if_false</span>)
+            </div>
+            <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4 w-full max-w-4xl text-left">
+                <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400"><strong class="text-blue-600">1. Logical Test:</strong> The condition to check. (e.g., Is the score in C2 greater than or equal to 75? -> <code class="text-sm">C2>=75</code>)</div>
+                <div class="bg-green-50 p-4 rounded-lg border-l-4 border-green-400"><strong class="text-green-600">2. Value if True:</strong> What to show if the condition is met. (e.g., "Passed")</div>
+                <div class="bg-red-50 p-4 rounded-lg border-l-4 border-red-400"><strong class="text-red-600">3. Value if False:</strong> What to show if the condition is NOT met. (e.g., "Failed")</div>
+            </div>
+        </section>
+
+        <section class="slide flex flex-col justify-center items-center bg-gray-50 p-4 sm:p-8">
+             <div class="w-full max-w-3xl bg-white p-6 sm:p-8 rounded-xl shadow-lg border">
+                <h3 class="text-xl sm:text-2xl font-bold">Activity: Let's Grade!</h3>
+                <p class="mt-2 text-gray-600">Type a score in the yellow box and see the status change automatically. The passing score is 75.</p>
+                <div class="w-full overflow-x-auto mt-4">
+                    <table class="w-full min-w-[400px] text-left border-collapse text-lg">
+                        <thead><tr class="bg-gray-100"><th class="p-3 border">Name</th><th class="p-3 border">Score</th><th class="p-3 border">Status</th></tr></thead>
+                        <tbody><tr><td class="p-3 border">Alex</td><td class="p-3 border"><input type="number" id="scoreInput" class="w-full p-1 bg-yellow-100 border-2 border-yellow-400 rounded" value="85"></td><td id="statusOutput" class="p-3 border font-bold"></td></tr></tbody>
+                    </table>
+                </div>
+                <div class="mt-6 p-4 bg-gray-800 text-green-400 rounded-lg font-mono text-sm sm:text-base">
+                    <p>// The formula in the 'Status' cell:</p>
+                    <p>=IF( <span id="logicTestDisplay" class="text-blue-400">B2>=75</span>, "Passed", "Failed" )</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="slide flex flex-col justify-center items-center bg-white p-4 sm:p-8 text-center">
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-800">🤔 Let's Reflect</h2>
+            <p class="mt-4 text-lg sm:text-xl max-w-2xl text-gray-600">Think about what we learned today:</p>
+            <div class="mt-8 space-y-4 text-left max-w-2xl w-full">
+                <div class="bg-gray-50 p-4 rounded-lg"><p class="font-semibold">How does using an IF function make a grade sheet more efficient than checking scores manually?</p></div>
+                <div class="bg-gray-50 p-4 rounded-lg"><p class="font-semibold">What is another real-world example where you could use an "if..., then..." decision?</p></div>
+            </div>
+        </section>
+
+        <section class="slide flex flex-col justify-center items-center bg-blue-600 text-white p-4 sm:p-8 text-center">
+            <h2 class="text-3xl sm:text-5xl font-black tracking-tight">Excellent Start!</h2>
+            <p class="mt-4 text-lg sm:text-xl max-w-3xl mx-auto text-blue-100">"The art of programming is the art of organizing complexity." - Edsger Dijkstra</p>
+            <p class="mt-8 font-bold text-2xl">Next session, we'll tackle even bigger challenges! See you then. 👋</p>
+        </section>
+    </main>
+
+    <div id="slideCounter" class="fixed bottom-4 left-4 bg-black/50 text-white text-sm px-3 py-1 rounded-full z-10"></div>
+    <div class="fixed bottom-4 right-4 flex gap-2 z-10">
+        <button id="prevBtn" class="bg-white p-3 rounded-full shadow-lg hover:bg-gray-200 disabled:opacity-50"><svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg></button>
+        <button id="nextBtn" class="bg-white p-3 rounded-full shadow-lg hover:bg-gray-200 disabled:opacity-50"><svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg></button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const slides = document.querySelectorAll('.slide'); let currentSlide = 0;
+            const prevBtn = document.getElementById('prevBtn'); const nextBtn = document.getElementById('nextBtn'); const slideCounter = document.getElementById('slideCounter');
+            
+            function updateSlides() {
+                slides.forEach((slide, index) => {
+                    slide.classList.remove('opacity-100', 'translate-x-0', '-translate-x-full', 'translate-x-full');
+                    if (index === currentSlide) { slide.classList.add('opacity-100', 'translate-x-0'); } 
+                    else if (index < currentSlide) { slide.classList.add('opacity-0', '-translate-x-full'); } 
+                    else { slide.classList.add('opacity-0', 'translate-x-full'); }
+                });
+                slideCounter.textContent = `${currentSlide + 1} / ${slides.length}`;
+                prevBtn.disabled = currentSlide === 0; nextBtn.disabled = currentSlide === slides.length - 1;
+            }
+            function showNextSlide() { if (currentSlide < slides.length - 1) { currentSlide++; updateSlides(); } }
+            function showPrevSlide() { if (currentSlide > 0) { currentSlide--; updateSlides(); } }
+            
+            nextBtn.addEventListener('click', showNextSlide);
+            prevBtn.addEventListener('click', showPrevSlide);
+            document.addEventListener('keydown', (e) => { if (e.key === 'ArrowRight') showNextSlide(); if (e.key === 'ArrowLeft') showPrevSlide(); });
+
+            // Interactive Score Activity
+            const scoreInput = document.getElementById('scoreInput');
+            const statusOutput = document.getElementById('statusOutput');
+            const logicTestDisplay = document.getElementById('logicTestDisplay');
+            
+            function updateStatus() {
+                const score = parseFloat(scoreInput.value) || 0;
+                logicTestDisplay.textContent = score + ">=75";
+                if (score >= 75) {
+                    statusOutput.textContent = "Passed";
+                    statusOutput.className = "p-3 border font-bold text-green-600 bg-green-50";
+                } else {
+                    statusOutput.textContent = "Failed";
+                    statusOutput.className = "p-3 border font-bold text-red-600 bg-red-50";
+                }
+            }
+            
+            scoreInput.addEventListener('input', updateStatus);
+            
+            updateSlides();
+            updateStatus(); // Initial call
+        });
+    </script>
+</body>
+</html>

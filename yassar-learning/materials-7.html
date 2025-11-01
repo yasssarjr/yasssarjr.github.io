@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Materials - Ahmad Muyassar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <script src="assets/js/main.js" defer></script>
+  </head>
+  <body class="bg-white text-gray-900">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/80 backdrop-blur-md border-b border-gray-100 z-50">
+      <div class="container mx-auto px-6 py-4">
+        <div class="flex justify-between items-center">
+          <div class="text-lg font-medium">Ahmad Muyassar</div>
+          <div class="hidden md:flex space-x-8">
+            <a href="index.html" class="text-gray-900 hover:text-gray-600 transition-colors">Home</a>
+            <a href="about.html" class="text-gray-900 hover:text-gray-600 transition-colors">About</a>
+            <a href="materials.html" class="text-gray-900 hover:text-gray-600 transition-colors">Materials</a>
+          </div>
+          <button class="md:hidden" onclick="toggleMobileMenu()">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden mt-4 pt-4 border-t border-gray-100">
+          <div class="flex flex-col space-y-4">
+            <a href="index.html" class="text-gray-900 hover:text-gray-600 transition-colors">Home</a>
+            <a href="about.html" class="text-gray-900 hover:text-gray-600 transition-colors">About</a>
+            <a href="materials.html" class="text-gray-900 hover:text-gray-600 transition-colors">Materials</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center justify-center px-6 pt-20">
+      <div class="text-center max-w-3xl">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6 tracking-tight">
+          Learning Materials
+        </h1>
+        <p class="text-xl text-gray-600 mb-12 leading-relaxed">
+          Information Technology for Grades 7 & 8
+        </p>
+
+        <!-- Search -->
+        <div class="max-w-xl mx-auto mb-12">
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Search materials..."
+            class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-full focus:outline-none focus:border-gray-400 transition-colors"
+            onkeyup="searchMaterials()"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Kelas 7 Section -->
+    <section class="py-24 px-6 bg-gray-50">
+      <div class="container mx-auto">
+        <h2 class="text-3xl font-light text-center mb-16">Grade 7</h2>
+
+        <!-- Semester 1 -->
+        <div class="mb-16">
+          <h3 class="text-xl font-medium mb-8 text-center">Semester 1</h3>
+          <div class="space-y-8 max-w-4xl mx-auto">
+            <!-- Materi 1 - Digital Ethics -->
+            <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+              <div class="flex items-start gap-4">
+                <div class="w-8 h-8 bg-gray-900 text-white rounded-full flex items-center justify-center text-sm font-medium flex-shrink-0">
+                  1
+                </div>
+                <div class="flex-1">
+                  <h4 class="text-lg font-medium mb-2">Digital Ethics</h4>
+                  <p class="text-gray-600 mb-4 text-sm">Materi tentang etika digital dan penggunaan teknologi yang bertanggung jawab.</p>
+                  <div class="space-y-2">
+                    <a href="https://docs.google.com/presentation/d/1wjSF8vMOhpZEh80njYL06g783xAdKDF40WJnG1yhqJ4/edit?usp=sharing" target="_blank" class="inline-block px-4 py-2 bg-blue-600 text-white rounded-full text-sm hover:bg-blue-700 transition-colors">
+                      📊 Presentation
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Materi 2 - Hardware Computer -->
+            <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+              <div class="flex items-start gap-4">
+                <div class="w-8 h-8 bg-gray-900 text-white rounded-full flex items-center justify-center text-sm font-medium flex-shrink-0">
+                  2
+                </div>
+                <div class="flex-1">
+                  <h4 class="text-lg font-medium mb-2">Hardware Computer</h4>
+                  <p class="text-gray-600 mb-4 text-sm">Pengenalan komponen-komponen hardware komputer dan fungsinya.</p>
+                  <div class="space-y-2">
+                    <a href="https://www.canva.com/design/DAGxpG0K4VA/GkWvY_-L6-LrfeIwB01yyg/edit?utm_content=DAGxpG0K4VA&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" class="inline-block px-4 py-2 bg-blue-600 text-white rounded-full text-sm hover:bg-blue-700 transition-colors">
+                      🎨 Presentation
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Materi 3 - World Digital Collaboration -->
+            <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+              <div class="flex items-start gap-4">
+                <div class="w-8 h-8 bg-gray-900 text-white rounded-full flex items-center justify-center text-sm font-medium flex-shrink-0">
+                  3
+                </div>
+                <div class="flex-1">
+                  <h4 class="text-lg font-medium mb-2">World Digital Collaboration</h4>
+                  <p class="text-gray-600 mb-4 text-sm">Materi tentang kolaborasi digital di seluruh dunia dan alat-alat pendukungnya.</p>
+                  <div class="space-y-2">
+                    <a href="https://www.canva.com/design/DAG0O5K1Ma8/Iui3acC5hpIJx3DLfhSvLw/edit?utm_content=DAG0O5K1Ma8&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" class="inline-block px-4 py-2 bg-blue-600 text-white rounded-full text-sm hover:bg-blue-700 transition-colors">
+                      🌍 Presentation
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Materi 4 - Google Spreadsheets -->
+            <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+              <div class="flex items-start gap-4">
+                <div class="w-8 h-8 bg-gray-900 text-white rounded-full flex items-center justify-center text-sm font-medium flex-shrink-0">
+                  4
+                </div>
+                <div class="flex-1">
+                  <h4 class="text-lg font-medium mb-2">Google Spreadsheets - Week 4</h4>
+                  <p class="text-gray-600 mb-4 text-sm">Pengenalan Google Spreadsheets dan fungsi-fungsi dasar.</p>
+                  <div class="space-y-2">
+                    <a href="materials/kelas-7/semester-1/Week 4/first.html" target="_blank" class="inline-block px-4 py-2 bg-green-600 text-white rounded-full text-sm hover:bg-green-700 transition-colors mr-2">
+                      📄 Materi 1
+                    </a>
+                    <a href="materials/kelas-7/semester-1/Week 4/second.html" target="_blank" class="inline-block px-4 py-2 bg-green-600 text-white rounded-full text-sm hover:bg-green-700 transition-colors">
+                      📄 Materi 2
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Materi 5 - Google Spreadsheets -->
+            <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+              <div class="flex items-start gap-4">
+                <div class="w-8 h-8 bg-gray-900 text-white rounded-full flex items-center justify-center text-sm font-medium flex-shrink-0">
+                  5
+                </div>
+                <div class="flex-1">
+                  <h4 class="text-lg font-medium mb-2">Google Spreadsheets - Week 5</h4>
+                  <p class="text-gray-600 mb-4 text-sm">Lanjutan Google Spreadsheets dengan fungsi-fungsi lebih lanjut.</p>
+                  <div class="space-y-2">
+                    <a href="materials/kelas-7/semester-1/Week 5/first.html" target="_blank" class="inline-block px-4 py-2 bg-green-600 text-white rounded-full text-sm hover:bg-green-700 transition-colors mr-2">
+                      📄 Materi 1
+                    </a>
+                    <a href="materials/kelas-7/semester-1/Week 5/second.html" target="_blank" class="inline-block px-4 py-2 bg-green-600 text-white rounded-full text-sm hover:bg-green-700 transition-colors">
+                      📄 Materi 2
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Semester 2 (Disabled) -->
+        <div class="text-center py-12">
+          <div class="bg-gray-100 p-8 rounded-2xl max-w-md mx-auto">
+            <div class="text-4xl mb-4">🚧</div>
+            <h3 class="text-xl font-medium mb-2">Semester 2</h3>
+            <p class="text-gray-600 text-sm">Materi akan tersedia segera</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Grade 8 Section -->
+    <section class="py-24 px-6">
+      <div class="container mx-auto">
+        <h2 class="text-3xl font-light text-center mb-16">Grade 8</h2>
+
+        <!-- Semester 1 -->
+        <div class="mb-16">
+          <h3 class="text-xl font-medium mb-8 text-center">Semester 1</h3>
+          <div class="space-y-8 max-w-4xl mx-auto">
+            <!-- Learning Objective 1 -->
+            <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+              <div class="flex items-start gap-4">
+                <div class="w-8 h-8 bg-gray-900 text-white rounded-full flex items-center justify-center text-sm font-medium flex-shrink-0">
+                  1
+                </div>
+                <div class="flex-1">
+                  <h4 class="text-lg font-medium mb-2">Understanding Programming Concepts</h4>
+                  <p class="text-gray-600 mb-4 text-sm">Students can explain the meaning of programming and basic algorithms.</p>
+                  <div class="space-y-2">
+                    <a href="materials/kelas-8/semester-1/konsep-pemrograman.html" target="_blank" class="inline-block px-4 py-2 bg-gray-900 text-white rounded-full text-sm hover:bg-gray-800 transition-colors">
+                      Presentation
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Learning Objective 2 -->
+            <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+              <div class="flex items-start gap-4">
+                <div class="w-8 h-8 bg-gray-900 text-white rounded-full flex items-center justify-center text-sm font-medium flex-shrink-0">
+                  2
+                </div>
+                <div class="flex-1">
+                  <h4 class="text-lg font-medium mb-2">Using Variables and Data Types</h4>
+                  <p class="text-gray-600 mb-4 text-sm">Students can use variables and identify basic data types.</p>
+                  <div class="space-y-2">
+                    <a href="#" class="inline-block px-4 py-2 bg-gray-200 text-gray-400 rounded-full text-sm cursor-not-allowed">
+                      Coming Soon
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Learning Objective 3 -->
+            <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+              <div class="flex items-start gap-4">
+                <div class="w-8 h-8 bg-gray-900 text-white rounded-full flex items-center justify-center text-sm font-medium flex-shrink-0">
+                  3
+                </div>
+                <div class="flex-1">
+                  <h4 class="text-lg font-medium mb-2">Applying Control Structures</h4>
+                  <p class="text-gray-600 mb-4 text-sm">Students can use conditional statements and loops in programs.</p>
+                  <div class="space-y-2">
+                    <a href="#" class="inline-block px-4 py-2 bg-gray-200 text-gray-400 rounded-full text-sm cursor-not-allowed">
+                      Coming Soon
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Learning Objective 4 -->
+            <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+              <div class="flex items-start gap-4">
+                <div class="w-8 h-8 bg-gray-900 text-white rounded-full flex items-center justify-center text-sm font-medium flex-shrink-0">
+                  4
+                </div>
+                <div class="flex-1">
+                  <h4 class="text-lg font-medium mb-2">Creating Simple Programs</h4>
+                  <p class="text-gray-600 mb-4 text-sm">Students can create simple programs with input and output.</p>
+                  <div class="space-y-2">
+                    <a href="#" class="inline-block px-4 py-2 bg-gray-200 text-gray-400 rounded-full text-sm cursor-not-allowed">
+                      Coming Soon
+                </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Learning Objective 5 -->
+            <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+              <div class="flex items-start gap-4">
+                <div class="w-8 h-8 bg-gray-900 text-white rounded-full flex items-center justify-center text-sm font-medium flex-shrink-0">
+                  5
+                </div>
+                <div class="flex-1">
+                  <h4 class="text-lg font-medium mb-2">Program Debugging</h4>
+                  <p class="text-gray-600 mb-4 text-sm">Students can identify and fix simple errors in programs.</p>
+                  <div class="space-y-2">
+                    <a href="#" class="inline-block px-4 py-2 bg-gray-200 text-gray-400 rounded-full text-sm cursor-not-allowed">
+                      Coming Soon
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Semester 2 (Disabled) -->
+        <div class="text-center py-12">
+          <div class="bg-gray-100 p-8 rounded-2xl max-w-md mx-auto">
+            <div class="text-4xl mb-4">🚧</div>
+            <h3 class="text-xl font-medium mb-2">Semester 2</h3>
+            <p class="text-gray-600 text-sm">Materials will be available soon</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-gray-100 py-12 px-6">
+      <div class="container mx-auto text-center">
+        <p class="text-gray-500 text-sm">
+          © 2025 Ahmad Muyassar. IT Learning Platform for SMP YPS Singkole.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

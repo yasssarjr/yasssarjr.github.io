@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Session 5 (Bootcamp): 3 Data Design Missions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; overflow: hidden; }
+        .slide {
+            transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+            position: absolute; width: 100%; height: 100%; top: 0; left: 0;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body class="bg-gray-200">
+
+    <main class="relative w-full h-screen overflow-hidden">
+        
+        <section class="flex flex-col items-center justify-center p-4 text-center bg-white slide sm:p-8">
+            <p class="text-base font-semibold text-blue-600 md:text-lg">Session 5: Formatting Bootcamp</p>
+            <h1 class="my-4 text-3xl font-black tracking-tight text-gray-800 sm:text-5xl lg:text-6xl">3 Design Missions to Become a Data Master</h1>
+            <p class="max-w-3xl mx-auto mt-4 text-lg text-gray-600 sm:text-xl">Ready to turn messy data into a visual masterpiece?</p>
+        </section>
+
+        <section class="flex flex-col items-center justify-center p-4 bg-white slide sm:p-8">
+            <h2 class="mb-6 text-2xl font-extrabold text-center text-gray-800 sm:text-4xl">🎯 Today's Bootcamp Missions</h2>
+            <ul class="w-full max-w-2xl space-y-3 text-base sm:text-lg">
+                <li class="flex items-start p-3 rounded-lg sm:p-4 bg-gray-50"><span class="mr-3 text-xl">🚀</span> <span>Complete 3 data design case studies with increasing difficulty.</span></li>
+                <li class="flex items-start p-3 rounded-lg sm:p-4 bg-gray-50"><span class="mr-3 text-xl">🔧</span> <span>Master the complete formatting toolkit: from colors and numbers to cell layout (Merge & Wrap).</span></li>
+                <li class="flex items-start p-3 rounded-lg sm:p-4 bg-gray-50"><span class="mr-3 text-xl">💡</span> <span>Understand context: when to use specific formats for maximum impact.</span></li>
+            </ul>
+        </section>
+
+        <section class="flex flex-col items-center justify-center p-4 slide bg-gray-50 sm:p-8">
+            <h2 class="mb-2 text-2xl font-extrabold text-center text-gray-800 sm:text-4xl">Mission 1: Design the "Sunset Cafe" Menu</h2>
+            <p class="mb-6 text-lg text-center text-gray-600">Turn this price list into a menu that's appealing to customers!</p>
+            <div class="grid items-start w-full max-w-6xl grid-cols-1 gap-6 lg:grid-cols-3">
+                <div class="space-y-3 lg:col-span-1">
+                    <h3 class="text-xl font-bold">Mission 1 Checklist:</h3>
+                    <button onclick="applyMenuStyle('mergeTitle')" class="w-full p-3 text-left text-white bg-blue-500 rounded-lg hover:bg-blue-600">1. Merge & Center Title</button>
+                    <button onclick="applyMenuStyle('styleHeader')" class="w-full p-3 text-left text-white bg-blue-500 rounded-lg hover:bg-blue-600">2. Style Column Headers</button>
+                    <button onclick="applyMenuStyle('currency')" class="w-full p-3 text-left text-white bg-blue-500 rounded-lg hover:bg-blue-600">3. Format Price to Currency</button>
+                    <button onclick="applyMenuStyle('addBorders')" class="w-full p-3 text-left text-white bg-blue-500 rounded-lg hover:bg-blue-600">4. Add All Borders</button>
+                    <button onclick="applyMenuStyle('reset')" class="w-full p-3 text-left text-white bg-gray-700 rounded-lg hover:bg-gray-800">🔄 Reset Mission 1</button>
+                </div>
+                <div class="w-full p-4 overflow-x-auto bg-white shadow-lg lg:col-span-2 rounded-xl">
+                    <table id="menuTable" class="w-full min-w-[400px] border-collapse">
+                        <thead><tr id="menuMainTitle"><th colspan="2" class="p-2 text-lg font-normal">Sunset Cafe Menu</th></tr><tr id="menuHeaderRow" class="text-left"><th class="p-2 font-normal">Item</th><th class="p-2 font-normal">Price</th></tr></thead>
+                        <tbody><tr><td class="p-2">Espresso</td><td class="p-2" data-original="3">3</td></tr><tr><td class="p-2">Caffe Latte</td><td class="p-2" data-original="5">5</td></tr><tr><td class="p-2">Chocolate Croissant</td><td class="p-2" data-original="4">4</td></tr></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+        
+        <section class="flex flex-col items-center justify-center p-4 bg-white slide sm:p-8">
+            <h2 class="mb-2 text-2xl font-extrabold text-center text-gray-800 sm:text-4xl">Mission 2: Tidy Up the Athletics Roster</h2>
+            <p class="mb-6 text-lg text-center text-gray-600">The coach needs your help to make this data easy to analyze!</p>
+            <div class="grid items-start w-full max-w-6xl grid-cols-1 gap-6 lg:grid-cols-3">
+                <div class="space-y-3 lg:col-span-1">
+                    <h3 class="text-xl font-bold">Mission 2 Checklist:</h3>
+                    <button onclick="applyRosterStyle('alignCenter')" class="w-full p-3 text-left text-white bg-green-500 rounded-lg hover:bg-green-600">1. Center Align Headers & Scores</button>
+                    <button onclick="applyRosterStyle('wrapText')" class="w-full p-3 text-left text-white bg-green-500 rounded-lg hover:bg-green-600">2. Wrap Long Text in Notes</button>
+                    <button onclick="applyRosterStyle('percent')" class="w-full p-3 text-left text-white bg-green-500 rounded-lg hover:bg-green-600">3. Format Attendance to Percent</button>
+                    <button onclick="applyRosterStyle('alternatingRows')" class="w-full p-3 text-left text-white bg-green-500 rounded-lg hover:bg-green-600">4. Apply Alternating Row Colors</button>
+                    <button onclick="applyRosterStyle('reset')" class="w-full p-3 text-left text-white bg-gray-700 rounded-lg hover:bg-gray-800">🔄 Reset Mission 2</button>
+                </div>
+                <div class="w-full p-4 overflow-x-auto shadow-inner lg:col-span-2 bg-gray-50 rounded-xl">
+                    <table id="rosterTable" class="w-full min-w-[500px] border-collapse">
+                        <thead><tr id="rosterHeaderRow" class="text-left text-white bg-gray-800"><th class="p-2 font-bold">Athlete Name</th><th class="p-2 font-bold">Average Score</th><th class="p-2 font-bold">Attendance</th><th class="p-2 font-bold">Coach's Notes</th></tr></thead>
+                        <tbody>
+                            <tr class="roster-row"><td class="p-2">Brandon Smith</td><td class="p-2">88.5</td><td class="p-2" data-original="0.95">0.95</td><td class="p-2 roster-notes">Shows rapid improvement in running technique. Needs to focus on stamina.</td></tr>
+                            <tr class="roster-row"><td class="p-2">Chloe Davis</td><td class="p-2">91.2</td><td class="p-2" data-original="1">1</td><td class="p-2 roster-notes">Consistent and disciplined. Potential for team captain.</td></tr>
+                            <tr class="roster-row"><td class="p-2">David Miller</td><td class="p-2">76.0</td><td class="p-2" data-original="0.8">0.8</td><td class="p-2 roster-notes">Good basic technique, but is often late for practice sessions.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section class="flex flex-col items-center justify-center p-4 slide bg-gray-50 sm:p-8">
+            <h2 class="mb-2 text-2xl font-extrabold text-center text-gray-800 sm:text-4xl">Mission 3: Build a Budget Planner</h2>
+            <p class="mb-6 text-lg text-center text-gray-600">Help someone organize their finances with a clear and functional table!</p>
+            <div class="grid items-start w-full max-w-6xl grid-cols-1 gap-6 lg:grid-cols-3">
+                <div class="space-y-3 lg:col-span-1">
+                    <h3 class="text-xl font-bold">Mission 3 Checklist:</h3>
+                    <button onclick="applyBudgetStyle('mergeHeaders')" class="w-full p-3 text-left text-white bg-purple-500 rounded-lg hover:bg-purple-600">1. Merge Category Headers</button>
+                    <button onclick="applyBudgetStyle('colorCode')" class="w-full p-3 text-left text-white bg-purple-500 rounded-lg hover:bg-purple-600">2. Color-Code Income & Expenses</button>
+                    <button onclick="applyBudgetStyle('formatAllCurrency')" class="w-full p-3 text-left text-white bg-purple-500 rounded-lg hover:bg-purple-600">3. Format All Numbers to Currency</button>
+                    <button onclick="applyBudgetStyle('styleTotal')" class="w-full p-3 text-left text-white bg-purple-500 rounded-lg hover:bg-purple-600">4. Make "Final Balance" Row Stand Out</button>
+                    <button onclick="applyBudgetStyle('reset')" class="w-full p-3 text-left text-white bg-gray-700 rounded-lg hover:bg-gray-800">🔄 Reset Mission 3</button>
+                </div>
+                <div class="w-full p-4 overflow-x-auto bg-white shadow-lg lg:col-span-2 rounded-xl">
+                    <table id="budgetTable" class="w-full min-w-[500px] border-collapse">
+                        <thead>
+                            <tr id="budgetIncomeHeader"><th colspan="2" class="p-2 font-normal border">INCOME</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td class="p-2 border">Salary</td><td class="p-2 border" data-original="3000">3000</td></tr>
+                            <tr id="budgetExpenseHeader"><th colspan="2" class="p-2 font-normal border">EXPENSES</th></tr>
+                            <tr><td class="p-2 border">Rent</td><td class="p-2 border" data-original="1200">1200</td></tr>
+                            <tr><td class="p-2 border">Food & Transport</td><td class="p-2 border" data-original="800">800</td></tr>
+                            <tr><td class="p-2 border">Entertainment</td><td class="p-2 border" data-original="300">300</td></tr>
+                            <tr id="budgetTotalRow"><td class="p-2 border">FINAL BALANCE</td><td class="p-2 border" data-original="700">700</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section class="flex flex-col items-center justify-center p-4 text-center bg-white slide sm:p-8">
+            <h2 class="text-3xl font-extrabold text-gray-800 sm:text-4xl">🤔 Bootcamp Debriefing</h2>
+            <p class="max-w-2xl mt-4 text-lg text-gray-600 sm:text-xl">After completing all three missions:</p>
+            <div class="w-full max-w-2xl mt-8 space-y-4 text-left">
+                <div class="p-4 rounded-lg bg-gray-50"><p class="font-semibold">Which mission was the most challenging? Why?</p></div>
+                <div class="p-4 rounded-lg bg-gray-50"><p class="font-semibold">How can good formatting help you make better decisions (like in the budget mission)?</p></div>
+            </div>
+        </section>
+
+        <section class="flex flex-col items-center justify-center p-4 text-center text-white bg-blue-600 slide sm:p-8">
+            <h2 class="text-3xl font-black tracking-tight sm:text-5xl">Bootcamp Complete!</h2>
+            <p class="max-w-3xl mx-auto mt-4 text-lg text-blue-100 sm:text-xl">"The details are not the details. They make the design." - Charles Eames</p>
+            <p class="mt-8 text-2xl font-bold">You have graduated as a Data Designer! See you next time. 👋</p>
+        </section>
+    </main>
+
+    <div id="slideCounter" class="fixed z-10 px-3 py-1 text-sm text-white rounded-full bottom-4 left-4 bg-black/50"></div>
+    <div class="fixed z-10 flex gap-2 bottom-4 right-4">
+        <button id="prevBtn" class="p-3 bg-white rounded-full shadow-lg hover:bg-gray-200 disabled:opacity-50"><svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg></button>
+        <button id="nextBtn" class="p-3 bg-white rounded-full shadow-lg hover:bg-gray-200 disabled:opacity-50"><svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg></button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const slides = document.querySelectorAll('.slide'); let currentSlide = 0;
+            const prevBtn = document.getElementById('prevBtn'); const nextBtn = document.getElementById('nextBtn'); const slideCounter = document.getElementById('slideCounter');
+            
+            function updateSlides() {
+                slides.forEach((slide, index) => {
+                    slide.classList.remove('opacity-100', 'translate-x-0', '-translate-x-full', 'translate-x-full');
+                    if (index === currentSlide) { slide.classList.add('opacity-100', 'translate-x-0'); } 
+                    else if (index < currentSlide) { slide.classList.add('opacity-0', '-translate-x-full'); } 
+                    else { slide.classList.add('opacity-0', 'translate-x-full'); }
+                });
+                slideCounter.textContent = `${currentSlide + 1} / ${slides.length}`;
+                prevBtn.disabled = currentSlide === 0; nextBtn.disabled = currentSlide === slides.length - 1;
+            }
+            function showNextSlide() { if (currentSlide < slides.length - 1) { currentSlide++; updateSlides(); } }
+            function showPrevSlide() { if (currentSlide > 0) { currentSlide--; updateSlides(); } }
+            
+            nextBtn.addEventListener('click', showNextSlide);
+            prevBtn.addEventListener('click', showPrevSlide);
+            document.addEventListener('keydown', (e) => { if (e.key === 'ArrowRight') showNextSlide(); if (e.key === 'ArrowLeft') showPrevSlide(); });
+
+            const initialMenuTable = document.getElementById('menuTable').innerHTML;
+            const initialRosterTable = document.getElementById('rosterTable').innerHTML;
+            const initialBudgetTable = document.getElementById('budgetTable').innerHTML;
+
+            // MISSION 1: CAFE MENU
+            window.applyMenuStyle = function(style) {
+                const table = document.getElementById('menuTable');
+                if (style === 'reset') { table.innerHTML = initialMenuTable; return; }
+                const titleCell = table.querySelector('#menuMainTitle th');
+                const headerRow = table.querySelector('#menuHeaderRow');
+                const priceCells = table.querySelectorAll('tbody td:nth-child(2)');
+                const allCells = table.querySelectorAll('th, td');
+
+                switch(style) {
+                    case 'mergeTitle': titleCell.classList.toggle('text-center'); break;
+                    case 'styleHeader': headerRow.classList.toggle('bg-gray-100'); headerRow.querySelectorAll('th').forEach(th => th.classList.toggle('font-bold')); break;
+                    case 'currency': priceCells.forEach(cell => { let num = parseFloat(cell.dataset.original); cell.textContent = cell.textContent.startsWith('$') ? cell.dataset.original : '$' + num.toLocaleString('en-US'); }); break;
+                    case 'addBorders': allCells.forEach(cell => cell.classList.toggle('border')); break;
+                }
+            };
+            
+            // MISSION 2: SPORTS ROSTER
+            window.applyRosterStyle = function(style) {
+                const table = document.getElementById('rosterTable');
+                if (style === 'reset') { table.innerHTML = initialRosterTable; return; }
+                const headerCells = table.querySelectorAll('#rosterHeaderRow th');
+                const valueCells = table.querySelectorAll('tbody td:nth-child(2), tbody td:nth-child(3)');
+                const noteCells = table.querySelectorAll('.roster-notes');
+                const attendanceCells = table.querySelectorAll('tbody td:nth-child(3)');
+                const rows = table.querySelectorAll('.roster-row');
+
+                switch(style) {
+                    case 'alignCenter': headerCells.forEach(c => c.classList.toggle('text-center')); valueCells.forEach(c => c.classList.toggle('text-center')); break;
+                    case 'wrapText': noteCells.forEach(c => { c.classList.toggle('whitespace-normal'); c.style.maxWidth = c.classList.contains('whitespace-normal') ? '250px' : ''; }); break;
+                    case 'percent': attendanceCells.forEach(cell => { let num = parseFloat(cell.dataset.original); cell.textContent = cell.textContent.endsWith('%') ? cell.dataset.original : (num * 100).toFixed(0) + '%'; }); break;
+                    case 'alternatingRows': rows.forEach((row, i) => { if (i % 2 !== 0) row.classList.toggle('bg-gray-100'); }); break;
+                }
+            };
+
+            // MISSION 3: BUDGET PLANNER
+            window.applyBudgetStyle = function(style) {
+                const table = document.getElementById('budgetTable');
+                if (style === 'reset') { table.innerHTML = initialBudgetTable; return; }
+                const incomeHeader = table.querySelector('#budgetIncomeHeader th');
+                const expenseHeader = table.querySelector('#budgetExpenseHeader th');
+                const allValueCells = table.querySelectorAll('tbody td:nth-child(2)');
+                const totalRow = table.querySelector('#budgetTotalRow');
+
+                switch(style) {
+                    case 'mergeHeaders': incomeHeader.classList.toggle('text-center'); expenseHeader.classList.toggle('text-center'); break;
+                    case 'colorCode': incomeHeader.classList.toggle('bg-green-100'); expenseHeader.classList.toggle('bg-red-100'); break;
+                    case 'formatAllCurrency': allValueCells.forEach(cell => { let num = parseFloat(cell.dataset.original); cell.textContent = cell.textContent.startsWith('$') ? cell.dataset.original : '$' + num.toLocaleString('en-US'); }); break;
+                    case 'styleTotal': totalRow.classList.toggle('bg-gray-700'); totalRow.classList.toggle('text-white'); totalRow.classList.toggle('font-bold'); break;
+                }
+            };
+
+            updateSlides();
+        });
+    </script>
+</body>
+</html>

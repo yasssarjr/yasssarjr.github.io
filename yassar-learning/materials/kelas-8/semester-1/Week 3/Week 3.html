@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentasi - Kolaborasi Digital Profesional</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f7faff; /* Latar belakang lebih cerah */
+        }
+        .slide-container {
+            perspective: 1000px;
+        }
+        .slide {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2.5rem; /* Padding lebih besar */
+            min-height: 85vh;
+            border-radius: 24px; /* Sudut lebih bulat */
+            background: white;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e5e7eb;
+            position: relative;
+        }
+        .slide.active {
+            display: flex;
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.97);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        .slide-icon {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 1.5rem;
+        }
+        .btn-nav {
+            background-color: #4285F4;
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(66, 133, 244, 0.2);
+        }
+        .btn-nav:hover {
+            background-color: #3367D6;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(66, 133, 244, 0.3);
+        }
+        .btn-nav:disabled {
+            background-color: #b0c4de;
+            cursor: not-allowed;
+            transform: translateY(0);
+            box-shadow: none;
+        }
+        .progress-bar-container {
+            width: 100%;
+            background-color: #e0e7ff;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .progress-bar {
+            height: 10px;
+            background-color: #4A90E2;
+            background-image: linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
+            border-radius: 8px;
+            transition: width 0.4s ease-in-out;
+        }
+        .slide-emoji {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 2.5rem;
+            opacity: 0.5;
+        }
+        .list-card {
+            background-color: #f8f9fa;
+            border-radius: 12px;
+            padding: 0.75rem 1.25rem;
+            border: 1px solid #e9ecef;
+            transition: transform 0.2s;
+        }
+        .list-card:hover {
+            transform: scale(1.03);
+        }
+    </style>
+</head>
+<body class="flex flex-col items-center justify-center min-h-screen p-4 sm:p-6">
+
+    <div id="presentation-container" class="w-full max-w-4xl mx-auto slide-container">
+        <!-- Slides will be injected here by JavaScript -->
+    </div>
+
+    <div class="w-full max-w-4xl mx-auto mt-6">
+        <div class="progress-bar-container">
+            <div id="progress-bar" class="progress-bar"></div>
+        </div>
+        <div class="flex justify-between items-center mt-4">
+            <button id="prevBtn" class="btn-nav">Sebelumnya</button>
+            <span id="slide-counter" class="text-gray-600 font-semibold text-lg"></span>
+            <button id="nextBtn" class="btn-nav">Berikutnya</button>
+        </div>
+    </div>
+
+    <script>
+        const slidesData = [
+            { // Slide 1
+                type: 'title',
+                emoji: '🚀',
+                title: 'Selamat Datang di Dunia Kolaborasi Digital!',
+                subtitle: 'Topik: Kolaborasi Profesional dengan Gmail, Calendar & Meet<br>Informatika - Fase D / Kelas VIII<br>SMP YPS Singkole'
+            },
+            { // Slide 2
+                type: 'agenda',
+                emoji: '🎯',
+                title: 'Tujuan Pembelajaran Kita',
+                items: [
+                    'Memahami penggunaan Gmail, Calendar, dan Meet untuk komunikasi profesional.',
+                    'Melatih keterampilan dasar: mengirim email formal, membuat undangan Calendar.',
+                    'Merancang simulasi proyek: “Rapat Koordinasi Acara Sekolah”.'
+                ]
+            },
+            { // Slide 3
+                type: 'agenda',
+                emoji: '🗺️',
+                title: 'Pertemuan 1: Workshop Alat Kolaborasi',
+                items: [
+                    'Gmail: Seni Komunikasi Profesional',
+                    'Google Calendar: Manajemen Waktu Cerdas',
+                    'Google Meet: Etiket Rapat Virtual'
+                ]
+            },
+            { // Slide 4
+                type: 'question',
+                emoji: '🤔',
+                title: 'Pernah Mengalami Hal Ini?',
+                text: 'Pernahkah Anda mencoba mengatur sebuah acara kecil bersama teman-teman, tetapi informasinya tersebar di berbagai chat dan sering terjadi miskomunikasi?'
+            },
+            { // Slide 5
+                type: 'concept',
+                emoji: '📧',
+                title: 'Gmail: Pusat Komunikasi Profesional Anda',
+                icon: `<svg class="slide-icon" viewBox="0 0 512 512" fill="#EA4335"><path d="M64 112c-8.8 0-16 7.2-16 16v22.1L220.5 291.7c20.7 17 50.4 17 71.1 0L464 150.1V128c0-8.8-7.2-16-16-16H64zM48 212.2V384c0 8.8 7.2 16 16 16h384c8.8 0 16-7.2 16-16V212.2L322 328.8c-38.4 31.5-93.7 31.5-132.1 0L48 212.2z"/></svg>`,
+                list: [
+                    'Alat untuk mengirim dan menerima email secara resmi.',
+                    '<b>Fitur Kunci:</b>',
+                    '<b>To, CC, BCC:</b> Mengirim ke penerima utama, sekadar info, atau secara rahasia.',
+                    '<b>Subjek:</b> Judul email yang jelas dan ringkas.',
+                    '<b>Lampiran:</b> Melampirkan file atau dokumen penting.'
+                ]
+            },
+            { // Slide 6
+                type: 'practice',
+                emoji: '✍️',
+                title: 'Misi Kamu!',
+                subtitle: 'Latihan: Kirim Email Profesional',
+                steps: [
+                    'Buka <b>Gmail</b>.',
+                    'Tulis email baru yang ditujukan kepada teman sebangku.',
+                    '<b>Subjek:</b> `Latihan Gmail - [Nama Lengkap Anda]`',
+                    '<b>Isi Email:</b> Tulis 2-3 kalimat perkenalan yang sopan.',
+                    'Klik <b>Kirim</b>.'
+                ],
+                footer: 'Waktunya Berlatih!'
+            },
+            { // Slide 7
+                type: 'concept',
+                emoji: '🗓️',
+                title: 'Google Calendar: Asisten Jadwal Pribadi Anda',
+                icon: `<svg class="slide-icon" viewBox="0 0 512 512" fill="#34A853"><path d="M440 64H72c-22.1 0-40 17.9-40 40v304c0 22.1 17.9 40 40 40h368c22.1 0 40-17.9 40-40V104c0-22.1-17.9-40-40-40zm-20 48v40H92v-40h328zm-20 288H92V192h328v188z"/><path d="M144 248h48v48h-48zM232 248h48v48h-48zM320 248h48v48h-48zM144 328h48v48h-48zM232 328h48v48h-48zM320 328h48v48h-48z"/></svg>`,
+                list: [
+                    'Mengatur semua jadwal dan acara agar tidak ada yang terlewat.',
+                    '<b>Fitur Kunci:</b>',
+                    '<b>Membuat Acara:</b> Atur waktu dan durasi.',
+                    '<b>Mengundang Tamu:</b> Lihat siapa saja yang akan hadir.',
+                    '<b>Link Google Meet:</b> Otomatis membuat tautan rapat virtual.'
+                ]
+            },
+            { // Slide 8
+                type: 'practice',
+                emoji: '✍️',
+                title: 'Misi Kamu!',
+                subtitle: 'Latihan: Jadwalkan Acara Tim',
+                steps: [
+                    'Buka <b>Google Calendar</b>.',
+                    'Buat acara baru: `Rapat Latihan - [Nama Anda]`.',
+                    'Atur waktunya untuk besok jam 10 pagi.',
+                    '<b>Undang</b> teman sebangku.',
+                    'Pastikan link <b>Google Meet</b> sudah ada, lalu <b>Simpan</b>.'
+                ],
+                footer: 'Waktunya Menjadwal!'
+            },
+            { // Slide 9
+                type: 'concept',
+                emoji: '💻',
+                title: 'Google Meet: Ruang Rapat Virtual Anda',
+                icon: `<svg class="slide-icon" viewBox="0 0 512 512" fill="#FBBC04"><path d="M427.1 296.5c-4.8-11.8-12.2-22.5-22-31.5L305 184.3c-28.2-26-72.3-13.4-85.3 22.3-2.1 5.9-3.2 12.1-3.2 18.5V288c0 35.3 28.7 64 64 64h.3c15 0 29-5.2 40-14.3l85.6-70.2c16.3-13.4 19.3-37.4 6.1-50.8z"/><path d="M224 352c17.7 0 32-14.3 32-32s-14.3-32-32-32H160c-17.7 0-32 14.3-32 32s14.3 32 32 32h64zm-64-96h64c17.7 0 32-14.3 32-32s-14.3-32-32-32H160c-17.7 0-32 14.3-32 32s14.3 32 32 32z"/></svg>`,
+                list: [
+                    'Platform untuk melakukan rapat tatap muka secara online.',
+                    '<b>Etiket Penting:</b>',
+                    '<b>Mute/Unmute:</b> Matikan mikrofon saat tidak berbicara.',
+                    '<b>Chat:</b> Gunakan untuk bertanya tanpa memotong pembicaraan.',
+                    '<b>Share Screen:</b> Bagikan layar Anda untuk presentasi.'
+                ]
+            },
+            { // Slide 10
+                type: 'practice',
+                emoji: '✍️',
+                title: 'Misi Kamu!',
+                subtitle: 'Latihan: Etiket Rapat Virtual',
+                steps: [
+                    'Buka <b>Google Classroom</b> dan klik link Meet yang sudah disiapkan.',
+                    'Begitu masuk, langsung <b>MUTE</b> mikrofon Anda.',
+                    'Tulis <b>"Hadir"</b> di kolom <b>Chat</b>.',
+                    'Tunggu instruksi dari guru untuk mencoba <b>Share Screen</b>.'
+                ],
+                footer: 'Waktunya Bergabung!'
+            },
+            { // Slide 11
+                type: 'reflection',
+                emoji: '💡',
+                title: 'Mana yang Paling Berguna?',
+                text: 'Dari Gmail, Calendar, dan Meet, sebutkan satu fitur yang menurut Anda paling akan membantu dalam kerja kelompok.'
+            },
+            { // Slide 12
+                type: 'closing',
+                emoji: '🎉',
+                title: '"Alat yang tepat membuat kerja sama menjadi lebih mudah."',
+                subtitle: 'Sampai jumpa di pertemuan berikutnya untuk proyek kita!'
+            },
+            { // Slide 13
+                type: 'agenda',
+                emoji: '🗺️',
+                title: 'Pertemuan 2: Proyek "Simulasi Perencanaan Class Meeting"',
+                items: [
+                    '<b>Fase 1:</b> Inisiasi Proyek & Perencanaan Awal',
+                    '<b>Fase 2:</b> Pelaksanaan Rapat & Refleksi'
+                ]
+            },
+            { // Slide 14
+                type: 'project',
+                emoji: '🏆',
+                title: 'Tantangan Proyek Anda!',
+                text: 'Anda akan bekerja dalam tim untuk merancang sebuah acara "Class Meeting" dari nol.',
+                listTitle: 'Tugas Utama:',
+                items: [
+                    'Mengirim komunikasi resmi.',
+                    'Menjadwalkan rapat tim.',
+                    'Menyusun agenda rapat.',
+                    'Melaksanakan rapat singkat.',
+                    'Mempresentasikan hasil rapat.'
+                ]
+            },
+            { // Slide 15
+                type: 'practice',
+                emoji: '🚀',
+                title: 'Langkah 1: Bentuk Tim & Komunikasi Awal',
+                subtitle: '',
+                steps: [
+                    'Bentuk kelompok (3-4 orang).',
+                    'Kirim satu <b>email</b> perkenalan tim ke guru.',
+                    'Buat <b>undangan Calendar</b> untuk rapat tim Anda di 20 menit berikutnya. Lampirkan Google Docs kosong untuk `Agenda Rapat`.'
+                ]
+            },
+            { // Slide 16
+                type: 'practice',
+                emoji: '🚀',
+                title: 'Langkah 2: Laksanakan & Laporkan',
+                subtitle: '',
+                steps: [
+                    'Isi <b>dokumen agenda</b> secara bersama-sama.',
+                    'Masuk ke <b>Google Meet</b> dan laksanakan rapat (15-20 menit).',
+                    'Siapkan <b>presentasi singkat</b> (5 menit) yang menunjukkan notulen rapat dan keputusan yang telah dibuat.'
+                ],
+                footer: 'Selamat Mengerjakan Proyek!'
+            },
+        ];
+
+        const container = document.getElementById('presentation-container');
+        let currentSlide = 0;
+
+        function renderSlides() {
+            slidesData.forEach((slide) => {
+                let content = '';
+                let emoji = `<div class="slide-emoji">${slide.emoji || ''}</div>`;
+
+                switch (slide.type) {
+                    case 'title':
+                        content = `${emoji}<h1 class="text-4xl md:text-5xl font-bold text-gray-800">${slide.title}</h1><p class="mt-4 text-lg md:text-xl text-gray-600">${slide.subtitle}</p>`;
+                        break;
+                    case 'agenda':
+                        content = `${emoji}<h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-8">${slide.title}</h2><ul class="text-left text-xl md:text-2xl text-gray-700 space-y-4">${slide.items.map(item => `<li class="list-card">${item}</li>`).join('')}</ul>`;
+                        break;
+                    case 'question':
+                    case 'reflection':
+                        content = `${emoji}<h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6">${slide.title}</h2><p class="text-xl md:text-2xl text-gray-600 max-w-2xl">${slide.text}</p>`;
+                        break;
+                    case 'concept':
+                        content = `${emoji}${slide.icon || ''}<h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6">${slide.title}</h2><ul class="text-left text-lg md:text-xl text-gray-700 space-y-3">${slide.list.map(item => `<li>${item}</li>`).join('')}</ul>`;
+                        break;
+                    case 'practice':
+                        content = `${emoji}<h2 class="text-3xl md:text-4xl font-bold text-blue-600">${slide.title}</h2><p class="mt-2 mb-8 text-xl text-gray-600">${slide.subtitle}</p><ol class="text-left text-lg md:text-xl text-gray-700 space-y-4 list-decimal pl-6">${slide.steps.map(step => `<li>${step}</li>`).join('')}</ol>${slide.footer ? `<p class="mt-8 text-2xl font-bold text-green-600">${slide.footer}</p>` : ''}`;
+                        break;
+                    case 'closing':
+                        content = `${emoji}<h2 class="text-3xl md:text-4xl font-bold text-gray-800 italic">"${slide.title}"</h2><p class="mt-6 text-xl text-gray-600">${slide.subtitle}</p>`;
+                        break;
+                    case 'project':
+                         content = `${emoji}<h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6">${slide.title}</h2><p class="text-xl text-gray-600 mb-6 max-w-2xl">${slide.text}</p><h3 class="text-2xl font-semibold text-gray-800 mb-4">${slide.listTitle}</h3><ul class="text-left text-lg md:text-xl text-gray-700 space-y-3 list-disc pl-5 max-w-lg">${slide.items.map(item => `<li class="list-card">${item}</li>`).join('')}</ul>`;
+                        break;
+                }
+                const slideEl = document.createElement('div');
+                slideEl.className = 'slide';
+                slideEl.innerHTML = content;
+                container.appendChild(slideEl);
+            });
+        }
+
+        function showSlide(n) {
+            const slides = document.querySelectorAll('.slide');
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[n].classList.add('active');
+
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const slideCounter = document.getElementById('slide-counter');
+            const progressBar = document.getElementById('progress-bar');
+            
+            prevBtn.disabled = n === 0;
+            nextBtn.disabled = n === slides.length - 1;
+
+            slideCounter.textContent = `Slide ${n + 1} / ${slides.length}`;
+            progressBar.style.width = `${((n + 1) / slides.length) * 100}%`;
+        }
+
+        document.getElementById('nextBtn').addEventListener('click', () => {
+            if (currentSlide < slidesData.length - 1) {
+                currentSlide++;
+                showSlide(currentSlide);
+            }
+        });
+
+        document.getElementById('prevBtn').addEventListener('click', () => {
+            if (currentSlide > 0) {
+                currentSlide--;
+                showSlide(currentSlide);
+            }
+        });
+
+        // Initialize
+        renderSlides();
+        showSlide(currentSlide);
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ahmad Muyassar - IT Learning Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <script src="assets/js/main.js" defer></script>
+  </head>
+  <body class="bg-white text-gray-900">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/80 backdrop-blur-md border-b border-gray-100 z-50">
+      <div class="container mx-auto px-6 py-4">
+        <div class="flex justify-between items-center">
+          <div class="text-lg font-medium">Ahmad Muyassar</div>
+          <div class="hidden md:flex space-x-8">
+            <a href="index.html" class="text-gray-900 hover:text-gray-600 transition-colors">Home</a>
+            <a href="about.html" class="text-gray-900 hover:text-gray-600 transition-colors">About</a>
+            <a href="materials.html" class="text-gray-900 hover:text-gray-600 transition-colors">Materials</a>
+          </div>
+          <button class="md:hidden" onclick="toggleMobileMenu()">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden mt-4 pt-4 border-t border-gray-100">
+          <div class="flex flex-col space-y-4">
+            <a href="index.html" class="text-gray-900 hover:text-gray-600 transition-colors">Home</a>
+            <a href="about.html" class="text-gray-900 hover:text-gray-600 transition-colors">About</a>
+            <a href="materials.html" class="text-gray-900 hover:text-gray-600 transition-colors">Materials</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center justify-center px-6 pt-20">
+      <div class="text-center max-w-3xl">
+        <h1 class="text-5xl md:text-6xl font-bold mb-6 tracking-tight animate-fadeInUp">
+          <span class="inline-block animate-slideInLeft">Digital Learning</span>
+          <span class="text-blue-600 animate-slideInRight">Platform</span>
+        </h1>
+        <p class="text-xl text-gray-600 mb-12 leading-relaxed animate-fadeInUp animation-delay-200">
+          <span id="typing-text" class="typing-text"></span>
+          <span class="cursor animate-pulse">|</span>
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center animate-fadeInUp animation-delay-400">
+          <a href="materials.html" class="px-8 py-3 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-all transform hover:scale-105 hover:shadow-xl">
+            Learning Materials
+          </a>
+          <a href="about.html" class="px-8 py-3 border border-gray-300 rounded-full hover:bg-gray-50 transition-all transform hover:scale-105 hover:shadow-xl">
+            About Me
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Classes Section -->
+    <section class="py-24 px-6 bg-gray-50 scroll-reveal">
+      <div class="container mx-auto">
+        <h2 class="text-3xl font-light text-center mb-16 animate-fadeInUp">Learning Materials</h2>
+        <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <!-- Grade 7 -->
+          <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all transform hover:-translate-y-2 scroll-reveal-card">
+            <h3 class="text-2xl font-medium mb-6">Grade 7</h3>
+            <div class="space-y-4">
+              <div>
+                <p class="text-sm text-gray-500 mb-2">Semester 1</p>
+                <ul class="space-y-2">
+                  <li><a href="materials.html" class="text-gray-700 hover:text-gray-900">📊 Digital Ethics</a></li>
+                  <li><a href="materials.html" class="text-gray-700 hover:text-gray-900">💻 Hardware Computer</a></li>
+                  <li><a href="materials.html" class="text-gray-700 hover:text-gray-900">🌍 World Digital Collaboration</a></li>
+                  <li><a href="materials.html" class="text-gray-700 hover:text-gray-900">📈 Google Spreadsheets (Week 4)</a></li>
+                  <li><a href="materials.html" class="text-gray-700 hover:text-gray-900">📊 Google Spreadsheets (Week 5)</a></li>
+                </ul>
+              </div>
+              <div class="text-center py-4">
+                <div class="bg-gray-100 p-4 rounded-xl">
+                  <p class="text-sm text-gray-600">
+                    <span class="text-lg">🚧</span><br>
+                    Semester 2 coming soon
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Grade 8 -->
+          <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all transform hover:-translate-y-2 scroll-reveal-card animation-delay-200">
+            <h3 class="text-2xl font-medium mb-6">Grade 8</h3>
+            <div class="space-y-4">
+              <div>
+                <p class="text-sm text-gray-500 mb-2">Semester 1</p>
+                <ul class="space-y-2">
+                  <li><a href="materials.html" class="text-gray-700 hover:text-gray-900">👣 Digital Footprint</a></li>
+                  <li><a href="materials.html" class="text-gray-700 hover:text-gray-900">📊 Processing Data to Make It Cooler</a></li>
+                  <li><a href="materials.html" class="text-gray-700 hover:text-gray-900">📧 Professional Collaboration (Gmail, Calendar & Meet)</a></li>
+                  <li><a href="materials.html" class="text-gray-700 hover:text-gray-900">📈 Google Spreadsheets (Week 4)</a></li>
+                  <li><a href="materials.html" class="text-gray-700 hover:text-gray-900">📊 Google Spreadsheets Plus (Week 5)</a></li>
+                </ul>
+              </div>
+              <div class="text-center py-4">
+                <div class="bg-gray-100 p-4 rounded-xl">
+                  <p class="text-sm text-gray-600">
+                    <span class="text-lg">🚧</span><br>
+                    Semester 2 coming soon
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-gray-100 py-12 px-6">
+      <div class="container mx-auto text-center">
+        <p class="text-gray-500 text-sm">
+          © 2025 Ahmad Muyassar. Digital Learning Platform for SMP YPS Singkole.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

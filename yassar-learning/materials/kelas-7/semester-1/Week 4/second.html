@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Session 4: Spreadsheet Reports & Charts</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; overflow: hidden; }
+        .slide {
+            transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+            position: absolute; width: 100%; height: 100%; top: 0; left: 0;
+            opacity: 0; /* Mulai dengan transparan */
+        }
+        .header-colored { background-color: #bee3f8; /* Tailwind blue-200 */ }
+        /* Style tambahan untuk kuis */
+        .quiz-option { transition: background-color 0.2s, border-color 0.2s; }
+        .correct { background-color: #dcfce7 !important; border-color: #22c55e !important; color: #166534 !important; }
+        .incorrect { background-color: #fee2e2 !important; border-color: #ef4444 !important; color: #991b1b !important; }
+    </style>
+</head>
+<body class="bg-gray-200">
+
+    <main class="relative w-full h-screen overflow-hidden">
+        
+        <section class="flex flex-col items-center justify-center p-4 text-center bg-white slide sm:p-8">
+            <p class="text-base font-semibold text-green-600 md:text-lg">Session 4</p>
+            <h1 class="my-4 text-3xl font-black tracking-tight text-gray-800 sm:text-5xl lg:text-6xl">Creating Awesome Reports & Charts</h1>
+            <p class="max-w-3xl mx-auto mt-4 text-lg text-gray-600 sm:text-xl">Turning numbers into easy-to-understand stories.</p>
+        </section>
+        <section class="flex flex-col items-center justify-center p-4 bg-white slide sm:p-8">
+            <h2 class="mb-6 text-2xl font-extrabold text-center text-gray-800 sm:text-4xl">🎯 Today's Learning Objectives</h2>
+            <ul class="w-full max-w-2xl space-y-3 text-base sm:text-lg">
+                <li class="flex items-start p-3 rounded-lg sm:p-4 bg-gray-50"><span class="mr-3 text-xl">1️⃣</span><span>Design tables to look professional and be easy to read.</span></li>
+                <li class="flex items-start p-3 rounded-lg sm:p-4 bg-gray-50"><span class="mr-3 text-xl">2️⃣</span><span>Present data using simple charts (Column & Pie Chart).</span></li>
+                <li class="flex items-start p-3 rounded-lg sm:p-4 bg-gray-50"><span class="mr-3 text-xl">3️⃣</span><span>Apply all learned skills to create a personal project.</span></li>
+            </ul>
+        </section>
+        <section class="flex flex-col items-center justify-center p-4 bg-white slide sm:p-8">
+            <h2 class="mb-8 text-2xl font-extrabold text-center text-gray-800 sm:text-4xl">Let's Make Our Report Table Beautiful!</h2>
+            <div class="grid items-center w-full max-w-5xl grid-cols-1 gap-8 lg:grid-cols-2">
+                <div class="space-y-3">
+                    <h3 class="text-xl font-bold">Click the buttons to design:</h3>
+                    <button onclick="applyStyle('headerColor')" class="w-full p-3 text-left text-white transition bg-blue-500 rounded-lg sm:p-4 hover:bg-blue-600">🎨 Color Header</button>
+                    <button onclick="applyStyle('boldText')" class="w-full p-3 text-left text-white transition bg-blue-500 rounded-lg sm:p-4 hover:bg-blue-600">✍️ Bold Titles</button>
+                    <button onclick="applyStyle('currency')" class="w-full p-3 text-left text-white transition bg-blue-500 rounded-lg sm:p-4 hover:bg-blue-600">💰 Currency Format</button>
+                    <button onclick="applyStyle('reset')" class="w-full p-3 text-left text-white transition bg-gray-500 rounded-lg sm:p-4 hover:bg-gray-600">🔄 Reset Design</button>
+                </div>
+                <div class="w-full overflow-x-auto">
+                    <table id="designTable" class="w-full min-w-[300px] text-left border-collapse transition-all duration-500 shadow-lg">
+                        <thead>
+                            <tr><th class="p-3 font-normal border">Day</th><th class="p-3 font-normal border">Expense</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td class="p-3 border">Monday</td><td class="p-3 border" data-original-value="10000">10000</td></tr>
+                            <tr><td class="p-3 border">Tuesday</td><td class="p-3 border" data-original-value="8000">8000</td></tr>
+                            <tr><td class="p-3 border">Wednesday</td><td class="p-3 border" data-original-value="12000">12000</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+        <section class="flex flex-col items-center justify-center p-4 slide bg-gray-50 sm:p-8">
+            <h2 class="mb-4 text-2xl font-extrabold text-center text-gray-800 sm:text-4xl">A Picture is Worth a Thousand Numbers</h2>
+            <p class="mb-8 text-lg text-center text-gray-600">Turn your data into a chart to understand it better!</p>
+            <div class="w-full max-w-4xl p-6 bg-white border shadow-lg sm:p-8 rounded-xl">
+                <p class="text-lg text-center">Choose a chart type to see an example:</p>
+                <div class="flex flex-wrap justify-center gap-4 mt-4">
+                    <button onclick="showChart('column')" class="px-5 py-2 text-white bg-green-500 rounded-lg hover:bg-green-600">Column Chart</button>
+                    <button onclick="showChart('pie')" class="px-5 py-2 text-white bg-purple-500 rounded-lg hover:bg-purple-600">Pie Chart</button>
+                </div>
+                <div class="mt-6 p-4 bg-gray-50 rounded-lg min-h-[300px] flex items-center justify-center"><canvas id="myChart"></canvas></div>
+            </div>
+        </section>
+
+        <section class="flex flex-col items-center justify-center p-4 bg-white slide sm:p-8">
+            <div class="w-full max-w-3xl text-center">
+                <h2 class="mb-2 text-2xl font-extrabold text-gray-800 sm:text-3xl">🧠 Quiz (1/3)</h2>
+                <div class="p-8 border shadow-lg bg-gray-50 rounded-xl">
+                    <h3 class="mb-6 text-xl font-bold">To find the highest expense in a week, which function is the most appropriate to use?</h3>
+                    <div class="grid grid-cols-1 gap-4 text-left md:grid-cols-2" id="q1-options">
+                        <button class="p-4 text-lg border-2 rounded-lg quiz-option hover:bg-gray-200" onclick="checkAnswer(1, 'A', this)"><span class="mr-2 font-bold">A.</span> SUM</button>
+                        <button class="p-4 text-lg border-2 rounded-lg quiz-option hover:bg-gray-200" onclick="checkAnswer(1, 'B', this)"><span class="mr-2 font-bold">B.</span> MAX</button>
+                        <button class="p-4 text-lg border-2 rounded-lg quiz-option hover:bg-gray-200" onclick="checkAnswer(1, 'C', this)"><span class="mr-2 font-bold">C.</span> AVERAGE</button>
+                        <button class="p-4 text-lg border-2 rounded-lg quiz-option hover:bg-gray-200" onclick="checkAnswer(1, 'D', this)"><span class="mr-2 font-bold">D.</span> MIN</button>
+                    </div>
+                </div>
+                <div id="q1-feedback" class="h-8 mt-4 text-xl"></div>
+            </div>
+        </section>
+
+        <section class="flex flex-col items-center justify-center p-4 bg-white slide sm:p-8">
+            <div class="w-full max-w-3xl text-center">
+                <h2 class="mb-2 text-2xl font-extrabold text-gray-800 sm:text-3xl">🧠 Quiz (2/3)</h2>
+                <div class="p-8 border shadow-lg bg-gray-50 rounded-xl">
+                    <h3 class="mb-6 text-xl font-bold">A correct formula in a spreadsheet always begins with which symbol?</h3>
+                    <div class="grid grid-cols-1 gap-4 text-left md:grid-cols-2" id="q2-options">
+                        <button class="p-4 text-lg border-2 rounded-lg quiz-option hover:bg-gray-200" onclick="checkAnswer(2, 'A', this)"><span class="mr-2 font-bold">A.</span> =</button>
+                        <button class="p-4 text-lg border-2 rounded-lg quiz-option hover:bg-gray-200" onclick="checkAnswer(2, 'B', this)"><span class="mr-2 font-bold">B.</span> :</button>
+                        <button class="p-4 text-lg border-2 rounded-lg quiz-option hover:bg-gray-200" onclick="checkAnswer(2, 'C', this)"><span class="mr-2 font-bold">C.</span> ()</button>
+                        <button class="p-4 text-lg border-2 rounded-lg quiz-option hover:bg-gray-200" onclick="checkAnswer(2, 'D', this)"><span class="mr-2 font-bold">D.</span> +</button>
+                    </div>
+                </div>
+                <div id="q2-feedback" class="h-8 mt-4 text-xl"></div>
+            </div>
+        </section>
+        
+        <section class="flex flex-col items-center justify-center p-4 bg-white slide sm:p-8">
+            <div class="w-full max-w-3xl text-center">
+                <h2 class="mb-2 text-2xl font-extrabold text-gray-800 sm:text-3xl">🧠 Quiz (3/3)</h2>
+                <div class="p-8 border shadow-lg bg-gray-50 rounded-xl">
+                    <h3 class="mb-6 text-xl font-bold">Which chart type is best for comparing data across different categories (e.g., expenses per day)?</h3>
+                    <div class="grid grid-cols-1 gap-4 text-left md:grid-cols-2" id="q3-options">
+                        <button class="p-4 text-lg border-2 rounded-lg quiz-option hover:bg-gray-200" onclick="checkAnswer(3, 'A', this)"><span class="mr-2 font-bold">A.</span> Pie Chart</button>
+                        <button class="p-4 text-lg border-2 rounded-lg quiz-option hover:bg-gray-200" onclick="checkAnswer(3, 'B', this)"><span class="mr-2 font-bold">B.</span> Line Chart</button>
+                        <button class="p-4 text-lg border-2 rounded-lg quiz-option hover:bg-gray-200" onclick="checkAnswer(3, 'C', this)"><span class="mr-2 font-bold">C.</span> Column Chart</button>
+                        <button class="p-4 text-lg border-2 rounded-lg quiz-option hover:bg-gray-200" onclick="checkAnswer(3, 'D', this)"><span class="mr-2 font-bold">D.</span> Scatter Plot</button>
+                    </div>
+                </div>
+                <div id="q3-feedback" class="h-8 mt-4 text-xl"></div>
+            </div>
+        </section>
+
+        <section class="flex flex-col items-center justify-center p-4 text-center bg-white slide sm:p-8">
+            <h2 class="text-3xl font-extrabold text-gray-800 sm:text-4xl">🤔 Let's Reflect</h2>
+            <p class="max-w-2xl mt-4 text-lg text-gray-600 sm:text-xl">After seeing data in tables and charts...</p>
+            <div class="w-full max-w-2xl mt-8 space-y-4 text-left">
+                <div class="p-4 rounded-lg bg-gray-50"><p class="font-semibold">What information do you get fastest from a chart?</p></div>
+                <div class="p-4 rounded-lg bg-gray-50"><p class="font-semibold">With this data, what could you change about your spending habits next week?</p></div>
+            </div>
+        </section>
+
+        <section class="flex flex-col items-center justify-center p-4 text-center text-white bg-blue-600 slide sm:p-8">
+            <h2 class="text-3xl font-black tracking-tight sm:text-5xl">🚀 Final Project: Your Turn!</h2><p class="max-w-3xl mx-auto mt-4 text-lg text-blue-100 sm:text-xl">Create your own "Weekly Pocket Money" report in Google Sheets.</p>
+            <div class="w-full max-w-md p-6 mt-6 text-left text-gray-800 bg-white rounded-lg shadow-2xl"><h3 class="mb-4 text-lg font-bold">Project Checklist:</h3><ul class="space-y-3"><li class="flex items-center"><span class="mr-3 text-green-500">✔</span>Create a 7-day expense table.</li><li class="flex items-center"><span class="mr-3 text-green-500">✔</span>Use SUM, AVERAGE, MAX, & MIN.</li><li class="flex items-center"><span class="mr-3 text-green-500">✔</span>Design your table with colors & borders.</li><li class="flex items-center"><span class="mr-3 text-green-500">✔</span>Create a Column Chart from your data.</li></ul></div>
+        </section>
+        
+        <section class="flex flex-col items-center justify-center p-4 text-center bg-white slide sm:p-8">
+            <h2 class="text-4xl font-black text-gray-800 sm:text-6xl">Thank You!</h2>
+            <p class="max-w-2xl mt-4 text-xl italic text-gray-600 sm:text-2xl">"The goal of education is the replacement of an empty mind with an open one." - Malcolm Forbes</p>
+        </section>
+
+    </main>
+
+    <div id="slideCounter" class="fixed z-10 px-3 py-1 text-sm text-white rounded-full bottom-4 left-4 bg-black/50"></div>
+    <div class="fixed z-10 flex gap-2 bottom-4 right-4">
+        <button id="prevBtn" class="p-3 bg-white rounded-full shadow-lg hover:bg-gray-200 disabled:opacity-50"><svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg></button>
+        <button id="nextBtn" class="p-3 bg-white rounded-full shadow-lg hover:bg-gray-200 disabled:opacity-50"><svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg></button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const slides = document.querySelectorAll('.slide');
+            let currentSlide = 0;
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const slideCounter = document.getElementById('slideCounter');
+
+            function updateSlides() {
+                slides.forEach((slide, index) => {
+                    slide.style.transform = `translateX(${(index - currentSlide) * 100}%)`;
+                    slide.style.opacity = index === currentSlide ? '1' : '0';
+                });
+                slideCounter.textContent = `${currentSlide + 1} / ${slides.length}`;
+                prevBtn.disabled = currentSlide === 0;
+                nextBtn.disabled = currentSlide === slides.length - 1;
+            }
+
+            function showNextSlide() { if (currentSlide < slides.length - 1) { currentSlide++; updateSlides(); } }
+            function showPrevSlide() { if (currentSlide > 0) { currentSlide--; updateSlides(); } }
+            
+            nextBtn.addEventListener('click', showNextSlide);
+            prevBtn.addEventListener('click', showPrevSlide);
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowRight') showNextSlide();
+                if (e.key === 'ArrowLeft') showPrevSlide();
+            });
+
+            // --- Script for Slides 3 & 4 (No changes) ---
+            const table = document.getElementById('designTable');
+            const headerCells = table.querySelectorAll('thead th');
+            const bodyCells = table.querySelectorAll('tbody td:nth-child(2)');
+            const chartCtx = document.getElementById('myChart').getContext('2d');
+            let myChartInstance = null;
+            
+            window.applyStyle = function(styleType) {
+                switch (styleType) {
+                    case 'headerColor': headerCells.forEach(cell => cell.classList.toggle('header-colored')); break;
+                    case 'boldText': headerCells.forEach(cell => { cell.classList.toggle('font-bold'); cell.classList.toggle('font-normal'); }); break;
+                    case 'currency':
+                        bodyCells.forEach(cell => {
+                            const originalValue = cell.dataset.originalValue;
+                            if (cell.textContent.startsWith('Rp')) { cell.textContent = originalValue; } 
+                            else { const number = parseInt(originalValue, 10); cell.textContent = 'Rp ' + number.toLocaleString('id-ID'); }
+                        });
+                        break;
+                    case 'reset':
+                        headerCells.forEach(cell => { cell.classList.remove('header-colored', 'font-bold'); cell.classList.add('font-normal'); });
+                        bodyCells.forEach(cell => { cell.textContent = cell.dataset.originalValue; });
+                        break;
+                }
+            };
+            window.showChart = function(chartType) {
+                if (myChartInstance) { myChartInstance.destroy(); }
+                const labels = Array.from(document.querySelectorAll('#designTable tbody td:first-child')).map(td => td.textContent);
+                const data = Array.from(document.querySelectorAll('#designTable tbody td:nth-child(2)')).map(td => td.dataset.originalValue);
+                myChartInstance = new Chart(chartCtx, {
+                    type: (chartType === 'column') ? 'bar' : 'pie',
+                    data: {
+                        labels: labels,
+                        datasets: [{ label: 'Daily Expenses', data: data, backgroundColor: ['rgba(54, 162, 235, 0.6)','rgba(255, 99, 132, 0.6)','rgba(255, 206, 86, 0.6)'] }]
+                    },
+                    options: { responsive: true, maintainAspectRatio: false, plugins: { title: { display: true, text: 'Daily Expenses Chart' } } }
+                });
+            };
+
+            // --- NEW SCRIPT FOR IMPROVED QUIZ ---
+            const correctAnswers = {
+                1: 'B', // Question 1 -> MAX
+                2: 'A', // Question 2 -> =
+                3: 'C'  // Question 3 -> Column Chart
+            };
+
+            window.checkAnswer = function(questionNumber, selectedOption, clickedButton) {
+                const optionsContainer = document.getElementById(`q${questionNumber}-options`);
+                const buttons = optionsContainer.querySelectorAll('button');
+                const feedbackEl = document.getElementById(`q${questionNumber}-feedback`);
+                const correctAnswer = correctAnswers[questionNumber];
+
+                // 1. Reset all button styles for this question
+                buttons.forEach(button => {
+                    button.classList.remove('correct', 'incorrect');
+                });
+
+                // 2. Check the answer and apply new style to the clicked button
+                if (selectedOption === correctAnswer) {
+                    clickedButton.classList.add('correct');
+                    feedbackEl.innerHTML = '<p class="font-bold text-green-600">Correct!</p>';
+                } else {
+                    clickedButton.classList.add('incorrect');
+                    feedbackEl.innerHTML = '<p class="font-bold text-red-600">Incorrect, please try again!</p>';
+                }
+            };
+
+            // Initialize the first slide
+            updateSlides();
+        });
+    </script>
+</body>
+</html>

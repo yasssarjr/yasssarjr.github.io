@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Session 7 (Bootcamp): Relative Reference Missions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; overflow: hidden; }
+        .slide {
+            transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+            position: absolute; width: 100%; height: 100%; top: 0; left: 0;
+            overflow-y: auto;
+        }
+        .fill-handle {
+            position: absolute; bottom: -1px; right: -1px; width: 0.75rem; height: 0.75rem; 
+            background-color: #3B82F6; border: 2px solid white; cursor: pointer;
+        }
+    </style>
+</head>
+<body class="bg-gray-200">
+
+    <main class="relative w-full h-screen overflow-hidden">
+        
+        <section class="flex flex-col items-center justify-center p-4 text-center bg-white slide sm:p-8">
+            <p class="text-base font-semibold text-blue-600 md:text-lg">Session 7: Relative Reference Bootcamp</p>
+            <h1 class="my-4 text-3xl font-black tracking-tight text-gray-800 sm:text-5xl lg:text-6xl">The Magic of Smart Formulas</h1>
+            <p class="max-w-3xl mx-auto mt-4 text-lg text-gray-600 sm:text-xl">Complete 3 missions to master auto-adjusting formulas.</p>
+        </section>
+
+        <section class="flex flex-col items-center justify-center p-4 bg-white slide sm:p-8">
+            <h2 class="mb-6 text-2xl font-extrabold text-center text-gray-800 sm:text-4xl">🎯 Today's Bootcamp Missions</h2>
+            <ul class="w-full max-w-2xl space-y-3 text-base sm:text-lg">
+                <li class="flex items-start p-3 rounded-lg sm:p-4 bg-gray-50"><span class="mr-3 text-xl">🚀</span> <span>Understand how **relative cell references** automatically adapt when copied.</span></li>
+                <li class="flex items-start p-3 rounded-lg sm:p-4 bg-gray-50"><span class="mr-3 text-xl">🔧</span> <span>Use the **fill handle** (drag-and-drop) to efficiently apply formulas across multiple rows in different scenarios.</span></li>
+                <li class="flex items-start p-3 rounded-lg sm:p-4 bg-gray-50"><span class="mr-3 text-xl">💡</span> <span>Recognize the power of relative references for saving time and reducing errors.</span></li>
+            </ul>
+        </section>
+
+        <section class="flex flex-col items-center justify-center p-4 slide bg-gray-50 sm:p-8">
+            <h2 class="mb-2 text-2xl font-extrabold text-center text-gray-800 sm:text-4xl">Mission 1: The Shopping List</h2>
+            <p class="mb-6 text-lg text-center text-gray-600">Calculate the subtotal for each item. Drag the fill handle on D2 down!</p>
+            <div class="w-full max-w-2xl p-6 bg-white border shadow-lg rounded-xl">
+                <table class="w-full text-lg border-collapse">
+                    <thead><tr class="bg-gray-100"><th class="p-3 border">Item</th><th class="p-3 border">Qty</th><th class="p-3 border">Price</th><th class="p-3 border">Subtotal</th></tr></thead>
+                    <tbody class="mission-table" id="mission1">
+                        <tr class="data-row"><td class="p-3 border">Notebook</td><td class="p-3 border val-b">5</td><td class="p-3 border val-c">3000</td><td class="relative p-3 border formula-cell"><span class="font-mono text-gray-500 formula-text">=B2*C2</span><div class="fill-handle"></div></td></tr>
+                        <tr class="data-row"><td class="p-3 border">Pencil</td><td class="p-3 border val-b">10</td><td class="p-3 border val-c">1500</td><td class="relative p-3 border formula-cell"><span class="font-mono formula-text"></span></td></tr>
+                        <tr class="data-row"><td class="p-3 border">Eraser</td><td class="p-3 border val-b">3</td><td class="p-3 border val-c">1000</td><td class="relative p-3 border formula-cell"><span class="font-mono formula-text"></span></td></tr>
+                    </tbody>
+                </table>
+                <button onclick="resetMission('mission1')" class="px-4 py-2 mt-4 text-white bg-gray-600 rounded-lg hover:bg-gray-700">Reset Mission 1</button>
+            </div>
+        </section>
+        
+        <section class="flex flex-col items-center justify-center p-4 bg-white slide sm:p-8">
+            <h2 class="mb-2 text-2xl font-extrabold text-center text-gray-800 sm:text-4xl">Mission 2: The Sales Report</h2>
+            <p class="mb-6 text-lg text-center text-gray-600">Calculate the profit for each product. Drag the fill handle on D2 down!</p>
+             <div class="w-full max-w-2xl p-6 border shadow-inner bg-gray-50 rounded-xl">
+                <table class="w-full text-lg bg-white border-collapse">
+                    <thead><tr class="bg-gray-100"><th class="p-3 border">Product</th><th class="p-3 border">Sale Price</th><th class="p-3 border">Cost</th><th class="p-3 border">Profit</th></tr></thead>
+                    <tbody class="mission-table" id="mission2">
+                        <tr class="data-row"><td class="p-3 border">T-Shirt</td><td class="p-3 border val-b">150000</td><td class="p-3 border val-c">80000</td><td class="relative p-3 border formula-cell"><span class="font-mono text-gray-500 formula-text">=B2-C2</span><div class="fill-handle"></div></td></tr>
+                        <tr class="data-row"><td class="p-3 border">Jacket</td><td class="p-3 border val-b">350000</td><td class="p-3 border val-c">200000</td><td class="relative p-3 border formula-cell"><span class="font-mono formula-text"></span></td></tr>
+                        <tr class="data-row"><td class="p-3 border">Hat</td><td class="p-3 border val-b">75000</td><td class="p-3 border val-c">40000</td><td class="relative p-3 border formula-cell"><span class="font-mono formula-text"></span></td></tr>
+                    </tbody>
+                </table>
+                <button onclick="resetMission('mission2')" class="px-4 py-2 mt-4 text-white bg-gray-600 rounded-lg hover:bg-gray-700">Reset Mission 2</button>
+            </div>
+        </section>
+
+        <section class="flex flex-col items-center justify-center p-4 slide bg-gray-50 sm:p-8">
+            <h2 class="mb-2 text-2xl font-extrabold text-center text-gray-800 sm:text-4xl">Mission 3: The Workout Log</h2>
+            <p class="mb-6 text-lg text-center text-gray-600">Calculate the total calories burned. Drag the fill handle on D2 down!</p>
+             <div class="w-full max-w-2xl p-6 bg-white border shadow-lg rounded-xl">
+                <table class="w-full text-lg border-collapse">
+                    <thead><tr class="bg-gray-100"><th class="p-3 border">Activity</th><th class="p-3 border">Duration (min)</th><th class="p-3 border">Calories/Min</th><th class="p-3 border">Total Burned</th></tr></thead>
+                    <tbody class="mission-table" id="mission3">
+                        <tr class="data-row"><td class="p-3 border">Running</td><td class="p-3 border val-b">30</td><td class="p-3 border val-c">12</td><td class="relative p-3 border formula-cell"><span class="font-mono text-gray-500 formula-text">=B2*C2</span><div class="fill-handle"></div></td></tr>
+                        <tr class="data-row"><td class="p-3 border">Cycling</td><td class="p-3 border val-b">45</td><td class="p-3 border val-c">8</td><td class="relative p-3 border formula-cell"><span class="font-mono formula-text"></span></td></tr>
+                        <tr class="data-row"><td class="p-3 border">Jumping Rope</td><td class="p-3 border val-b">15</td><td class="p-3 border val-c">15</td><td class="relative p-3 border formula-cell"><span class="font-mono formula-text"></span></td></tr>
+                    </tbody>
+                </table>
+                <button onclick="resetMission('mission3')" class="px-4 py-2 mt-4 text-white bg-gray-600 rounded-lg hover:bg-gray-700">Reset Mission 3</button>
+            </div>
+        </section>
+
+        <section class="flex flex-col items-center justify-center p-4 text-center bg-white slide sm:p-8">
+            <h2 class="text-3xl font-extrabold text-gray-800 sm:text-4xl">🤔 Bootcamp Debriefing</h2>
+            <p class="max-w-2xl mt-4 text-lg text-gray-600 sm:text-xl">After completing all missions:</p>
+            <div class="w-full max-w-2xl mt-8 space-y-4 text-left">
+                <div class="p-4 rounded-lg bg-gray-50"><p class="font-semibold">How did the formula change in each mission, even though the action (dragging) was the same?</p></div>
+                <div class="p-4 rounded-lg bg-gray-50"><p class="font-semibold">Besides these examples, where else could you use this "smart copy" feature in real life?</p></div>
+            </div>
+        </section>
+
+        <section class="flex flex-col items-center justify-center p-4 text-center text-white bg-blue-600 slide sm:p-8">
+            <h2 class="text-3xl font-black tracking-tight sm:text-5xl">Work Smart, Not Hard!</h2>
+            <p class="max-w-3xl mx-auto mt-4 text-lg text-blue-100 sm:text-xl">"Efficiency is doing things right. Effectiveness is doing the right things." - Peter Drucker</p>
+            <p class="mt-8 text-2xl font-bold">Next session, we face a challenge where formulas MUST NOT change! See you then! 👋</p>
+        </section>
+    </main>
+
+    <div id="slideCounter" class="fixed z-10 px-3 py-1 text-sm text-white rounded-full bottom-4 left-4 bg-black/50"></div>
+    <div class="fixed z-10 flex gap-2 bottom-4 right-4">
+        <button id="prevBtn" class="p-3 bg-white rounded-full shadow-lg hover:bg-gray-200 disabled:opacity-50"><svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg></button>
+        <button id="nextBtn" class="p-3 bg-white rounded-full shadow-lg hover:bg-gray-200 disabled:opacity-50"><svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg></button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // SLIDE NAVIGATION
+            const slides = document.querySelectorAll('.slide'); let currentSlide = 0;
+            const prevBtn = document.getElementById('prevBtn'); const nextBtn = document.getElementById('nextBtn'); const slideCounter = document.getElementById('slideCounter');
+            
+            function updateSlides() {
+                slides.forEach((slide, index) => {
+                    slide.classList.remove('opacity-100', 'translate-x-0', '-translate-x-full', 'translate-x-full');
+                    if (index === currentSlide) { slide.classList.add('opacity-100', 'translate-x-0'); } 
+                    else if (index < currentSlide) { slide.classList.add('opacity-0', '-translate-x-full'); } 
+                    else { slide.classList.add('opacity-0', 'translate-x-full'); }
+                });
+                slideCounter.textContent = `${currentSlide + 1} / ${slides.length}`;
+                prevBtn.disabled = currentSlide === 0; nextBtn.disabled = currentSlide === slides.length - 1;
+            }
+            function showNextSlide() { if (currentSlide < slides.length - 1) { currentSlide++; updateSlides(); } }
+            function showPrevSlide() { if (currentSlide > 0) { currentSlide--; updateSlides(); } }
+            nextBtn.addEventListener('click', showNextSlide); prevBtn.addEventListener('click', showPrevSlide);
+            document.addEventListener('keydown', (e) => { if (e.key === 'ArrowRight') showNextSlide(); if (e.key === 'ArrowLeft') showPrevSlide(); });
+
+            // INTERACTIVE MISSIONS
+            let isDragging = false;
+            
+            function setupMission(missionId) {
+                const missionTable = document.getElementById(missionId);
+                const fillHandle = missionTable.querySelector('.fill-handle');
+                const formulaCells = missionTable.querySelectorAll('.formula-cell');
+                const initialHTML = missionTable.innerHTML;
+
+                fillHandle.addEventListener('mousedown', () => isDragging = true);
+
+                formulaCells.forEach((cell, index) => {
+                    if (index > 0) {
+                        cell.addEventListener('mouseenter', () => {
+                            if (isDragging) {
+                                const firstFormula = formulaCells[0].querySelector('.formula-text').textContent;
+                                const operator = firstFormula.includes('*') ? '*' : '-';
+                                for(let i = 1; i <= index; i++) {
+                                    formulaCells[i].querySelector('.formula-text').textContent = `=B${i+2}${operator}C${i+2}`;
+                                }
+                            }
+                        });
+                    }
+                });
+
+                document.addEventListener('mouseup', () => {
+                    if(isDragging) {
+                        isDragging = false;
+                        calculateAndDisplay(missionId);
+                    }
+                }, { once: true });
+
+                window.resetMission = function(id) {
+                    if (id === missionId) {
+                        document.getElementById(id).innerHTML = initialHTML;
+                        setupMission(id); // Re-attach listeners
+                    }
+                };
+            }
+
+            function calculateAndDisplay(missionId) {
+                const missionTable = document.getElementById(missionId);
+                const formulaCells = missionTable.querySelectorAll('.formula-cell');
+                 formulaCells.forEach((cell, index) => {
+                    const formulaSpan = cell.querySelector('.formula-text');
+                    if (!formulaSpan.textContent.startsWith('=')) return;
+
+                    const row = cell.parentElement;
+                    const bVal = parseFloat(row.querySelector('.val-b').textContent);
+                    const cVal = parseFloat(row.querySelector('.val-c').textContent);
+                    const operator = formulaSpan.textContent.includes('*') ? '*' : '-';
+                    const result = operator === '*' ? bVal * cVal : bVal - cVal;
+                    const formulaText = `=B${index+2}${operator}C${index+2}`;
+                    
+                    formulaSpan.textContent = result.toLocaleString('id-ID');
+                    formulaSpan.classList.remove('text-gray-500');
+                    cell.addEventListener('mouseenter', () => formulaSpan.textContent = formulaText);
+                    cell.addEventListener('mouseleave', () => formulaSpan.textContent = result.toLocaleString('id-ID'));
+                });
+            }
+
+            setupMission('mission1');
+            setupMission('mission2');
+            setupMission('mission3');
+            updateSlides();
+        });
+    </script>
+</body>
+</html>
