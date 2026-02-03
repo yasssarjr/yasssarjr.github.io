@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuis Persiapan Seminar RA - Uswatun Hasanah</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .option-btn {
+            transition: all 0.2s ease;
+        }
+        .option-btn:hover:not(:disabled) {
+            border-color: #3b82f6;
+            background-color: #eff6ff;
+        }
+        .correct {
+            background-color: #dcfce7 !important;
+            border-color: #22c55e !important;
+            color: #166534 !important;
+        }
+        .wrong {
+            background-color: #fee2e2 !important;
+            border-color: #ef4444 !important;
+            color: #991b1b !important;
+        }
+        .fade-in {
+            animation: fadeIn 0.4s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="min-h-screen py-6 px-4 flex items-center justify-center">
+
+    <div id="app" class="w-full max-w-2xl mx-auto">
+        
+        <!-- Welcome Screen (Sampul) -->
+        <div id="welcome-screen" class="bg-white rounded-3xl shadow-xl border border-slate-100 p-8 md:p-12 text-center fade-in">
+            <div class="mb-6 flex justify-center">
+                <div class="w-20 h-20 bg-blue-600 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-200">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                </div>
+            </div>
+            <h1 class="text-3xl font-bold text-slate-800 mb-2">Simulasi Seminar RA</h1>
+            <p class="text-blue-600 font-semibold mb-6 uppercase tracking-wider text-sm">Uswatun Hasanah</p>
+            
+            <div class="bg-slate-50 rounded-2xl p-6 mb-8 text-left border border-slate-100">
+                <h3 class="font-bold text-slate-700 mb-2 flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-slate-400" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+                    </svg>
+                    Instruksi Kuis:
+                </h3>
+                <ul class="text-slate-600 text-sm space-y-2">
+                    <li>• Terdiri dari 25 soal pilihan ganda (4 opsi).</li>
+                    <li>• Setiap jawaban benar bernilai 4 poin (Total 100).</li>
+                    <li>• Penjelasan jawaban akan muncul setelah Anda memilih.</li>
+                    <li>• Gunakan tombol navigasi untuk berpindah soal secara bebas.</li>
+                </ul>
+            </div>
+            
+            <button onclick="startQuiz()" class="w-full bg-blue-600 text-white py-4 rounded-2xl font-bold text-lg hover:bg-blue-700 transition-all shadow-lg shadow-blue-100 active:scale-95">
+                Mulai Simulasi Sekarang
+            </button>
+            <p class="mt-4 text-xs text-slate-400 italic">"Persiapan matang adalah separuh dari keberhasilan."</p>
+        </div>
+
+        <!-- Quiz Container (Hidden at start) -->
+        <div id="quiz-ui" class="hidden fade-in">
+            <!-- Header & Progress -->
+            <div class="mb-8 px-2">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-xs font-bold text-slate-400 uppercase tracking-widest" id="progress-text">Soal 1 dari 25</span>
+                    <span class="text-xs font-bold text-blue-600 bg-blue-50 px-3 py-1 rounded-full" id="score-text">Skor: 0</span>
+                </div>
+                <div class="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
+                    <div id="progress-bar" class="bg-blue-500 h-full transition-all duration-300" style="width: 4%"></div>
+                </div>
+            </div>
+
+            <div id="quiz-container" class="bg-white rounded-3xl shadow-xl border border-slate-100 p-6 md:p-8">
+                <div id="question-content">
+                    <h2 id="question-text" class="text-lg md:text-xl text-slate-800 font-semibold mb-6 leading-relaxed">
+                        Sedang memuat pertanyaan...
+                    </h2>
+
+                    <div id="options-container" class="space-y-3">
+                        <!-- Options injected here -->
+                    </div>
+
+                    <!-- Feedback Area -->
+                    <div id="feedback-area" class="mt-6 hidden fade-in">
+                        <div id="feedback-box" class="p-4 rounded-2xl border flex flex-col gap-2">
+                            <span id="feedback-status" class="font-bold text-sm uppercase tracking-tight"></span>
+                            <p id="feedback-text" class="text-sm leading-relaxed text-slate-600"></p>
+                        </div>
+                    </div>
+
+                    <!-- Navigation Buttons -->
+                    <div class="flex gap-3 mt-8">
+                        <button id="prev-btn" class="flex-1 bg-slate-100 text-slate-600 py-4 rounded-2xl font-bold hover:bg-slate-200 transition-colors disabled:opacity-50">
+                            Kembali
+                        </button>
+                        <button id="next-btn" class="flex-[2] bg-slate-800 text-white py-4 rounded-2xl font-bold hover:bg-slate-700 transition-colors">
+                            Berikutnya
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Result Screen -->
+        <div id="result-screen" class="hidden bg-white rounded-3xl shadow-xl border border-slate-100 p-10 text-center fade-in">
+            <div class="mb-8">
+                <div class="inline-flex items-center justify-center w-24 h-24 rounded-full bg-blue-600 text-white mb-6 text-4xl font-black shadow-xl shadow-blue-200" id="final-score-circle">
+                    0
+                </div>
+                <h2 class="text-2xl font-bold text-slate-800">Simulasi Selesai!</h2>
+                <p id="result-msg" class="text-slate-500 mt-3 text-lg"></p>
+                <div class="mt-6 flex justify-center gap-4">
+                    <div class="bg-slate-50 p-4 rounded-2xl border border-slate-100 min-w-[120px]">
+                        <p class="text-[10px] text-slate-400 uppercase font-bold tracking-widest">Dijawab</p>
+                        <p id="answered-info-val" class="text-xl font-bold text-slate-700">0</p>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-2xl border border-slate-100 min-w-[120px]">
+                        <p class="text-[10px] text-slate-400 uppercase font-bold tracking-widest">Total Soal</p>
+                        <p class="text-xl font-bold text-slate-700">25</p>
+                    </div>
+                </div>
+            </div>
+            <button onclick="location.reload()" class="w-full bg-blue-600 text-white py-4 rounded-2xl font-bold text-lg hover:bg-blue-500 transition-colors shadow-lg">
+                Ulangi Simulasi
+            </button>
+        </div>
+    </div>
+
+    <script>
+        const quizData = [
+            {
+                q: "Apa gagasan kreatif utama yang Anda tawarkan untuk memecahkan isu prioritas di unit kerja Anda?",
+                options: [
+                    { t: "Mengembangkan Ekosistem Loket Digital Terintegrasi melalui Google Workspace", c: true, r: "Ini adalah gagasan utama Anda untuk menyatukan data monitoring dari berbagai loket ke dalam sistem digital terpadu." },
+                    { t: "Membangun gedung arsip baru yang lebih modern", c: false, r: "Gagasan Anda berfokus pada sistem digital, bukan pembangunan fisik." },
+                    { t: "Menghapus seluruh sistem pendaftaran manual secara total", c: false, r: "Sistem Anda melengkapi KKP, bukan menghapus seluruh sistem yang ada." },
+                    { t: "Mengurangi jam pelayanan untuk efisiensi waktu", c: false, r: "Efisiensi dicapai melalui sistem kerja, bukan mengurangi waktu pelayanan publik." }
+                ]
+            },
+            {
+                q: "Isu mana yang terpilih sebagai prioritas dalam rancangan aktualisasi Anda?",
+                options: [
+                    { t: "Kurang optimalnya pengelolaan pencatatan dan penelusuran berkas pelayanan loket", c: true, r: "Isu ini dipilih karena berdampak langsung pada transparansi dan kepastian layanan di Front Office." },
+                    { t: "Kurangnya fasilitas kursi tunggu di area loket pendaftaran", c: false, r: "Isu fasilitas fisik tidak diangkat sebagai prioritas utama dalam RA Anda." },
+                    { t: "Kurangnya ketersediaan data spasial awal penyusunan PTP", c: false, r: "Ini isu teknis spasial, namun bukan fokus utama yang Anda selesaikan di loket." },
+                    { t: "Rendahnya tingkat kehadiran pegawai pada saat apel pagi", c: false, r: "Fokus RA Anda adalah pada proses bisnis pelayanan publik (administrasi berkas)." }
+                ]
+            },
+            {
+                q: "Apa tools utama yang digunakan dalam membangun sistem monitoring digital ini?",
+                options: [
+                    { t: "Google Form dan Google Spreadsheet", c: true, r: "Kombinasi ini memungkinkan input data real-time dan monitoring kolaboratif antar bagian loket." },
+                    { t: "Microsoft Word dan Excel Offline", c: false, r: "Sistem offline tidak memungkinkan sinkronisasi data secara langsung (real-time)." },
+                    { t: "Aplikasi mobile yang dibuat menggunakan bahasa pemrograman Java", c: false, r: "Anda memanfaatkan platform cloud yang sudah ada (no-code) agar implementasi cepat." },
+                    { t: "Pengiriman berkas melalui pesan WhatsApp grup saja", c: false, r: "WA hanya alat komunikasi, bukan sistem database monitoring yang terstruktur." }
+                ]
+            },
+            {
+                q: "Nilai BerAKHLAK 'Adaptif' dalam rancangan Anda ditunjukkan melalui...",
+                options: [
+                    { t: "Pemanfaatan inovasi teknologi digital untuk mempermudah pekerjaan", c: true, r: "Adaptif berarti terus berinovasi dan antusias terhadap perubahan teknologi untuk perbaikan." },
+                    { t: "Mengerjakan tugas hanya saat diperintah oleh atasan", c: false, r: "Itu bukan ciri adaptif, melainkan perilaku pasif." },
+                    { t: "Selalu ramah dan tersenyum kepada rekan kerja", c: false, r: "Ini lebih berkaitan dengan nilai Berorientasi Pelayanan atau Harmonis." },
+                    { t: "Membawa pekerjaan kantor untuk dikerjakan di rumah", c: false, r: "Keseimbangan kerja (Work-life balance) bukan indikator utama nilai Adaptif." }
+                ]
+            },
+            {
+                q: "Apa dampak negatif utama jika isu pengelolaan berkas loket tidak segera ditangani?",
+                options: [
+                    { t: "Penelusuran status berkas tetap sulit dan tidak transparan bagi petugas", c: true, r: "Tanpa monitoring digital, petugas akan sulit memberikan jawaban cepat mengenai posisi berkas." },
+                    { t: "Masyarakat tidak mau lagi mengurus tanah di kantor pertanahan", c: false, r: "Dampak utamanya adalah inefisiensi, bukan hilangnya minat masyarakat secara total." },
+                    { t: "Gedung kantor akan menjadi penuh dengan tumpukan kertas", c: false, r: "Digitalisasi monitoring fokus pada arus data, bukan kapasitas fisik gedung." },
+                    { t: "Tunjangan kinerja seluruh pegawai akan dipotong otomatis", c: false, r: "Dampak administratif tidak langsung berkaitan dengan satu sistem monitoring loket." }
+                ]
+            },
+            {
+                q: "Siapa target utama pengguna sistem monitoring digital yang Anda buat?",
+                options: [
+                    { t: "Seluruh petugas di loket pelayanan (Front Office)", c: true, r: "Sistem dirancang untuk mempermudah petugas pendaftaran, pembayaran, dan penyerahan produk." },
+                    { t: "Masyarakat yang sedang berada di luar negeri", c: false, r: "Sistem ini bersifat internal loket untuk meningkatkan kualitas layanan di kantor." },
+                    { t: "Petugas kebersihan dan keamanan di area kantor", c: false, r: "Pengguna sistem adalah staf administratif yang mengelola berkas pendaftaran." },
+                    { t: "Instansi kepolisian dan kejaksaan di wilayah setempat", c: false, r: "Sistem ini internal ATR/BPN untuk pengelolaan berkas pertanahan." }
+                ]
+            },
+            {
+                q: "Mengapa penggunaan Google Spreadsheet mendukung nilai Kolaboratif?",
+                options: [
+                    { t: "Memungkinkan berbagai loket mengupdate data di satu dokumen yang sama", c: true, r: "Sinergi antar bagian (loket pendaftaran dan pembayaran) mencerminkan nilai kolaboratif." },
+                    { t: "Karena aplikasi tersebut gratis dan tidak perlu bayar", c: false, r: "Efisiensi biaya lebih masuk ke nilai Efektif/Akuntabel, bukan esensi kolaborasi." },
+                    { t: "Karena pimpinan bisa melihat siapa yang sedang bekerja", c: false, r: "Monitoring pimpinan adalah fungsi pengawasan (Akuntabel)." },
+                    { t: "Karena bisa digunakan untuk mengobrol (chatting) antar rekan", c: false, r: "Tujuannya adalah integrasi data, bukan sarana media sosial pribadi." }
+                ]
+            },
+            {
+                q: "Bagaimana cara Anda menjamin keberlanjutan (sustainability) dari sistem ini?",
+                options: [
+                    { t: "Membuat Buku Panduan dan melakukan sosialisasi kepada petugas", c: true, r: "Transfer pengetahuan melalui panduan memastikan sistem tetap berjalan meski peserta selesai latsar." },
+                    { t: "Menyimpan password sistem hanya untuk diri sendiri", c: false, r: "Jika disimpan sendiri, sistem akan mati jika Anda pindah tugas." },
+                    { t: "Menunggu instruksi kementerian untuk meresmikan aplikasi tersebut", c: false, r: "Keberlanjutan di tingkat unit kerja dimulai dari inisiatif mandiri dan dukungan mentor." },
+                    { t: "Mengharuskan masyarakat mendownload aplikasi di handphone mereka", c: false, r: "Sistem Anda adalah internal loket, bukan aplikasi publik yang harus didownload masyarakat." }
+                ]
+            },
+            {
+                q: "Kegiatan 'Validasi form dengan mentor' mencerminkan nilai BerAKHLAK apa?",
+                options: [
+                    { t: "Harmonis dan Kompeten", c: true, r: "Berkonsultasi membangun keselarasan (Harmonis) dan memastikan kualitas hasil kerja (Kompeten)." },
+                    { t: "Loyal dan Adaptif", c: false, r: "Meskipun ada irisan, konsultasi lebih menekankan pada keselarasan kerja." },
+                    { t: "Hanya nilai Berorientasi Pelayanan", c: false, r: "Konsultasi internal lebih dominan pada hubungan antar-pegawai (Harmonis)." },
+                    { t: "Tidak mencerminkan nilai BerAKHLAK sama sekali", c: false, r: "Setiap tahap aktualisasi wajib diinternalisasi dengan nilai-nilai dasar ASN." }
+                ]
+            },
+            {
+                q: "Apa kaitan antara judul RA Anda dengan visi ATR/BPN?",
+                options: [
+                    { t: "Mendukung transformasi digital menuju standar dunia", c: true, r: "Digitalisasi layanan adalah langkah nyata menuju institusi berstandar dunia." },
+                    { t: "Menjamin ketersediaan lahan untuk seluruh rakyat", c: false, r: "Judul Anda spesifik pada monitoring berkas, bukan kebijakan penguasaan tanah nasional." },
+                    { t: "Mempercepat proses pengadilan sengketa tanah", c: false, r: "Sistem Anda di loket pendaftaran, bukan di bagian sengketa/hukum." },
+                    { t: "Meningkatkan jumlah pegawai di kantor pertanahan", c: false, r: "Visi dicapai melalui kualitas sistem, bukan sekadar kuantitas personil." }
+                ]
+            },
+            {
+                q: "Dalam analisis ASTR, huruf 'T' (Transformative) berarti...",
+                options: [
+                    { t: "Isu tersebut memberikan perubahan signifikan ke arah digital/lebih baik", c: true, r: "Transformative artinya membawa perubahan nyata dari cara lama ke cara baru yang lebih efektif." },
+                    { t: "Isu tersebut sangat Teknis dan sulit dipahami", c: false, r: "T dalam ASTR bukan teknis, melainkan daya ubah (Transformasi)." },
+                    { t: "Isu tersebut berkaitan dengan Tugas pokok sehari-hari", c: false, r: "Setiap isu ASN pasti berkaitan dengan tugas, namun T lebih pada dampak perubahannya." },
+                    { t: "Isu tersebut sudah Terlambat untuk diperbaiki", c: false, r: "Justru isu yang dipilih adalah yang masih aktual dan bisa diperbaiki." }
+                ]
+            },
+            {
+                q: "Apa langkah pertama dalam tahapan kegiatan Anda?",
+                options: [
+                    { t: "Melakukan konsultasi dan koordinasi dengan Mentor", c: true, r: "Setiap kegiatan aktualisasi harus diawali dengan persetujuan dan arahan mentor." },
+                    { t: "Langsung membuat akun Google Form tanpa bicara", c: false, r: "Tanpa koordinasi, inovasi Anda bisa jadi tidak sesuai dengan kebijakan kantor." },
+                    { t: "Membeli perangkat komputer baru untuk loket", c: false, r: "Tahap awal adalah perencanaan dan koordinasi, bukan pengadaan barang." },
+                    { t: "Mengumpulkan seluruh masyarakat untuk demo aplikasi", c: false, r: "Masyarakat bukan tahap awal; sistem harus siap secara internal terlebih dahulu." }
+                ]
+            },
+            {
+                q: "Apa indikator keberhasilan dari aktualisasi yang Anda lakukan?",
+                options: [
+                    { t: "Tersedianya dashboard monitoring berkas yang terupdate setiap hari", c: true, r: "Output fisik berupa sistem monitoring yang berfungsi adalah bukti keberhasilan teknis RA Anda." },
+                    { t: "Mendapatkan nilai kelulusan latsar yang paling tinggi", c: false, r: "Nilai adalah bonus, keberhasilan sejati adalah manfaat sistem bagi organisasi." },
+                    { t: "Diterimanya hadiah dari pemohon karena layanan cepat", c: false, r: "Ini dilarang (Gratifikasi) dan bertentangan dengan nilai Akuntabel (Integritas)." },
+                    { t: "Seluruh berkas di kantor hilang karena sudah digital", c: false, r: "Berkas fisik (Warkah/Buku Tanah) tetap ada, hanya monitoringnya yang digital." }
+                ]
+            },
+            {
+                q: "Bagaimana sistem Anda menangani berkas yang 'macet' di satu loket?",
+                options: [
+                    { t: "Admin dapat melihat di Spreadsheet loket mana yang belum mengupdate data", c: true, r: "Ketelusuran data memungkinkan pimpinan mengidentifikasi hambatan proses (bottleneck)." },
+                    { t: "Sistem akan menghapus berkas tersebut secara otomatis", c: false, r: "Sistem monitoring tidak menghapus data, melainkan memberikan informasi status." },
+                    { t: "Petugas loket akan mendapatkan denda otomatis dari aplikasi", c: false, r: "Sistem ini untuk pemantauan kerja, bukan instrumen pemberian sanksi finansial." },
+                    { t: "Masyarakat diminta untuk membatalkan permohonannya", c: false, r: "Tujuannya justru agar layanan selesai tepat waktu, bukan dibatalkan." }
+                ]
+            },
+            {
+                q: "Mengapa Anda memilih isu di Loket Pelayanan, bukan di bagian lain?",
+                options: [
+                    { t: "Karena loket adalah wajah utama (frontliner) pelayanan instansi", c: true, r: "Perbaikan di loket memberikan dampak paling terasa bagi masyarakat luas." },
+                    { t: "Karena loket adalah tempat yang paling santai pekerjaannya", c: false, r: "Sebaliknya, loket memiliki beban kerja tinggi dan interaksi langsung dengan publik." },
+                    { t: "Karena tidak ada pegawai lain yang mau bekerja di sana", c: false, r: "Penempatan kerja berdasarkan SK, bukan keinginan pribadi." },
+                    { t: "Karena ruangan loket memiliki AC yang paling dingin", c: false, r: "Pemilihan isu didasarkan pada urgensi pelayanan, bukan fasilitas ruangan." }
+                ]
+            },
+            {
+                q: "Kaitan Smart ASN 'Networking' dalam RA Anda adalah...",
+                options: [
+                    { t: "Membangun komunikasi efektif antar petugas loket dalam satu sistem", c: true, r: "Networking tidak selalu ke luar, tapi juga membangun jaringan kerja internal yang kuat." },
+                    { t: "Menambah jumlah teman di akun Instagram pribadi", c: false, r: "Networking dalam Smart ASN berkaitan dengan profesionalisme kerja." },
+                    { t: "Mencari kenalan orang penting untuk mempermudah jabatan", c: false, r: "Ini adalah penyalahgunaan networking yang melanggar kode etik ASN." },
+                    { t: "Menggunakan internet kantor untuk bermain game online", c: false, r: "Pemanfaatan fasilitas kantor harus untuk kepentingan dinas." }
+                ]
+            },
+            {
+                q: "Apa fungsi dari 'QR Code' jika Anda menambahkannya di loket?",
+                options: [
+                    { t: "Memudahkan petugas/pengguna mengakses link Google Form dengan cepat", c: true, r: "QR Code adalah jembatan antara dunia fisik dan digital agar akses lebih praktis." },
+                    { t: "Sebagai hiasan dinding agar kantor terlihat modern", c: false, r: "QR Code memiliki fungsi teknis, bukan sekadar elemen dekoratif." },
+                    { t: "Untuk mendeteksi suhu tubuh petugas loket", c: false, r: "Itu adalah fungsi alat medis/sensor suhu, bukan QR Code monitoring berkas." },
+                    { t: "Hanya untuk dipindai saat absensi pagi saja", c: false, r: "QR Code dalam konteks ini untuk mempermudah alur monitoring layanan." }
+                ]
+            },
+            {
+                q: "Nilai 'Kompeten' bagi seorang CPNS saat membuat RA ini berarti...",
+                options: [
+                    { t: "Meningkatkan kemampuan diri dalam mengoperasikan Spreadsheet", c: true, r: "Belajar hal baru untuk menyelesaikan masalah organisasi adalah wujud nilai kompeten." },
+                    { t: "Menyuruh orang ahli untuk mengerjakan tugas aktualisasi", c: false, r: "Peserta harus menunjukkan kompetensi pribadinya dalam mengerjakan RA." },
+                    { t: "Menganggap diri paling pintar di antara rekan lainnya", c: false, r: "Kompetensi harus dibarengi dengan rendah hati dan kemauan berbagi ilmu." },
+                    { t: "Mengerjakan tugas seadanya asal selesai tepat waktu", c: false, r: "Kompetensi menuntut hasil kerja yang terbaik dan berkualitas." }
+                ]
+            },
+            {
+                q: "Apa yang harus dilakukan jika ada kendala jaringan internet di kantor?",
+                options: [
+                    { t: "Mencatat manual sementara lalu diinput saat jaringan normal", c: true, r: "ASN harus solutif dan memastikan layanan tetap berjalan meskipun ada kendala teknis." },
+                    { t: "Menyalahkan penyedia layanan internet di media sosial", c: false, r: "Menyalahkan pihak lain bukan ciri ASN yang profesional dan beretika." },
+                    { t: "Pulang lebih awal karena tidak bisa bekerja tanpa internet", c: false, r: "Tindakan ini melanggar kedisiplinan dan tanggung jawab kerja." },
+                    { t: "Meminta pemohon untuk datang lagi bulan depan", c: false, r: "Layanan publik harus tetap diupayakan berjalan setiap hari kerja." }
+                ]
+            },
+            {
+                q: "Tujuan akhir dari monitoring digital ini bagi Organisasi adalah...",
+                options: [
+                    { t: "Peningkatan kualitas data dan percepatan waktu pelayanan", c: true, r: "Organisasi diuntungkan dengan data yang akurat dan layanan yang lebih cepat." },
+                    { t: "Agar kantor mendapatkan penghargaan dari gubernur", c: false, r: "Penghargaan adalah dampak sampingan, tujuan utamanya adalah kepuasan publik." },
+                    { t: "Mengganti seluruh pegawai dengan robot otomatis", c: false, r: "Teknologi adalah alat bantu (tools), peran ASN sebagai pelayan tetap utama." },
+                    { t: "Menghabiskan anggaran sisa di akhir tahun", c: false, r: "RA justru didorong menggunakan sumber daya yang efisien dan murah (Google Workspace)." }
+                ]
+            },
+            {
+                q: "Apa peran Penguji saat seminar Rancangan Aktualisasi?",
+                options: [
+                    { t: "Memberikan masukan dan menguji kelayakan gagasan Anda", c: true, r: "Penguji memastikan gagasan Anda logis, relevan, dan memiliki nilai dasar ASN." },
+                    { t: "Menentukan apakah Anda akan dipecat atau tidak", c: false, r: "Seminar RA adalah proses pembelajaran, bukan sidang pemecatan." },
+                    { t: "Membayar biaya makan siang para peserta", c: false, r: "Penguji menjalankan tugas akademik dan administratif latsar." },
+                    { t: "Mengerjakan revisi dokumen Anda yang salah", c: false, r: "Revisi adalah tanggung jawab penuh dari peserta latsar." }
+                ]
+            },
+            {
+                q: "Mengapa monitoring dilakukan dari loket ke loket (End-to-End)?",
+                options: [
+                    { t: "Agar tidak ada data yang terputus di tengah jalan", c: true, r: "Integrasi data memastikan siklus hidup berkas terekam dari awal sampai akhir." },
+                    { t: "Hanya untuk menambah jumlah kolom di Spreadsheet", c: false, r: "Setiap kolom harus memiliki fungsi informasi yang jelas." },
+                    { t: "Agar petugas loket merasa diawasi setiap detik", c: false, r: "Tujuannya adalah kelancaran proses, bukan untuk menciptakan ketakutan." },
+                    { t: "Mengikuti tren aplikasi di kantor pertanahan lain", c: false, r: "Implementasi harus didasarkan pada kebutuhan nyata unit kerja sendiri." }
+                ]
+            },
+            {
+                q: "Kaitan 'Akuntabel' dengan penginputan data adalah...",
+                options: [
+                    { t: "Data yang diinput harus jujur, akurat, dan dapat dipertanggungjawabkan", c: true, r: "Integritas dalam penginputan data adalah kunci akuntabilitas layanan publik." },
+                    { t: "Data diinput agar terlihat progresnya bagus saja", c: false, r: "Memanipulasi data agar terlihat bagus adalah pelanggaran etika serius." },
+                    { t: "Menyimpan data di tempat yang tidak diketahui orang lain", c: false, r: "Akuntabilitas menuntut transparansi (kejelasan) bagi pihak yang berkepentingan." },
+                    { t: "Hanya menginput data saat ada pimpinan di ruangan", c: false, r: "Tanggung jawab harus dilakukan secara konsisten, ada atau tidak ada pengawasan." }
+                ]
+            },
+            {
+                q: "Apa yang dimaksud dengan Habituation (Habituasi) dalam latsar?",
+                options: [
+                    { t: "Proses membiasakan diri menerapkan nilai BerAKHLAK di tempat kerja", c: true, r: "Habituasi adalah masa praktik nyata di unit kerja untuk membentuk karakter ASN." },
+                    { t: "Masa libur panjang setelah mengikuti kelas klasikal", c: false, r: "Habituasi adalah masa kerja penuh dengan agenda aktualisasi yang padat." },
+                    { t: "Kegiatan rutin berolahraga setiap pagi di kantor", c: false, r: "Olahraga adalah bagian kesehatan, tapi habituasi latsar fokus pada nilai dasar ASN." },
+                    { t: "Proses seleksi penerimaan CPNS tahap akhir", c: false, r: "Latsar diikuti oleh mereka yang sudah dinyatakan lulus seleksi CPNS." }
+                ]
+            },
+            {
+                q: "Bagaimana perasaan Anda jika sistem ini berhasil diimplementasikan?",
+                options: [
+                    { t: "Bangga karena telah memberikan kontribusi nyata bagi kantor", c: true, r: "Kepuasan kerja ASN salah satunya datang dari inovasi yang bermanfaat bagi publik." },
+                    { t: "Biasa saja karena itu memang kewajiban saya", c: false, r: "Memiliki rasa bangga terhadap hasil kerja yang baik mendorong semangat inovasi berkelanjutan." },
+                    { t: "Marah jika tidak diberikan hadiah uang tunai", c: false, r: "Kontribusi ASN adalah bentuk pengabdian kepada negara." },
+                    { t: "Ingin segera mengundurkan diri dari ASN", c: false, r: "Inovasi harusnya meningkatkan rasa cinta dan dedikasi terhadap korps ASN." }
+                ]
+            }
+        ];
+
+        let currentQuestion = 0;
+        let userAnswers = new Array(quizData.length).fill(null);
+
+        const questionText = document.getElementById('question-text');
+        const optionsContainer = document.getElementById('options-container');
+        const progressText = document.getElementById('progress-text');
+        const scoreText = document.getElementById('score-text');
+        const progressBar = document.getElementById('progress-bar');
+        const feedbackArea = document.getElementById('feedback-area');
+        const feedbackBox = document.getElementById('feedback-box');
+        const feedbackStatus = document.getElementById('feedback-status');
+        const feedbackText = document.getElementById('feedback-text');
+        const nextBtn = document.getElementById('next-btn');
+        const prevBtn = document.getElementById('prev-btn');
+
+        function startQuiz() {
+            document.getElementById('welcome-screen').classList.add('hidden');
+            document.getElementById('quiz-ui').classList.remove('hidden');
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            const data = quizData[currentQuestion];
+            questionText.innerText = data.q;
+            optionsContainer.innerHTML = '';
+            
+            progressText.innerText = `Soal ${currentQuestion + 1} dari ${quizData.length}`;
+            progressBar.style.width = `${((currentQuestion + 1) / quizData.length) * 100}%`;
+            
+            scoreText.innerText = `Skor: ${calculateCurrentScore()}`;
+
+            prevBtn.disabled = currentQuestion === 0;
+            nextBtn.innerText = (currentQuestion === quizData.length - 1) ? "Selesai" : "Berikutnya";
+
+            data.options.forEach((opt, index) => {
+                const btn = document.createElement('button');
+                btn.className = "option-btn w-full text-left p-4 rounded-2xl border border-slate-200 text-slate-700 font-medium text-sm md:text-base flex items-start gap-3";
+                
+                const label = String.fromCharCode(65 + index);
+                btn.innerHTML = `<span class="bg-slate-100 text-slate-500 w-6 h-6 rounded-lg flex items-center justify-center text-xs flex-shrink-0 font-bold">${label}</span> <span>${opt.t}</span>`;
+                
+                btn.onclick = () => selectOption(index);
+                optionsContainer.appendChild(btn);
+            });
+
+            if (userAnswers[currentQuestion] !== null) {
+                renderAnsweredState(userAnswers[currentQuestion]);
+            } else {
+                feedbackArea.classList.add('hidden');
+            }
+        }
+
+        function selectOption(index) {
+            if (userAnswers[currentQuestion] !== null) return; 
+
+            userAnswers[currentQuestion] = index;
+            renderAnsweredState(index);
+        }
+
+        function renderAnsweredState(selectedIndex) {
+            const data = quizData[currentQuestion];
+            const buttons = optionsContainer.getElementsByTagName('button');
+            const selected = data.options[selectedIndex];
+
+            for (let i = 0; i < buttons.length; i++) {
+                buttons[i].disabled = true;
+                const labelSpan = buttons[i].querySelector('span');
+                if (data.options[i].c) {
+                    buttons[i].classList.add('correct');
+                    labelSpan.classList.add('bg-green-200', 'text-green-700');
+                }
+            }
+
+            if (selected.c) {
+                feedbackStatus.innerText = "✓ Jawaban Benar";
+                feedbackBox.className = "p-4 rounded-2xl border flex flex-col gap-2 bg-green-50 border-green-100";
+                feedbackStatus.className = "font-black text-green-600 text-[10px] tracking-widest";
+            } else {
+                buttons[selectedIndex].classList.add('wrong');
+                const labelSpan = buttons[selectedIndex].querySelector('span');
+                labelSpan.classList.add('bg-red-200', 'text-red-700');
+                
+                feedbackStatus.innerText = "✕ Kurang Tepat";
+                feedbackBox.className = "p-4 rounded-2xl border flex flex-col gap-2 bg-red-50 border-red-100";
+                feedbackStatus.className = "font-black text-red-600 text-[10px] tracking-widest";
+            }
+
+            feedbackText.innerText = selected.r;
+            feedbackArea.classList.remove('hidden');
+            scoreText.innerText = `Skor: ${calculateCurrentScore()}`;
+        }
+
+        function calculateCurrentScore() {
+            let correctCount = 0;
+            userAnswers.forEach((ansIndex, qIndex) => {
+                if (ansIndex !== null && quizData[qIndex].options[ansIndex].c) {
+                    correctCount++;
+                }
+            });
+            return correctCount * 4;
+        }
+
+        nextBtn.onclick = () => {
+            if (currentQuestion < quizData.length - 1) {
+                currentQuestion++;
+                loadQuestion();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                showResult();
+            }
+        };
+
+        prevBtn.onclick = () => {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                loadQuestion();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        };
+
+        function showResult() {
+            document.getElementById('quiz-ui').classList.add('hidden');
+            const resultScreen = document.getElementById('result-screen');
+            resultScreen.classList.remove('hidden');
+            
+            const finalScore = calculateCurrentScore();
+            document.getElementById('final-score-circle').innerText = finalScore;
+
+            const answeredCount = userAnswers.filter(a => a !== null).length;
+            document.getElementById('answered-info-val').innerText = answeredCount;
+
+            let msg = "";
+            if (finalScore >= 90) msg = "Luar biasa! Persiapan Anda sudah sangat matang untuk seminar.";
+            else if (finalScore >= 70) msg = "Bagus! Anda memahami substansi RA dengan baik.";
+            else msg = "Hasil yang baik! Tinjau kembali beberapa poin untuk hasil maksimal.";
+            
+            document.getElementById('result-msg').innerText = msg;
+        }
+    </script>
+</body>
+</html>

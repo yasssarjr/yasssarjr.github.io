@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashcards Persiapan Ujian RA - Uswatun Hasanah</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f4f8;
+        }
+
+        .perspective {
+            perspective: 1000px;
+        }
+
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            cursor: pointer;
+        }
+
+        .card-inner.is-flipped {
+            transform: rotateY(180deg);
+        }
+
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .card-front {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            color: white;
+        }
+
+        .card-back {
+            background-color: white;
+            color: #1e293b;
+            transform: rotateY(180deg);
+            border: 2px solid #3b82f6;
+            overflow-y: auto;
+        }
+
+        .progress-bar {
+            transition: width 0.3s ease;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center p-4">
+
+    <div class="max-w-2xl w-full">
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <h1 class="text-3xl font-bold text-blue-900">Persiapan Ujian RA</h1>
+            <p class="text-gray-600 mt-2">Uswatun Hasanah - Kantah Kab. Mamuju Tengah</p>
+        </div>
+
+        <!-- Progress -->
+        <div class="mb-6">
+            <div class="flex justify-between mb-2 text-sm font-medium text-blue-800">
+                <span id="current-index">Kartu 1 dari 14</span>
+                <span id="percentage">0%</span>
+            </div>
+            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                <div id="progress-fill" class="bg-blue-600 h-2.5 rounded-full progress-bar" style="width: 7%"></div>
+            </div>
+        </div>
+
+        <!-- Card Container -->
+        <div class="perspective h-80 md:h-96 mb-8">
+            <div id="card-inner" class="card-inner">
+                <!-- Front -->
+                <div class="card-front">
+                    <h2 id="question-text" class="text-xl md:text-2xl font-semibold leading-tight">Memuat pertanyaan...</h2>
+                </div>
+                <!-- Back -->
+                <div class="card-back">
+                    <div class="text-left w-full">
+                        <h3 class="text-blue-600 font-bold uppercase text-xs mb-2">Jawaban:</h3>
+                        <p id="answer-text" class="text-base md:text-lg leading-relaxed text-gray-700">Memuat jawaban...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="flex justify-between items-center gap-4">
+            <button onclick="prevCard()" id="prev-btn" class="flex-1 bg-white border-2 border-blue-600 text-blue-600 py-3 rounded-xl font-bold hover:bg-blue-50 transition-colors disabled:opacity-30">
+                ← Sebelumnya
+            </button>
+            <button onclick="flipCard()" class="flex-1 bg-yellow-500 text-white py-3 rounded-xl font-bold shadow-lg hover:bg-yellow-600 transition-colors">
+                Buka Jawaban
+            </button>
+            <button onclick="nextCard()" id="next-btn" class="flex-1 bg-blue-600 text-white py-3 rounded-xl font-bold shadow-lg hover:bg-blue-700 transition-colors">
+                Selanjutnya →
+            </button>
+        </div>
+
+        <p class="text-center mt-8 text-sm text-gray-400 italic font-light">
+            Tips: Klik pada kartu untuk membolak-balik.
+        </p>
+    </div>
+
+    <script>
+        const flashcards = [
+            {
+                q: "Apa dampaknya kalau aktualisasi ini tidak dilaksanakan?",
+                a: "Pelayanan akan tetap manual dan terfragmentasi. Terjadi kesulitan penelusuran berkas, risiko berkas hilang/terselip tinggi, dan tidak ada data real-time untuk monitoring, sehingga kepuasan masyarakat menurun."
+            },
+            {
+                q: "Apa tantangan yang dihadapi dan cara mengatasinya?",
+                a: "Tantangannya adalah perubahan kebiasaan petugas dari manual ke digital. Solusinya: Melakukan sosialisasi intensif, membuat panduan yang mudah dipahami (tutorial), dan pendampingan saat implementasi."
+            },
+            {
+                q: "Apa keterkaitan kegiatanmu sama nilai dasar BerAKHLAK?",
+                a: "Contoh: <b>Berorientasi Pelayanan</b> (mempermudah masyarakat tahu status berkas), <b>Akuntabel</b> (pencatatan transparan di Spreadsheet), dan <b>Adaptif</b> (menggunakan Google Form sebagai inovasi teknologi)."
+            },
+            {
+                q: "Apa indikator keberhasilan kegiatan ini?",
+                a: "1. Terbentuknya Google Form di tiap loket. 2. Adanya Spreadsheet monitoring yang terisi data real-time. 3. Berkurangnya waktu pencarian berkas oleh petugas."
+            },
+            {
+                q: "Apa peran kamu dalam kegiatan ini?",
+                a: "Sebagai <b>Konseptor dan Inovator</b>. Saya bertugas merancang alur, membangun sistem menggunakan alat Google Workspace, dan mengoordinasikan implementasinya di unit kerja."
+            },
+            {
+                q: "Apakah kegiatan ini bisa diterapkan di instansi lain?",
+                a: "Sangat bisa (Replikabel). Setiap instansi dengan layanan loket berjenjang dapat mengadaptasi sistem monitoring berbasis Google Workspace ini karena biaya rendah dan fleksibel."
+            },
+            {
+                q: "Mengapa isu itu yang jadi prioritas, kenapa bukan yang lain?",
+                a: "Berdasarkan analisis ASTR, pengelolaan loket memiliki dampak paling langsung terhadap indeks kepuasan masyarakat dan merupakan fondasi keterbukaan informasi di kantor pertanahan."
+            },
+            {
+                q: "Kenapa kamu mengambil judul aktualisasi itu?",
+                a: "Judul 'Ekosistem Loket Digital' dipilih karena saya tidak hanya membuat form, tapi membangun lingkungan kerja yang terintegrasi (End-to-End) dari pendaftaran hingga arsip."
+            },
+            {
+                q: "Kaitan judul dengan Manajemen ASN dan Smart ASN?",
+                a: "<b>Smart ASN</b>: Literasi digital dan inovasi. <b>Manajemen ASN</b>: Meningkatkan profesionalisme dan efisiensi kerja dalam menjalankan fungsi pelayan publik."
+            },
+            {
+                q: "Apakah hasil kegiatan berkontribusi terhadap visi misi organisasi?",
+                a: "Ya, mendukung visi Kementerian ATR/BPN menjadi institusi berstandar dunia melalui transformasi digital dan peningkatan kualitas layanan pertanahan."
+            },
+            {
+                q: "Kendala apa yang mungkin dihadapi nanti dan solusinya?",
+                a: "Kendala teknis seperti jaringan internet tidak stabil. Solusinya: Mengoptimalkan fitur offline pada Google Sheets/Form atau menyediakan cadangan jaringan (tethering)."
+            },
+            {
+                q: "Bagaimana rancangan ini meningkatkan budaya kerja?",
+                a: "Menciptakan budaya <b>Data-Driven</b> (bekerja berbasis data) dan kolaborasi antar petugas loket karena data kini terpusat dan dapat diakses bersama."
+            },
+            {
+                q: "Apa urgensi rancangan terhadap peningkatan layanan?",
+                a: "Urgensinya adalah tuntutan transparansi. Masyarakat ingin kepastian posisi berkasnya. Sistem ini adalah jawaban cepat tanpa harus menunggu pengembangan sistem pusat yang kompleks."
+            },
+            {
+                q: "Tahap evaluasi apa yang akan kamu lakukan ke depannya?",
+                a: "Melakukan survei kepuasan kepada petugas pengguna sistem dan membandingkan kecepatan penemuan berkas sebelum vs sesudah adanya digitalisasi ini."
+            }
+        ];
+
+        let currentIndex = 0;
+        const cardInner = document.getElementById('card-inner');
+        const questionText = document.getElementById('question-text');
+        const answerText = document.getElementById('answer-text');
+        const currentIndexDisplay = document.getElementById('current-index');
+        const progressFill = document.getElementById('progress-fill');
+        const percentageDisplay = document.getElementById('percentage');
+        const prevBtn = document.getElementById('prev-btn');
+
+        function updateCard() {
+            cardInner.classList.remove('is-flipped');
+            
+            setTimeout(() => {
+                const card = flashcards[currentIndex];
+                questionText.innerHTML = card.q;
+                answerText.innerHTML = card.a;
+                
+                currentIndexDisplay.innerText = `Kartu ${currentIndex + 1} dari ${flashcards.length}`;
+                const progress = ((currentIndex + 1) / flashcards.length) * 100;
+                progressFill.style.width = `${progress}%`;
+                percentageDisplay.innerText = `${Math.round(progress)}%`;
+                
+                prevBtn.disabled = currentIndex === 0;
+            }, 150);
+        }
+
+        function flipCard() {
+            cardInner.classList.toggle('is-flipped');
+        }
+
+        function nextCard() {
+            if (currentIndex < flashcards.length - 1) {
+                currentIndex++;
+                updateCard();
+            } else {
+                // Reset to beginning
+                currentIndex = 0;
+                updateCard();
+            }
+        }
+
+        function prevCard() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateCard();
+            }
+        }
+
+        // Event Listeners
+        cardInner.addEventListener('click', flipCard);
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === ' ') {
+                e.preventDefault();
+                flipCard();
+            } else if (e.key === 'ArrowRight') {
+                nextCard();
+            } else if (e.key === 'ArrowLeft') {
+                prevCard();
+            }
+        });
+
+        // Initialize
+        updateCard();
+    </script>
+</body>
+</html>
