@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Integrasi Layanan Loket</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f8fafc;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .page-transition {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4 sm:p-8">
+
+    <!-- CONTAINER UTAMA -->
+    <div class="w-full max-w-4xl relative">
+        
+        <!-- HALAMAN UTAMA -->
+        <div id="main-menu" class="page-transition opacity-100 scale-100">
+            <div class="text-center mb-12">
+                <h1 class="text-4xl font-extrabold text-gray-900 tracking-tight mb-3">Loket Kantah Mamuju Tengah</h1>
+                <p class="text-gray-500 text-lg">Pencatatan dan penelusuran berkas loket terintegrasi dalam satu platform. Pilih fitur untuk melanjutkan.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Tombol Google Form -->
+                <button onclick="openSubMenu('Google Form')" class="group p-8 glass-card rounded-[2rem] shadow-xl hover:shadow-blue-200 hover:-translate-y-2 transition-all duration-300 text-left relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500"></div>
+                    <div class="bg-blue-600 text-white p-4 rounded-2xl inline-block mb-6 shadow-lg shadow-blue-200">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2 leading-tight">Form</h3>
+                    <p class="text-gray-500 text-sm">Input dan pencatatan data pelayanan.</p>
+                </button>
+
+                <!-- Tombol Spreadsheet -->
+                <button onclick="openSubMenu('Google Spreadsheet')" class="group p-8 glass-card rounded-[2rem] shadow-xl hover:shadow-green-200 hover:-translate-y-2 transition-all duration-300 text-left relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-green-500/10 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500"></div>
+                    <div class="bg-green-600 text-white p-4 rounded-2xl inline-block mb-6 shadow-lg shadow-green-200">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2 leading-tight">Rekap Data</h3>
+                    <p class="text-gray-500 text-sm">Rekapitulasi data pelayanan secara terpusat.</p>
+                </button>
+
+                <!-- Tombol Dashboard (Direct Link) -->
+                <a href="https://lookerstudio.google.com/reporting/50f259af-2aaa-447f-9412-c5c7f871c069" target="_blank" class="group p-8 bg-gray-900 rounded-[2rem] shadow-2xl hover:shadow-gray-400 hover:-translate-y-2 transition-all duration-300 text-left relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500"></div>
+                    <div class="bg-white/10 text-white p-4 rounded-2xl inline-block mb-6 border border-white/20">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2 leading-tight">Dashboard</h3>
+                    <p class="text-gray-400 text-sm">Pemantauan data pelayanan secara real-time.</p>
+                </a>
+            </div>
+        </div>
+
+        <!-- HALAMAN SUB-MENU (LOKET 1-6) -->
+        <div id="sub-menu" class="hidden page-transition opacity-0 scale-95">
+            <div class="mb-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div>
+                    <button onclick="backToMain()" class="text-blue-600 font-bold hover:text-blue-800 transition-colors flex items-center gap-2 mb-4">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                        KEMBALI KE MENU
+                    </button>
+                    <h2 class="text-3xl font-extrabold text-gray-900" id="current-title">Integrasi Layanan</h2>
+                </div>
+                <div class="px-4 py-2 bg-blue-50 text-blue-700 rounded-full text-sm font-semibold border border-blue-100">
+                    Sistem Terkoneksi
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Template 6 Tombol Loket -->
+                <script>
+                    const lokets = [1, 2, 3, 4, 5, 6];
+                    lokets.forEach(num => {
+                        document.write(`
+                            <a href="https://link-tujuan-loket-${num}.com" target="_blank" 
+                               class="group flex flex-col items-center justify-center p-10 glass-card rounded-[2.5rem] border-2 border-transparent hover:border-blue-500 hover:shadow-2xl transition-all duration-300">
+                                <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center text-blue-600 text-2xl font-black mb-4 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition-all">
+                                    ${num}
+                                </div>
+                                <span class="font-bold text-gray-800 text-lg">LOKET ${num}</span>
+                                <span class="text-gray-400 text-xs mt-2 font-medium group-hover:text-blue-500 uppercase tracking-widest">Buka Akses</span>
+                            </a>
+                        `);
+                    });
+                </script>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const mainMenu = document.getElementById('main-menu');
+        const subMenu = document.getElementById('sub-menu');
+        const currentTitle = document.getElementById('current-title');
+
+        function openSubMenu(type) {
+            // Animasi Keluar
+            mainMenu.classList.add('opacity-0', 'scale-95');
+            
+            setTimeout(() => {
+                mainMenu.classList.add('hidden');
+                subMenu.classList.remove('hidden');
+                
+                // Set Judul
+                currentTitle.innerText = type;
+
+                // Animasi Masuk
+                setTimeout(() => {
+                    subMenu.classList.remove('opacity-0', 'scale-95');
+                    subMenu.classList.add('opacity-100', 'scale-100');
+                }, 50);
+            }, 400);
+        }
+
+        function backToMain() {
+            // Animasi Keluar
+            subMenu.classList.add('opacity-0', 'scale-95');
+            
+            setTimeout(() => {
+                subMenu.classList.add('hidden');
+                mainMenu.classList.remove('hidden');
+
+                // Animasi Masuk
+                setTimeout(() => {
+                    mainMenu.classList.remove('opacity-0', 'scale-95');
+                    mainMenu.classList.add('opacity-100', 'scale-100');
+                }, 50);
+            }, 400);
+        }
+    </script>
+</body>
+</html>
