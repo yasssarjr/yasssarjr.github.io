@@ -62,9 +62,8 @@
             animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
-        /* Glassmorphism & Card Styles */
         .white-card {
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             border: 1px solid #e2e8f0;
             box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
@@ -177,129 +176,225 @@
             </div>
         </section>
 
-        <!-- SLIDE 3: LOKASI ADMINISTRASI & GEOGRAFIS -->
+        <!-- SLIDE 3: LOKASI ADMINISTRASI & GEOGRAFIS (DENGAN VISUAL MAPS) -->
         <section class="slide flex-col justify-center max-w-4xl mx-auto w-full">
-            <div class="mb-6">
+            <div class="mb-4">
                 <span class="text-xs font-bold text-brand-600 uppercase tracking-widest bg-brand-50 px-3 py-1 rounded-md border border-brand-100">Topik 1 • Slide 3</span>
-                <h2 class="text-2xl md:text-4xl font-extrabold text-slate-900 mt-2">Lokasi Administrasi & Geografis</h2>
-                <p class="text-xs font-medium text-slate-500 mt-1">Sumber: Data Wilayah Desa Kambunong, Karossa</p>
+                <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 mt-2">Lokasi Administrasi & Geografis</h2>
+                <p class="text-xs font-medium text-slate-500 mt-1">Desa Kambunong, Kec. Karossa, Kab. Mamuju Tengah</p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="white-card p-6 rounded-2xl border-l-4 border-brand-600">
-                    <div class="flex items-center gap-3 mb-4">
-                        <i class="ph-bold ph-map-pin text-2xl text-brand-600"></i>
-                        <h3 class="text-lg font-bold text-slate-900">Administrasi Wilayah</h3>
-                    </div>
-                    <ul class="space-y-3 text-sm text-slate-700">
-                        <li class="flex justify-between border-b border-slate-100 pb-2"><span>Desa:</span> <strong class="text-slate-900">Kambunong</strong></li>
-                        <li class="flex justify-between border-b border-slate-100 pb-2"><span>Kecamatan:</span> <strong class="text-slate-900">Karossa</strong></li>
-                        <li class="flex justify-between border-b border-slate-100 pb-2"><span>Kabupaten:</span> <strong class="text-slate-900">Mamuju Tengah</strong></li>
-                        <li class="flex justify-between border-b border-slate-100 pb-2"><span>Provinsi:</span> <strong class="text-slate-900">Sulawesi Barat</strong></li>
-                        <li class="flex justify-between pt-1"><span>Kode Kemendagri:</span> <strong class="text-brand-600">76.06.05.2009</strong></li>
-                    </ul>
-                </div>
-                <div class="white-card p-6 rounded-2xl border-l-4 border-cyan-500 flex flex-col justify-between">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div class="white-card p-5 rounded-2xl border-l-4 border-brand-600 flex flex-col justify-between">
                     <div>
-                        <div class="flex items-center gap-3 mb-4">
-                            <i class="ph-bold ph-compass text-2xl text-cyan-600"></i>
-                            <h3 class="text-lg font-bold text-slate-900">Geografis & Koordinat</h3>
+                        <div class="flex items-center gap-2 mb-3">
+                            <i class="ph-bold ph-map-pin text-xl text-brand-600"></i>
+                            <h3 class="text-base font-bold text-slate-900">Administrasi Wilayah</h3>
                         </div>
-                        <div class="bg-slate-50 p-4 rounded-xl mb-4 font-mono text-center text-brand-700 text-sm md:text-base border border-slate-200 shadow-inner">
-                            1°57′10″S 119°33′02″E <br> (-1.95278, 119.55056)
+                        <ul class="space-y-2 text-xs text-slate-700">
+                            <li class="flex justify-between border-b border-slate-100 pb-1.5"><span>Desa:</span> <strong class="text-slate-900">Kambunong</strong></li>
+                            <li class="flex justify-between border-b border-slate-100 pb-1.5"><span>Kecamatan:</span> <strong class="text-slate-900">Karossa</strong></li>
+                            <li class="flex justify-between border-b border-slate-100 pb-1.5"><span>Kabupaten:</span> <strong class="text-slate-900">Mamuju Tengah</strong></li>
+                            <li class="flex justify-between border-b border-slate-100 pb-1.5"><span>Provinsi:</span> <strong class="text-slate-900">Sulawesi Barat</strong></li>
+                            <li class="flex justify-between pt-0.5"><span>Kemendagri:</span> <strong class="text-brand-600">76.06.05.2009</strong></li>
+                        </ul>
+                    </div>
+                    <div class="mt-3 bg-brand-50 p-2.5 rounded-xl border border-brand-100 text-xs text-brand-800 font-medium flex items-center gap-2">
+                        <i class="ph-bold ph-info text-brand-600 text-base"></i> Wilayah pesisir potensial budidaya.
+                    </div>
+                </div>
+
+                <!-- Google Maps Embed Visual -->
+                <div class="white-card p-3 rounded-2xl flex flex-col justify-between border border-slate-200">
+                    <div class="flex items-center justify-between mb-2 px-1">
+                        <div class="flex items-center gap-1.5">
+                            <i class="ph-bold ph-globe-hemisphere-east text-cyan-600 text-lg"></i>
+                            <span class="text-xs font-bold text-slate-800">Visualisasi Peta Lokasi</span>
                         </div>
-                        <p class="text-sm text-slate-600 leading-relaxed">
-                            Terletak di wilayah <strong class="text-slate-900">kawasan pesisir</strong> Kabupaten Mamuju Tengah dengan potensi ekonomi sumber daya laut yang signifikan.
-                        </p>
+                        <span class="text-[10px] font-mono text-slate-500 bg-slate-100 px-2 py-0.5 rounded">1°57'10"S 119°33'02"E</span>
+                    </div>
+                    <div class="w-full h-48 rounded-xl overflow-hidden border border-slate-200 relative shadow-inner">
+                        <iframe 
+                            width="100%" 
+                            height="100%" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade"
+                            src="https://maps.google.com/maps?q=-1.95278,119.55056&z=13&output=embed">
+                        </iframe>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- SLIDE 4: SEKTOR USAHA -->
+        <!-- SLIDE 4: SEKTOR USAHA (DENGAN GRAFIK & ANGKA REAL) -->
         <section class="slide flex-col justify-center max-w-4xl mx-auto w-full">
-            <div class="mb-6">
+            <div class="mb-4">
                 <span class="text-xs font-bold text-brand-600 uppercase tracking-widest bg-brand-50 px-3 py-1 rounded-md border border-brand-100">Topik 1 • Slide 4</span>
-                <h2 class="text-2xl md:text-4xl font-extrabold text-slate-900 mt-2">Profil Sektor Usaha Subjek RA</h2>
-                <p class="text-xs font-medium text-slate-500 mt-1">Sumber: Tabel Asesmen Data Subjek RA (200 KK)</p>
+                <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 mt-2">Profil Sektor Usaha Subjek RA (200 KK)</h2>
+                <p class="text-xs font-medium text-slate-500 mt-1">Rincian Angka Riil & Komposisi Sektor Usaha</p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="white-card p-6 rounded-2xl border-t-4 border-brand-600">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="p-2.5 bg-brand-50 text-brand-600 rounded-xl border border-brand-100"><i class="ph-bold ph-waves text-2xl"></i></div>
-                        <h3 class="text-xl font-bold text-slate-900">Perikanan Budidaya</h3>
-                    </div>
-                    <div class="space-y-4">
-                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
-                            <span class="text-xs text-brand-600 font-bold uppercase tracking-wider">Sektor Tambak</span>
-                            <p class="text-sm text-slate-800 mt-1 font-semibold">Budidaya Udang Vaname & Ikan Bandeng</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-5">
+                <!-- Left Details Breakdown -->
+                <div class="md:col-span-7 space-y-3">
+                    <!-- Budidaya -->
+                    <div class="white-card p-4 rounded-xl border-l-4 border-brand-600">
+                        <div class="flex justify-between items-center mb-1.5">
+                            <h4 class="font-bold text-slate-900 text-sm flex items-center gap-2">
+                                <i class="ph-bold ph-waves text-brand-600"></i> Perikanan Budidaya
+                            </h4>
+                            <span class="text-xs font-bold bg-brand-50 text-brand-700 px-2 py-0.5 rounded border border-brand-200">109 Subjek (54,5%)</span>
                         </div>
-                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
-                            <span class="text-xs text-cyan-600 font-bold uppercase tracking-wider">Sektor Laut</span>
-                            <p class="text-sm text-slate-800 mt-1 font-semibold">Budidaya Rumput Laut Pesisir</p>
+                        <div class="grid grid-cols-3 gap-2 mt-2 pt-2 border-t border-slate-100 text-xs">
+                            <div class="bg-slate-50 p-2 rounded-lg border border-slate-200">
+                                <span class="text-[10px] text-slate-500 block">Udang Vaname</span>
+                                <strong class="text-slate-900 text-sm">51</strong> <span class="text-[10px] text-slate-600">(25,5%)</span>
+                            </div>
+                            <div class="bg-slate-50 p-2 rounded-lg border border-slate-200">
+                                <span class="text-[10px] text-slate-500 block">Rumput Laut</span>
+                                <strong class="text-slate-900 text-sm">50</strong> <span class="text-[10px] text-slate-600">(25,0%)</span>
+                            </div>
+                            <div class="bg-slate-50 p-2 rounded-lg border border-slate-200">
+                                <span class="text-[10px] text-slate-500 block">Bandeng/Campur</span>
+                                <strong class="text-slate-900 text-sm">8</strong> <span class="text-[10px] text-slate-600">(4,0%)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tangkap -->
+                    <div class="white-card p-4 rounded-xl border-l-4 border-cyan-500">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-sm flex items-center gap-2">
+                                    <i class="ph-bold ph-anchor text-cyan-600"></i> Perikanan Tangkap (Nelayan)
+                                </h4>
+                                <p class="text-[11px] text-slate-500 mt-0.5">Aktivitas tangkapan laut oleh kelompok nelayan lokal</p>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-base font-extrabold text-cyan-600">91</span>
+                                <span class="text-xs text-slate-500 block">(45,5%)</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="white-card p-6 rounded-2xl border-t-4 border-cyan-500 flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center gap-3 mb-4">
-                            <div class="p-2.5 bg-cyan-50 text-cyan-600 rounded-xl border border-cyan-100"><i class="ph-bold ph-anchor text-2xl"></i></div>
-                            <h3 class="text-xl font-bold text-slate-900">Perikanan Tangkap</h3>
+
+                <!-- Right Modern Bar Chart Visual -->
+                <div class="md:col-span-5 white-card p-5 rounded-2xl flex flex-col justify-between">
+                    <h3 class="text-xs font-bold text-slate-700 uppercase mb-3 flex items-center gap-1.5">
+                        <i class="ph-bold ph-chart-bar text-brand-600"></i> Distribusi Komoditas
+                    </h3>
+                    <div class="space-y-3.5 my-auto">
+                        <div>
+                            <div class="flex justify-between text-xs font-semibold text-slate-700 mb-1">
+                                <span>Udang Vaname</span>
+                                <span class="text-brand-600">51 (25,5%)</span>
+                            </div>
+                            <div class="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden border border-slate-200">
+                                <div class="bg-brand-600 h-full rounded-full" style="width: 25.5%"></div>
+                            </div>
                         </div>
-                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 mb-4">
-                            <span class="text-xs text-cyan-600 font-bold uppercase tracking-wider">Aktivitas Nelayan</span>
-                            <p class="text-sm text-slate-800 mt-1 font-semibold">Penangkapan Ikan Laut Tradisional & Kelompok Nelayan Lokal</p>
+                        <div>
+                            <div class="flex justify-between text-xs font-semibold text-slate-700 mb-1">
+                                <span>Rumput Laut</span>
+                                <span class="text-teal-600">50 (25,0%)</span>
+                            </div>
+                            <div class="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden border border-slate-200">
+                                <div class="bg-teal-500 h-full rounded-full" style="width: 25.0%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs font-semibold text-slate-700 mb-1">
+                                <span>Perikanan Tangkap</span>
+                                <span class="text-cyan-600">91 (45,5%)</span>
+                            </div>
+                            <div class="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden border border-slate-200">
+                                <div class="bg-cyan-500 h-full rounded-full" style="width: 45.5%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs font-semibold text-slate-700 mb-1">
+                                <span>Bandeng & Campur</span>
+                                <span class="text-indigo-600">8 (4,0%)</span>
+                            </div>
+                            <div class="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden border border-slate-200">
+                                <div class="bg-indigo-500 h-full rounded-full" style="width: 4%"></div>
+                            </div>
                         </div>
                     </div>
-                    <p class="text-xs text-slate-500 italic bg-brand-50/50 p-3 rounded-lg border border-brand-100">
-                        *Mayoritas kegiatan ekonomi masyarakat bergantung langsung pada ekosistem laut dan pesisir.
-                    </p>
                 </div>
             </div>
         </section>
 
-        <!-- SLIDE 5: JENIS HAK & LUASAN ASET -->
+        <!-- SLIDE 5: JENIS HAK / SERTIPIKAT TANAH DAN LUASAN (DENGAN DATA REAL & GRAFIK) -->
         <section class="slide flex-col justify-center max-w-4xl mx-auto w-full">
-            <div class="mb-6">
+            <div class="mb-4">
                 <span class="text-xs font-bold text-brand-600 uppercase tracking-widest bg-brand-50 px-3 py-1 rounded-md border border-brand-100">Topik 1 • Slide 5</span>
-                <h2 class="text-2xl md:text-4xl font-extrabold text-slate-900 mt-2">Jenis Hak & Luasan Aset Tanah</h2>
-                <p class="text-xs font-medium text-slate-500 mt-1">Sumber: Tabel Asesmen Data Subjek RA - Kambunong</p>
+                <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 mt-2">Jenis Hak / Sertipikat Tanah & Luasan</h2>
+                <p class="text-xs font-medium text-slate-500 mt-1">Data Status Legalisasi Aset & Skala Luas Lahan</p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="white-card p-6 rounded-2xl">
-                    <div class="flex items-center gap-3 mb-4">
-                        <i class="ph-bold ph-certificate text-2xl text-brand-600"></i>
-                        <h3 class="text-lg font-bold text-slate-900">Asal Legalisasi Aset</h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-5">
+                <!-- Left Legalization Stats -->
+                <div class="md:col-span-7 space-y-3">
+                    <div class="white-card p-4 rounded-xl border-l-4 border-brand-600">
+                        <div class="flex justify-between items-center mb-2">
+                            <h4 class="font-bold text-slate-900 text-sm flex items-center gap-2">
+                                <i class="ph-bold ph-certificate text-brand-600"></i> Redistribusi Tanah
+                            </h4>
+                            <span class="text-xs font-bold bg-brand-50 text-brand-700 px-2 py-0.5 rounded border border-brand-200">99 Subjek (49,5%)</span>
+                        </div>
+                        <div class="grid grid-cols-2 gap-2 text-xs">
+                            <div class="bg-slate-50 p-2 rounded-lg border border-slate-200 flex justify-between items-center">
+                                <span class="text-slate-600">Tahun 2024:</span>
+                                <strong class="text-slate-900">82 Subjek (41,0%)</strong>
+                            </div>
+                            <div class="bg-slate-50 p-2 rounded-lg border border-slate-200 flex justify-between items-center">
+                                <span class="text-slate-600">Tahun 2025:</span>
+                                <strong class="text-slate-900">17 Subjek (8,5%)</strong>
+                            </div>
+                        </div>
                     </div>
-                    <ul class="space-y-3 text-sm text-slate-700">
-                        <li class="bg-slate-50 p-3.5 rounded-xl border border-slate-200">
-                            <strong class="text-brand-600 block mb-0.5">Redistribusi Tanah</strong>
-                            Sertipikat terbitan tahun 2024 dan 2025.
-                        </li>
-                        <li class="bg-slate-50 p-3.5 rounded-xl border border-slate-200">
-                            <strong class="text-cyan-600 block mb-0.5">PTSL</strong>
-                            Sertipikat terbitan tahun 2022.
-                        </li>
-                        <li class="text-xs text-slate-500 pl-1">
-                            *Sebagian kecil subjek masih belum memiliki sertipikat.
-                        </li>
-                    </ul>
+
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="white-card p-3.5 rounded-xl border-l-4 border-amber-500 flex flex-col justify-between">
+                            <div>
+                                <span class="text-[10px] font-bold text-amber-600 uppercase block">Belum Bersertipikat</span>
+                                <strong class="text-lg font-extrabold text-slate-900">58 Subjek</strong>
+                                <span class="text-xs font-semibold text-slate-700 block">(29,0%)</span>
+                            </div>
+                            <p class="text-[10px] text-slate-500 mt-1">Dalam proses legalisasi</p>
+                        </div>
+                        <div class="white-card p-3.5 rounded-xl border-l-4 border-cyan-500 flex flex-col justify-between">
+                            <div>
+                                <span class="text-[10px] font-bold text-cyan-600 uppercase block">PTSL</span>
+                                <strong class="text-lg font-extrabold text-slate-900">43 Subjek</strong>
+                                <span class="text-xs font-semibold text-slate-700 block">(21,5% - Thn 2022)</span>
+                            </div>
+                            <p class="text-[10px] text-slate-500 mt-1">Pendaftaran sistematis</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="white-card p-6 rounded-2xl flex flex-col justify-between">
+
+                <!-- Right Land Area Info Card -->
+                <div class="md:col-span-5 white-card p-5 rounded-2xl flex flex-col justify-between">
                     <div>
-                        <div class="flex items-center gap-3 mb-4">
-                            <i class="ph-bold ph-arrows-out-cardinal text-2xl text-cyan-600"></i>
-                            <h3 class="text-lg font-bold text-slate-900">Variasi Luas Aset</h3>
-                        </div>
-                        <div class="space-y-3 text-sm">
-                            <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200">
-                                <span class="text-xs font-medium text-slate-500">Skala Permukiman / Kecil</span>
-                                <p class="text-base font-bold text-slate-900">72 m² – 1.024 m²</p>
+                        <h3 class="text-xs font-bold text-slate-800 uppercase mb-3 flex items-center gap-1.5">
+                            <i class="ph-bold ph-arrows-out-cardinal text-brand-600"></i> Variasi Luasan Lahan
+                        </h3>
+                        <div class="space-y-3">
+                            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+                                <span class="text-[11px] text-slate-500 block font-medium">Pemukiman / Skala Kecil</span>
+                                <p class="text-sm font-bold text-slate-900 mt-0.5">72 m² – 1.024 m²</p>
                             </div>
-                            <div class="p-3.5 bg-brand-50/60 rounded-xl border border-brand-200">
-                                <span class="text-xs font-medium text-brand-700">Skala Tambak / Besar</span>
-                                <p class="text-base font-extrabold text-brand-600">17.820 m² – 28.360 m² <span class="text-xs text-slate-600 font-normal">(1,7 – 2,8 Ha)</span></p>
+                            <div class="p-3 bg-brand-50/60 rounded-xl border border-brand-200">
+                                <span class="text-[11px] text-brand-700 block font-medium">Tambak Skala Besar</span>
+                                <p class="text-sm font-extrabold text-brand-600 mt-0.5">17.820 m² – 28.360 m² <span class="text-xs text-slate-600 font-normal">(1,78 – 2,83 Ha)</span></p>
                             </div>
                         </div>
+                    </div>
+                    <div class="mt-3 text-[10px] text-slate-500 italic text-center bg-slate-50 p-2 rounded-lg border border-slate-200">
+                        *Luasan bervariasi tergantung kepemilikan subjek RA.
                     </div>
                 </div>
             </div>
@@ -419,26 +514,88 @@
             </div>
         </section>
 
-        <!-- SLIDE 10: PENDAPATAN AWAL SUBJEK RA -->
+        <!-- SLIDE 10: PENDAPATAN AWAL SUBJEK RA (DENGAN DATA REAL & CHART) -->
         <section class="slide flex-col justify-center max-w-4xl mx-auto w-full">
-            <div class="mb-6">
+            <div class="mb-4">
                 <span class="text-xs font-bold text-brand-600 uppercase tracking-widest bg-brand-50 px-3 py-1 rounded-md border border-brand-100">Topik 1 • Slide 10</span>
-                <h2 class="text-2xl md:text-4xl font-extrabold text-slate-900 mt-2">Profil Pendapatan Awal Subjek RA</h2>
-                <p class="text-xs font-medium text-slate-500 mt-1">Baseline Ekonomi Sebelum Intervensi Fase 2</p>
+                <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 mt-2">Profil Pendapatan Awal Subjek RA (Fase 1)</h2>
+                <p class="text-xs font-medium text-slate-500 mt-1">Rincian Angka Pasti Pendapatan Baseline Ekonomi</p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="white-card p-6 rounded-2xl flex flex-col justify-between">
-                    <div>
-                        <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Rentang Pendapatan Baseline</span>
-                        <p class="text-2xl md:text-3xl font-extrabold text-slate-900 mt-2">Rp1.000.000 <span class="text-sm font-medium text-slate-400">s/d</span> Rp3.200.000</p>
-                        <p class="text-xs text-slate-500 mt-1">per bulan per rumah tangga</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-5">
+                <!-- Left Details Breakdown -->
+                <div class="md:col-span-7 space-y-2.5">
+                    <div class="white-card p-3 rounded-xl border-l-4 border-brand-600 flex justify-between items-center">
+                        <div>
+                            <span class="text-xs text-slate-500 block">Kategori Dominan</span>
+                            <strong class="text-slate-900 text-sm">Rp 3.000.000 / bulan</strong>
+                        </div>
+                        <span class="text-xs font-bold bg-brand-50 text-brand-700 px-2.5 py-1 rounded border border-brand-200">107 Subjek (53,5%)</span>
                     </div>
+
+                    <div class="white-card p-3 rounded-xl border-l-4 border-cyan-500 flex justify-between items-center">
+                        <div>
+                            <span class="text-xs text-slate-500 block">Kategori Menengah</span>
+                            <strong class="text-slate-900 text-sm">Rp 2.000.000 / bulan</strong>
+                        </div>
+                        <span class="text-xs font-bold bg-cyan-50 text-cyan-700 px-2.5 py-1 rounded border border-cyan-200">89 Subjek (44,5%)</span>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-2">
+                        <div class="white-card p-2.5 rounded-xl border-l-4 border-amber-500">
+                            <span class="text-[10px] text-slate-500 block">Rp 1.000.000 / bln</span>
+                            <strong class="text-slate-900 text-xs">2 Subjek (1,0%)</strong>
+                        </div>
+                        <div class="white-card p-2.5 rounded-xl border-l-4 border-purple-500">
+                            <span class="text-[10px] text-slate-500 block">Rp 3.200.000 / bln</span>
+                            <strong class="text-slate-900 text-xs">1 Subjek (0,5%)</strong>
+                        </div>
+                    </div>
+                    <p class="text-[10px] text-slate-500 italic">*Belum Terdata: 1 Subjek (0,5%) a.n. Muh Sadri / Perikanan Tangkap.</p>
                 </div>
-                <div class="white-card p-6 rounded-2xl border-l-4 border-brand-600 flex flex-col justify-between">
-                    <div>
-                        <span class="text-xs font-bold text-brand-600 uppercase tracking-wider">Mayoritas Pendapatan</span>
-                        <p class="text-2xl md:text-3xl font-extrabold text-brand-600 mt-2">Rp2.000.000 <span class="text-sm font-medium text-slate-500">s/d</span> Rp3.000.000</p>
-                        <p class="text-xs text-slate-600 mt-1">Rata-rata dominan masyarakat per bulan</p>
+
+                <!-- Right Modern Bar Chart Visual -->
+                <div class="md:col-span-5 white-card p-4 rounded-2xl flex flex-col justify-between">
+                    <h3 class="text-xs font-bold text-slate-700 uppercase mb-3 flex items-center gap-1.5">
+                        <i class="ph-bold ph-chart-bar text-brand-600"></i> Distribusi Pendapatan
+                    </h3>
+                    <div class="space-y-3">
+                        <div>
+                            <div class="flex justify-between text-xs font-semibold text-slate-700 mb-1">
+                                <span>Rp 3.000.000</span>
+                                <span class="text-brand-600">107 (53,5%)</span>
+                            </div>
+                            <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden border border-slate-200">
+                                <div class="bg-brand-600 h-full rounded-full" style="width: 53.5%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs font-semibold text-slate-700 mb-1">
+                                <span>Rp 2.000.000</span>
+                                <span class="text-cyan-600">89 (44,5%)</span>
+                            </div>
+                            <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden border border-slate-200">
+                                <div class="bg-cyan-500 h-full rounded-full" style="width: 44.5%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs font-semibold text-slate-700 mb-1">
+                                <span>Rp 1.000.000</span>
+                                <span class="text-amber-600">2 (1,0%)</span>
+                            </div>
+                            <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden border border-slate-200">
+                                <div class="bg-amber-500 h-full rounded-full" style="width: 1%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs font-semibold text-slate-700 mb-1">
+                                <span>Rp 3.200.000</span>
+                                <span class="text-purple-600">1 (0,5%)</span>
+                            </div>
+                            <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden border border-slate-200">
+                                <div class="bg-purple-500 h-full rounded-full" style="width: 0.5%"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -552,7 +709,6 @@
 
                 <!-- Calendar Timeline Cards -->
                 <div class="grid grid-cols-1 md:grid-cols-6 gap-3 text-left">
-                    
                     <!-- Week 1 -->
                     <div class="bg-brand-50/70 border border-brand-200 p-3 rounded-xl flex flex-col justify-between hover:border-brand-400 transition">
                         <div>
@@ -606,7 +762,6 @@
                         </div>
                         <p class="text-[10px] text-emerald-700 font-semibold mt-2">Finalisasi</p>
                     </div>
-
                 </div>
             </div>
 
@@ -663,7 +818,6 @@
                 }
             });
 
-            // Update Progress UI
             document.getElementById('slideCounter').innerText = `Slide ${currentSlide + 1} dari ${totalSlides}`;
             const progressPercent = ((currentSlide + 1) / totalSlides) * 100;
             document.getElementById('progressBar').style.width = `${progressPercent}%`;
@@ -673,7 +827,7 @@
             if (currentSlide < totalSlides - 1) {
                 currentSlide++;
             } else {
-                currentSlide = 0; // Loop back to start
+                currentSlide = 0;
             }
             updateSlide();
         }
@@ -709,7 +863,6 @@
             }
         }
 
-        // Keyboard Navigation
         document.addEventListener('keydown', (e) => {
             if (e.key === 'ArrowRight' || e.key === 'Space') nextSlide();
             if (e.key === 'ArrowLeft') prevSlide();
