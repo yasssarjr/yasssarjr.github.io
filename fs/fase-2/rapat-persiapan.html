@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentasi Asesmen Data Subjek Reforma Agraria - Desa Kambunong</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f7ff',
+                            100: '#e0effe',
+                            200: '#bae0fd',
+                            500: '#0284c7',
+                            600: '#0265d2',
+                            700: '#0f4c81',
+                            900: '#0c2340',
+                        }
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                        'pulse-subtle': 'pulseSubtle 3s infinite ease-in-out',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px) scale(0.98)' },
+                            '100%': { opacity: '1', transform: 'translateY(0) scale(1)' },
+                        },
+                        pulseSubtle: {
+                            '0%, 100%': { opacity: '1' },
+                            '50%': { opacity: '0.75' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f8fafc;
+            color: #0f172a;
+            overflow: hidden;
+        }
+
+        .slide {
+            display: none;
+        }
+
+        .slide.active {
+            display: flex;
+            animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        /* Glassmorphism & Card Styles */
+        .white-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .white-card:hover {
+            box-shadow: 0 10px 25px -5px rgba(2, 132, 199, 0.12);
+            border-color: #cbd5e1;
+            transform: translateY(-2px);
+        }
+
+        .bg-grid-pattern {
+            background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+    </style>
+</head>
+<body class="h-screen w-screen flex flex-col justify-between select-none bg-grid-pattern relative">
+
+    <!-- ACCENT BACKGROUND GLOWS -->
+    <div class="absolute top-0 left-1/4 w-96 h-96 bg-blue-200/50 rounded-full filter blur-3xl pointer-events-none animate-pulse-subtle"></div>
+    <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-cyan-200/40 rounded-full filter blur-3xl pointer-events-none animate-pulse-subtle"></div>
+
+    <!-- TOP BAR -->
+    <header class="w-full z-40 px-6 py-4 flex justify-between items-center bg-white/80 backdrop-blur-md border-b border-slate-200 shadow-sm">
+        <div class="flex items-center space-x-3">
+            <div class="p-2.5 bg-brand-600 text-white rounded-xl shadow-md shadow-brand-500/20">
+                <i class="ph-bold ph-buildings text-xl"></i>
+            </div>
+            <div>
+                <h1 class="text-xs md:text-sm font-extrabold text-slate-900 tracking-wide uppercase">Reforma Agraria 2026</h1>
+                <p class="text-[11px] font-medium text-brand-600">Desa Kambunong, Kab. Mamuju Tengah</p>
+            </div>
+        </div>
+
+        <!-- Slide Navigation Counter & Progress Bar -->
+        <div class="flex items-center space-x-5">
+            <div class="hidden sm:flex flex-col items-end">
+                <span id="slideCounter" class="text-xs font-bold text-slate-700">Slide 1 dari 14</span>
+                <div class="w-36 bg-slate-200 h-2 rounded-full overflow-hidden mt-1 p-0.5 border border-slate-300/50">
+                    <div id="progressBar" class="bg-gradient-to-r from-brand-500 to-cyan-500 h-full rounded-full w-[7.14%] transition-all duration-300"></div>
+                </div>
+            </div>
+            <button onclick="toggleGridMenu()" class="p-2.5 bg-slate-100 hover:bg-brand-50 text-slate-700 hover:text-brand-600 rounded-xl transition border border-slate-200 shadow-sm" title="Daftar Slide (Shortcut: M)">
+                <i class="ph-bold ph-squares-four text-xl"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- MAIN PRESENTATION CONTAINER -->
+    <main class="flex-1 relative w-full h-full overflow-y-auto overflow-x-hidden flex items-center justify-center p-4 md:p-8 z-10">
+
+        <!-- SLIDE 1: JUDUL UTAMA -->
+        <section class="slide active flex-col items-center justify-center text-center max-w-4xl mx-auto w-full">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-50 border border-brand-200 text-brand-700 text-xs md:text-sm font-semibold mb-6 shadow-sm">
+                <i class="ph-fill ph-presentation-chart"></i> Rapat Persiapan Asesmen Data 2026
+            </div>
+            <h1 class="text-3xl md:text-5xl font-extrabold text-slate-900 leading-tight mb-4">
+                Asesmen Data Subjek <br class="hidden md:block"><span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-cyan-600">Reforma Agraria</span>
+            </h1>
+            <p class="text-slate-600 text-base md:text-xl font-medium mb-8 max-w-2xl">
+                Lokus: Desa Kambunong, Kecamatan Karossa, Kabupaten Mamuju Tengah, Sulawesi Barat
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 w-full max-w-3xl">
+                <div class="white-card p-5 rounded-2xl text-left border-l-4 border-brand-600">
+                    <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Dasar Acuan</p>
+                    <p class="text-sm font-bold text-slate-800 mt-1">Juknis Pendampingan 2026</p>
+                </div>
+                <div class="white-card p-5 rounded-2xl text-left border-l-4 border-cyan-500">
+                    <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Jumlah Sampel</p>
+                    <p class="text-sm font-bold text-slate-800 mt-1">200 Subjek RA</p>
+                </div>
+                <div class="white-card p-5 rounded-2xl text-left border-l-4 border-blue-500">
+                    <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Fokus Sektor</p>
+                    <p class="text-sm font-bold text-slate-800 mt-1">Kelautan & Perikanan</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 2: IDENTITAS SUBJEK RA -->
+        <section class="slide flex-col justify-center max-w-4xl mx-auto w-full">
+            <div class="mb-6">
+                <span class="text-xs font-bold text-brand-600 uppercase tracking-widest bg-brand-50 px-3 py-1 rounded-md border border-brand-100">Topik 1 • Slide 2</span>
+                <h2 class="text-2xl md:text-4xl font-extrabold text-slate-900 mt-2">Identitas Subjek Reforma Agraria</h2>
+                <p class="text-xs font-medium text-slate-500 mt-1">Sumber: Juknis Fasilitasi Pendampingan Usaha 2026</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="white-card p-6 rounded-2xl flex flex-col justify-between">
+                    <div>
+                        <div class="p-3 bg-brand-50 text-brand-600 w-fit rounded-xl mb-4 border border-brand-100"><i class="ph-bold ph-user-list text-2xl"></i></div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">Definisi Subjek</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed">Perorangan, kelompok, atau badan usaha yang menjadi penerima manfaat kegiatan penataan aset dan/atau penataan akses.</p>
+                    </div>
+                </div>
+                <div class="white-card p-6 rounded-2xl flex flex-col justify-between">
+                    <div>
+                        <div class="p-3 bg-cyan-50 text-cyan-600 w-fit rounded-xl mb-4 border border-cyan-100"><i class="ph-bold ph-star text-2xl"></i></div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">Prioritas Subjek</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed">Diprioritaskan berasal dari hasil Akses Reforma Agraria (Pemetaan Sosial / Fase 1) Tahun 2025.</p>
+                    </div>
+                </div>
+                <div class="white-card p-6 rounded-2xl flex flex-col justify-between">
+                    <div>
+                        <div class="p-3 bg-blue-50 text-blue-600 w-fit rounded-xl mb-4 border border-blue-100"><i class="ph-bold ph-check-square-offset text-2xl"></i></div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">Kriteria & Verifikasi</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed">Pengelompokan mencakup verifikasi status gender & kemiskinan ekstrem berbasis data DTSEN.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 3: LOKASI ADMINISTRASI & GEOGRAFIS -->
+        <section class="slide flex-col justify-center max-w-4xl mx-auto w-full">
+            <div class="mb-6">
+                <span class="text-xs font-bold text-brand-600 uppercase tracking-widest bg-brand-50 px-3 py-1 rounded-md border border-brand-100">Topik 1 • Slide 3</span>
+                <h2 class="text-2xl md:text-4xl font-extrabold text-slate-900 mt-2">Lokasi Administrasi & Geografis</h2>
+                <p class="text-xs font-medium text-slate-500 mt-1">Sumber: Data Wilayah Desa Kambunong, Karossa</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="white-card p-6 rounded-2xl border-l-4 border-brand-600">
+                    <div class="flex items-center gap-3 mb-4">
+                        <i class="ph-bold ph-map-pin text-2xl text-brand-600"></i>
+                        <h3 class="text-lg font-bold text-slate-900">Administrasi Wilayah</h3>
+                    </div>
+                    <ul class="space-y-3 text-sm text-slate-700">
+                        <li class="flex justify-between border-b border-slate-100 pb-2"><span>Desa:</span> <strong class="text-slate-900">Kambunong</strong></li>
+                        <li class="flex justify-between border-b border-slate-100 pb-2"><span>Kecamatan:</span> <strong class="text-slate-900">Karossa</strong></li>
+                        <li class="flex justify-between border-b border-slate-100 pb-2"><span>Kabupaten:</span> <strong class="text-slate-900">Mamuju Tengah</strong></li>
+                        <li class="flex justify-between border-b border-slate-100 pb-2"><span>Provinsi:</span> <strong class="text-slate-900">Sulawesi Barat</strong></li>
+                        <li class="flex justify-between pt-1"><span>Kode Kemendagri:</span> <strong class="text-brand-600">76.06.05.2009</strong></li>
+                    </ul>
+                </div>
+                <div class="white-card p-6 rounded-2xl border-l-4 border-cyan-500 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <i class="ph-bold ph-compass text-2xl text-cyan-600"></i>
+                            <h3 class="text-lg font-bold text-slate-900">Geografis & Koordinat</h3>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-xl mb-4 font-mono text-center text-brand-700 text-sm md:text-base border border-slate-200 shadow-inner">
+                            1°57′10″S 119°33′02″E <br> (-1.95278, 119.55056)
+                        </div>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            Terletak di wilayah <strong class="text-slate-900">kawasan pesisir</strong> Kabupaten Mamuju Tengah dengan potensi ekonomi sumber daya laut yang signifikan.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 4: SEKTOR USAHA -->
+        <section class="slide flex-col justify-center max-w-4xl mx-auto w-full">
+            <div class="mb-6">
+                <span class="text-xs font-bold text-brand-600 uppercase tracking-widest bg-brand-50 px-3 py-1 rounded-md border border-brand-100">Topik 1 • Slide 4</span>
+                <h2 class="text-2xl md:text-4xl font-extrabold text-slate-900 mt-2">Profil Sektor Usaha Subjek RA</h2>
+                <p class="text-xs font-medium text-slate-500 mt-1">Sumber: Tabel Asesmen Data Subjek RA (200 KK)</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="white-card p-6 rounded-2xl border-t-4 border-brand-600">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="p-2.5 bg-brand-50 text-brand-600 rounded-xl border border-brand-100"><i class="ph-bold ph-waves text-2xl"></i></div>
+                        <h3 class="text-xl font-bold text-slate-900">Perikanan Budidaya</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <span class="text-xs text-brand-600 font-bold uppercase tracking-wider">Sektor Tambak</span>
+                            <p class="text-sm text-slate-800 mt-1 font-semibold">Budidaya Udang Vaname & Ikan Bandeng</p>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <span class="text-xs text-cyan-600 font-bold uppercase tracking-wider">Sektor Laut</span>
+                            <p class="text-sm text-slate-800 mt-1 font-semibold">Budidaya Rumput Laut Pesisir</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="white-card p-6 rounded-2xl border-t-4 border-cyan-500 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="p-2.5 bg-cyan-50 text-cyan-600 rounded-xl border border-cyan-100"><i class="ph-bold ph-anchor text-2xl"></i></div>
+                            <h3 class="text-xl font-bold text-slate-900">Perikanan Tangkap</h3>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 mb-4">
+                            <span class="text-xs text-cyan-600 font-bold uppercase tracking-wider">Aktivitas Nelayan</span>
+                            <p class="text-sm text-slate-800 mt-1 font-semibold">Penangkapan Ikan Laut Tradisional & Kelompok Nelayan Lokal</p>
+                        </div>
+                    </div>
+                    <p class="text-xs text-slate-500 italic bg-brand-50/50 p-3 rounded-lg border border-brand-100">
+                        *Mayoritas kegiatan ekonomi masyarakat bergantung langsung pada ekosistem laut dan pesisir.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 5: JENIS HAK & LUASAN ASET -->
+        <section class="slide flex-col justify-center max-w-4xl mx-auto w-full">
+            <div class="mb-6">
+                <span class="text-xs font-bold text-brand-600 uppercase tracking-widest bg-brand-50 px-3 py-1 rounded-md border border-brand-100">Topik 1 • Slide 5</span>
+                <h2 class="text-2xl md:text-4xl font-extrabold text-slate-900 mt-2">Jenis Hak & Luasan Aset Tanah</h2>
+                <p class="text-xs font-medium text-slate-500 mt-1">Sumber: Tabel Asesmen Data Subjek RA - Kambunong</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="white-card p-6 rounded-2xl">
+                    <div class="flex items-center gap-3 mb-4">
+                        <i class="ph-bold ph-certificate text-2xl text-brand-600"></i>
+                        <h3 class="text-lg font-bold text-slate-900">Asal Legalisasi Aset</h3>
+                    </div>
+                    <ul class="space-y-3 text-sm text-slate-700">
+                        <li class="bg-slate-50 p-3.5 rounded-xl border border-slate-200">
+                            <strong class="text-brand-600 block mb-0.5">Redistribusi Tanah</strong>
+                            Sertipikat terbitan tahun 2024 dan 2025.
+                        </li>
+                        <li class="bg-slate-50 p-3.5 rounded-xl border border-slate-200">
+                            <strong class="text-cyan-600 block mb-0.5">PTSL</strong>
+                            Sertipikat terbitan tahun 2022.
+                        </li>
+                        <li class="text-xs text-slate-500 pl-1">
+                            *Sebagian kecil subjek masih belum memiliki sertipikat.
+                        </li>
+                    </ul>
+                </div>
+                <div class="white-card p-6 rounded-2xl flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <i class="ph-bold ph-arrows-out-cardinal text-2xl text-cyan-600"></i>
+                            <h3 class="text-lg font-bold text-slate-900">Variasi Luas Aset</h3>
+                        </div>
+                        <div class="space-y-3 text-sm">
+                            <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200">
+                                <span class="text-xs font-medium text-slate-500">Skala Permukiman / Kecil</span>
+                                <p class="text-base font-bold text-slate-900">72 m² – 1.024 m²</p>
+                            </div>
+                            <div class="p-3.5 bg-brand-50/60 rounded-xl border border-brand-200">
+                                <span class="text-xs font-medium text-brand-700">Skala Tambak / Besar</span>
+                                <p class="text-base font-extrabold text-brand-600">17.820 m² – 28.360 m² <span class="text-xs text-slate-600 font-normal">(1,7 – 2,8 Ha)</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 6: KONDISI KELOMPOK USAHA -->
+        <section class="slide flex-col justify-center max-w-4xl mx-auto w-full">
+            <div class="mb-6">
+                <span class="text-xs font-bold text-brand-600 uppercase tracking-widest bg-brand-50 px-3 py-1 rounded-md border border-brand-100">Topik 1 • Slide 6</span>
+                <h2 class="text-2xl md:text-4xl font-extrabold text-slate-900 mt-2">Kondisi & Keberadaan Kelompok Usaha</h2>
+                <p class="text-xs font-medium text-slate-500 mt-1">Sumber: Tabel Asesmen Data Subjek RA - Kambunong</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="white-card p-6 rounded-2xl border-l-4 border-amber-500">
+                    <div class="p-3 bg-amber-50 text-amber-600 w-fit rounded-xl mb-4 border border-amber-200">
+                        <i class="ph-bold ph-warning-circle text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Status Kelembagaan Saat Ini</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        Sebagian besar Subjek RA <strong class="text-amber-600 bg-amber-50 px-1.5 py-0.5 rounded">belum teridentifikasi / belum terdaftar secara resmi</strong> dalam kelompok usaha.
+                    </p>
+                </div>
+                <div class="white-card p-6 rounded-2xl border-l-4 border-brand-600">
+                    <div class="p-3 bg-brand-50 text-brand-600 w-fit rounded-xl mb-4 border border-brand-200">
+                        <i class="ph-bold ph-users-three text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Kebutuhan Intervensi</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        Usaha masih berjalan mandiri/perorangan. Diperlukan <strong class="text-brand-600 bg-brand-50 px-1.5 py-0.5 rounded">fasilitasi pembentukan kelompok usaha baru</strong> atau penggabungan ke kelompok yang sudah ada.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 7: RIWAYAT BANTUAN / PENDAMPINGAN -->
+        <section class="slide flex-col justify-center max-w-4xl mx-auto w-full">
+            <div class="mb-6">
+                <span class="text-xs font-bold text-brand-600 uppercase tracking-widest bg-brand-50 px-3 py-1 rounded-md border border-brand-100">Topik 1 • Slide 7</span>
+                <h2 class="text-2xl md:text-4xl font-extrabold text-slate-900 mt-2">Riwayat Bantuan & Keberlanjutan</h2>
+                <p class="text-xs font-medium text-slate-500 mt-1">Sumber: Evaluasi Fasilitasi Pendampingan Usaha</p>
+            </div>
+            <div class="space-y-4">
+                <div class="white-card p-6 rounded-2xl flex items-start gap-4 border-l-4 border-blue-500">
+                    <div class="p-3 bg-blue-50 text-blue-600 rounded-xl shrink-0 border border-blue-100"><i class="ph-bold ph-clock-counter-clockwise text-2xl"></i></div>
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-1">Riwayat Program Sebelumnya</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            Bantuan lintas sektor periode sebelumnya masih bersifat terbatas dan berfokus utama pada program legalisasi aset pertanahan (Redistribusi Tanah & PTSL).
+                        </p>
+                    </div>
+                </div>
+                <div class="white-card p-6 rounded-2xl flex items-start gap-4 border-l-4 border-brand-600">
+                    <div class="p-3 bg-brand-50 text-brand-600 rounded-xl shrink-0 border border-brand-200"><i class="ph-bold ph-arrows-merge text-2xl"></i></div>
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-1">Strategi Keberlanjutan (Fase 2)</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            Diperlukan penguatan bantuan usaha secara berkelanjutan melalui <strong class="text-brand-600 bg-brand-50 px-1.5 py-0.5 rounded">integrasi program pendampingan usaha lintas dinas</strong> secara terpadu.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 8: KENDALA PENGEMBANGAN USAHA -->
+        <section class="slide flex-col justify-center max-w-4xl mx-auto w-full">
+            <div class="mb-6">
+                <span class="text-xs font-bold text-brand-600 uppercase tracking-widest bg-brand-50 px-3 py-1 rounded-md border border-brand-100">Topik 1 • Slide 8</span>
+                <h2 class="text-2xl md:text-4xl font-extrabold text-slate-900 mt-2">Kendala Pengembangan & Pemasaran</h2>
+                <p class="text-xs font-medium text-slate-500 mt-1">Identifikasi Hambatan Utama Sektor Kelautan</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="white-card p-5 rounded-2xl border-t-4 border-amber-500">
+                    <h3 class="text-base font-bold text-amber-600 mb-2 flex items-center gap-2"><i class="ph-bold ph-cloud-rain"></i> Tambak (Udang/Bandeng)</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Cuaca ekstrem tidak menentu menyebabkan bibit mudah stres & mati, serta perubahan pH air tambak yang mendadak.
+                    </p>
+                </div>
+                <div class="white-card p-5 rounded-2xl border-t-4 border-cyan-500">
+                    <h3 class="text-base font-bold text-cyan-600 mb-2 flex items-center gap-2"><i class="ph-bold ph-bug"></i> Rumput Laut</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Gangguan hama laut (penyu), serangan penyakit titik putih/ice-ice, serta penumpukan sampah laut di area tanam.
+                    </p>
+                </div>
+                <div class="white-card p-5 rounded-2xl border-t-4 border-blue-600">
+                    <h3 class="text-base font-bold text-blue-600 mb-2 flex items-center gap-2"><i class="ph-bold ph-waves"></i> Nelayan Tangkap</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Gelombang tinggi, keterbatasan BBM, serta minimnya sarana & alat tangkap modern penunjang operasi laut.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 9: PENDAMPINGAN YANG DIHARAPKAN -->
+        <section class="slide flex-col justify-center max-w-4xl mx-auto w-full">
+            <div class="mb-6">
+                <span class="text-xs font-bold text-brand-600 uppercase tracking-widest bg-brand-50 px-3 py-1 rounded-md border border-brand-100">Topik 1 • Slide 9</span>
+                <h2 class="text-2xl md:text-4xl font-extrabold text-slate-900 mt-2">Dukungan Pendampingan Diharapkan</h2>
+                <p class="text-xs font-medium text-slate-500 mt-1">Aspirasi Langsung Subjek RA Desa Kambunong</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="white-card p-6 rounded-2xl border-l-4 border-brand-600">
+                    <h3 class="text-lg font-bold text-slate-900 mb-3 flex items-center gap-2"><i class="ph-bold ph-fish text-brand-600"></i> Subjek Perikanan Budidaya</h3>
+                    <ul class="space-y-2 text-sm text-slate-600">
+                        <li class="flex items-center gap-2"><i class="ph-bold ph-check text-brand-600"></i> Bantuan bibit unggul (udang/bandeng/rumput laut)</li>
+                        <li class="flex items-center gap-2"><i class="ph-bold ph-check text-brand-600"></i> Pupuk & pakan berkualitas tinggi</li>
+                        <li class="flex items-center gap-2"><i class="ph-bold ph-check text-brand-600"></i> Peralatan teknis penunjang budidaya</li>
+                    </ul>
+                </div>
+                <div class="white-card p-6 rounded-2xl border-l-4 border-cyan-500">
+                    <h3 class="text-lg font-bold text-slate-900 mb-3 flex items-center gap-2"><i class="ph-bold ph-boat text-cyan-600"></i> Subjek Perikanan Tangkap</h3>
+                    <ul class="space-y-2 text-sm text-slate-600">
+                        <li class="flex items-center gap-2"><i class="ph-bold ph-check text-cyan-600"></i> Alat tangkap modern penunjang nelayan</li>
+                        <li class="flex items-center gap-2"><i class="ph-bold ph-check text-cyan-600"></i> Bibit & sarana rumput laut</li>
+                        <li class="flex items-center gap-2"><i class="ph-bold ph-check text-cyan-600"></i> Akses permodalan usaha nelayan</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 10: PENDAPATAN AWAL SUBJEK RA -->
+        <section class="slide flex-col justify-center max-w-4xl mx-auto w-full">
+            <div class="mb-6">
+                <span class="text-xs font-bold text-brand-600 uppercase tracking-widest bg-brand-50 px-3 py-1 rounded-md border border-brand-100">Topik 1 • Slide 10</span>
+                <h2 class="text-2xl md:text-4xl font-extrabold text-slate-900 mt-2">Profil Pendapatan Awal Subjek RA</h2>
+                <p class="text-xs font-medium text-slate-500 mt-1">Baseline Ekonomi Sebelum Intervensi Fase 2</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="white-card p-6 rounded-2xl flex flex-col justify-between">
+                    <div>
+                        <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Rentang Pendapatan Baseline</span>
+                        <p class="text-2xl md:text-3xl font-extrabold text-slate-900 mt-2">Rp1.000.000 <span class="text-sm font-medium text-slate-400">s/d</span> Rp3.200.000</p>
+                        <p class="text-xs text-slate-500 mt-1">per bulan per rumah tangga</p>
+                    </div>
+                </div>
+                <div class="white-card p-6 rounded-2xl border-l-4 border-brand-600 flex flex-col justify-between">
+                    <div>
+                        <span class="text-xs font-bold text-brand-600 uppercase tracking-wider">Mayoritas Pendapatan</span>
+                        <p class="text-2xl md:text-3xl font-extrabold text-brand-600 mt-2">Rp2.000.000 <span class="text-sm font-medium text-slate-500">s/d</span> Rp3.000.000</p>
+                        <p class="text-xs text-slate-600 mt-1">Rata-rata dominan masyarakat per bulan</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 11: REKOMENDASI MODEL PEMBERDAYAAN -->
+        <section class="slide flex-col justify-center max-w-4xl mx-auto w-full">
+            <div class="mb-6">
+                <span class="text-xs font-bold text-brand-600 uppercase tracking-widest bg-brand-50 px-3 py-1 rounded-md border border-brand-100">Topik 1 • Slide 11</span>
+                <h2 class="text-2xl md:text-4xl font-extrabold text-slate-900 mt-2">Rekomendasi Model Pemberdayaan</h2>
+                <p class="text-xs font-medium text-slate-500 mt-1">Sumber: Berita Acara Penyusunan Model Akses RA</p>
+            </div>
+            <div class="white-card p-6 rounded-2xl mb-6 border-l-4 border-brand-600">
+                <span class="text-xs text-brand-600 uppercase font-bold tracking-wider">Model Utama Terpilih</span>
+                <h3 class="text-xl font-extrabold text-slate-900 mt-1">Model Kolaborasi Lintas Sektor</h3>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="white-card p-5 rounded-2xl flex items-center gap-4">
+                    <div class="p-3 bg-brand-50 text-brand-600 rounded-xl text-xl font-bold border border-brand-200">01</div>
+                    <div>
+                        <h4 class="font-bold text-slate-900">Empang / Perikanan Budidaya</h4>
+                        <p class="text-xs text-slate-500">Fokus optimalisasi tambak udang & bandeng</p>
+                    </div>
+                </div>
+                <div class="white-card p-5 rounded-2xl flex items-center gap-4">
+                    <div class="p-3 bg-cyan-50 text-cyan-600 rounded-xl text-xl font-bold border border-cyan-200">02</div>
+                    <div>
+                        <h4 class="font-bold text-slate-900">Nelayan Tangkap</h4>
+                        <p class="text-xs text-slate-500">Penguatan sarana pengolahan hasil tangkapan</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 12: RENCANA FASILITASI & STAKEHOLDER -->
+        <section class="slide flex-col justify-center max-w-4xl mx-auto w-full">
+            <div class="mb-6">
+                <span class="text-xs font-bold text-brand-600 uppercase tracking-widest bg-brand-50 px-3 py-1 rounded-md border border-brand-100">Topik 1 • Slide 12</span>
+                <h2 class="text-2xl md:text-4xl font-extrabold text-slate-900 mt-2">Rencana Fasilitasi Pendampingan Usaha</h2>
+                <p class="text-xs font-medium text-slate-500 mt-1">Pelaksana: Dinas Perikanan Kab. Mamuju Tengah & Kantor Pertanahan</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="white-card p-6 rounded-2xl border-t-4 border-brand-600">
+                    <span class="text-xs text-brand-600 font-bold uppercase tracking-wider">Sektor Empang / Budidaya</span>
+                    <h3 class="text-lg font-bold text-slate-900 mt-1 mb-3">Pelatihan Bandeng Tanpa Duri</h3>
+                    <ul class="space-y-2 text-xs text-slate-600">
+                        <li><strong class="text-slate-800">Pelaksana:</strong> Dinas Perikanan Mamuju Tengah</li>
+                        <li><strong class="text-slate-800">Instansi Terkait:</strong> Kantor Pertanahan Kab. Mateng</li>
+                        <li><strong class="text-slate-800">Sumber Dana:</strong> APBD</li>
+                    </ul>
+                </div>
+                <div class="white-card p-6 rounded-2xl border-t-4 border-cyan-500">
+                    <span class="text-xs text-cyan-600 font-bold uppercase tracking-wider">Sektor Nelayan Tangkap</span>
+                    <h3 class="text-lg font-bold text-slate-900 mt-1 mb-3">Pelatihan Pengeringan Ikan Teri Modern</h3>
+                    <ul class="space-y-2 text-xs text-slate-600">
+                        <li><strong class="text-slate-800">Pelaksana:</strong> Dinas Perikanan Mamuju Tengah</li>
+                        <li><strong class="text-slate-800">Instansi Terkait:</strong> Kantor Pertanahan Kab. Mateng</li>
+                        <li><strong class="text-slate-800">Sumber Dana:</strong> APBD</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 13: KERJA SAMA STAKEHOLDER TERBENTUK -->
+        <section class="slide flex-col justify-center max-w-4xl mx-auto w-full">
+            <div class="mb-6">
+                <span class="text-xs font-bold text-brand-600 uppercase tracking-widest bg-brand-50 px-3 py-1 rounded-md border border-brand-100">Topik 1 • Slide 13</span>
+                <h2 class="text-2xl md:text-4xl font-extrabold text-slate-900 mt-2">Kerja Sama Stakeholder Terbentuk</h2>
+                <p class="text-xs font-medium text-slate-500 mt-1">Berita Acara No: 475/BA-76.06.NT.01.04/VII/2024 (18 Juli 2024)</p>
+            </div>
+            <div class="white-card p-6 rounded-2xl">
+                <h3 class="text-xs font-bold text-brand-600 uppercase mb-4 tracking-wider">Pihak Terlibat & Penandatangan</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs text-slate-700">
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                        <strong class="text-slate-900 block mb-1">Dinas Perikanan Kab. Mamuju Tengah</strong>
+                        <p class="text-slate-500">Ibrahim, SP</p>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                        <strong class="text-slate-900 block mb-1">Pemerintah Desa Kambunong</strong>
+                        <p class="text-slate-500">Sudirman (Kepala Desa)</p>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                        <strong class="text-slate-900 block mb-1">Kantor Pertanahan Kab. Mamuju Tengah</strong>
+                        <p class="text-slate-500">Rahman Yusuf, S.H. (Kakantah), Nurfuad Mudjid, S.H., A. Suci Febrianti M, S.H., Arman, S.E., Yairus, S.E.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 14: WORK CALENDAR FORMAT (JADWAL FASE 2) -->
+        <section class="slide flex-col justify-center max-w-5xl mx-auto w-full">
+            <div class="mb-4 text-center md:text-left">
+                <span class="text-xs font-bold text-brand-600 uppercase tracking-widest bg-brand-50 px-3 py-1 rounded-md border border-brand-100">Topik 1 • Slide 14</span>
+                <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 mt-2">Kalender Kerja Pelaksanaan Kegiatan FS Fase 2</h2>
+                <p class="text-xs font-medium text-slate-500 mt-1">Timeline Target November - Desember 2026</p>
+            </div>
+
+            <!-- WORK CALENDAR GRID UI -->
+            <div class="white-card p-5 rounded-2xl border border-slate-200 shadow-sm mb-4">
+                <!-- Calendar Header -->
+                <div class="grid grid-cols-2 gap-4 border-b border-slate-200 pb-3 mb-4">
+                    <div class="flex items-center gap-2">
+                        <i class="ph-bold ph-calendar text-xl text-brand-600"></i>
+                        <span class="font-bold text-slate-800 text-sm">Bulan November 2026</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i class="ph-bold ph-calendar text-xl text-cyan-600"></i>
+                        <span class="font-bold text-slate-800 text-sm">Bulan Desember 2026</span>
+                    </div>
+                </div>
+
+                <!-- Calendar Timeline Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-6 gap-3 text-left">
+                    
+                    <!-- Week 1 -->
+                    <div class="bg-brand-50/70 border border-brand-200 p-3 rounded-xl flex flex-col justify-between hover:border-brand-400 transition">
+                        <div>
+                            <span class="inline-block px-2 py-0.5 bg-brand-600 text-white font-bold text-[10px] rounded mb-2">NOV W1</span>
+                            <h4 class="font-bold text-slate-900 text-xs">Rapat Persiapan</h4>
+                        </div>
+                        <p class="text-[10px] text-brand-700 font-semibold mt-2">Tahap Inisiasi</p>
+                    </div>
+
+                    <!-- Week 2 -->
+                    <div class="bg-blue-50/70 border border-blue-200 p-3 rounded-xl flex flex-col justify-between hover:border-blue-400 transition">
+                        <div>
+                            <span class="inline-block px-2 py-0.5 bg-blue-600 text-white font-bold text-[10px] rounded mb-2">NOV W2</span>
+                            <h4 class="font-bold text-slate-900 text-xs">Perdin Kelompok</h4>
+                        </div>
+                        <p class="text-[10px] text-blue-700 font-semibold mt-2">Fasilitasi Kelompok</p>
+                    </div>
+
+                    <!-- Week 3 -->
+                    <div class="bg-cyan-50/70 border border-cyan-200 p-3 rounded-xl flex flex-col justify-between hover:border-cyan-400 transition">
+                        <div>
+                            <span class="inline-block px-2 py-0.5 bg-cyan-600 text-white font-bold text-[10px] rounded mb-2">NOV W3</span>
+                            <h4 class="font-bold text-slate-900 text-xs">Rapat Kerja Sama</h4>
+                        </div>
+                        <p class="text-[10px] text-cyan-700 font-semibold mt-2">Fasilitasi Mitra</p>
+                    </div>
+
+                    <!-- Week 4 -->
+                    <div class="bg-indigo-50/70 border border-indigo-200 p-3 rounded-xl flex flex-col justify-between hover:border-indigo-400 transition">
+                        <div>
+                            <span class="inline-block px-2 py-0.5 bg-indigo-600 text-white font-bold text-[10px] rounded mb-2">NOV W4</span>
+                            <h4 class="font-bold text-slate-900 text-xs">Perdin Usaha</h4>
+                        </div>
+                        <p class="text-[10px] text-indigo-700 font-semibold mt-2">Pendampingan</p>
+                    </div>
+
+                    <!-- Week 5 (Dec W1) -->
+                    <div class="bg-teal-50/70 border border-teal-200 p-3 rounded-xl flex flex-col justify-between hover:border-teal-400 transition">
+                        <div>
+                            <span class="inline-block px-2 py-0.5 bg-teal-600 text-white font-bold text-[10px] rounded mb-2">DES W1</span>
+                            <h4 class="font-bold text-slate-900 text-xs">Diseminasi</h4>
+                        </div>
+                        <p class="text-[10px] text-teal-700 font-semibold mt-2">Akses RA</p>
+                    </div>
+
+                    <!-- Week 6 (Dec W2) -->
+                    <div class="bg-emerald-50/70 border border-emerald-200 p-3 rounded-xl flex flex-col justify-between hover:border-emerald-400 transition">
+                        <div>
+                            <span class="inline-block px-2 py-0.5 bg-emerald-600 text-white font-bold text-[10px] rounded mb-2">DES W2</span>
+                            <h4 class="font-bold text-slate-900 text-xs">Penyusunan Laporan</h4>
+                        </div>
+                        <p class="text-[10px] text-emerald-700 font-semibold mt-2">Finalisasi</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- PENUTUP -->
+            <div class="text-center pt-2">
+                <h3 class="text-2xl font-extrabold text-slate-900">Terima Kasih</h3>
+                <p class="text-xs text-brand-600 font-semibold mt-1">Kantor Pertanahan Kabupaten Mamuju Tengah © 2026</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- NAVIGATION CONTROLS BOTTOM BAR -->
+    <footer class="w-full z-40 px-6 py-4 bg-white/80 backdrop-blur-md border-t border-slate-200 flex justify-between items-center shadow-sm">
+        <button onclick="prevSlide()" class="flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl font-semibold text-xs md:text-sm transition border border-slate-200">
+            <i class="ph-bold ph-caret-left"></i> Sebelumnya
+        </button>
+        <span class="text-xs text-slate-400 font-medium hidden md:inline">Gunakan tombol Keyboard ← → untuk navigasi</span>
+        <button onclick="nextSlide()" class="flex items-center gap-2 px-5 py-2 bg-brand-600 hover:bg-brand-700 text-white rounded-xl font-semibold text-xs md:text-sm transition shadow-md shadow-brand-500/20">
+            Selanjutnya <i class="ph-bold ph-caret-right"></i>
+        </button>
+    </footer>
+
+    <!-- GRID MENU OVERLAY -->
+    <div id="gridMenu" class="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-md hidden flex-col p-6 overflow-y-auto">
+        <div class="max-w-4xl mx-auto w-full bg-white p-6 rounded-2xl shadow-xl">
+            <div class="flex justify-between items-center mb-6 border-b pb-4">
+                <h2 class="text-lg font-bold text-slate-900">Daftar Slide Presentasi</h2>
+                <button onclick="toggleGridMenu()" class="p-2 bg-slate-100 text-slate-600 rounded-lg"><i class="ph-bold ph-x text-xl"></i></button>
+            </div>
+            <div id="gridList" class="grid grid-cols-2 md:grid-cols-4 gap-3"></div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        const slideTitles = [
+            "1. Judul Utama", "2. Identitas Subjek RA", "3. Lokasi Administrasi", 
+            "4. Sektor Usaha", "5. Jenis Hak & Luas", "6. Kelompok Usaha", 
+            "7. Riwayat Bantuan", "8. Kendala Usaha", "9. Jenis Pendampingan", 
+            "10. Pendapatan Awal", "11. Rekomendasi Model", "12. Rencana Fasilitasi", 
+            "13. Kerja Sama Stakeholder", "14. Kalender Kegiatan FS Fase 2"
+        ];
+
+        function updateSlide() {
+            slides.forEach((slide, idx) => {
+                slide.classList.remove('active');
+                if (idx === currentSlide) {
+                    slide.classList.add('active');
+                }
+            });
+
+            // Update Progress UI
+            document.getElementById('slideCounter').innerText = `Slide ${currentSlide + 1} dari ${totalSlides}`;
+            const progressPercent = ((currentSlide + 1) / totalSlides) * 100;
+            document.getElementById('progressBar').style.width = `${progressPercent}%`;
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides - 1) {
+                currentSlide++;
+            } else {
+                currentSlide = 0; // Loop back to start
+            }
+            updateSlide();
+        }
+
+        function prevSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+                updateSlide();
+            }
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateSlide();
+            toggleGridMenu();
+        }
+
+        function toggleGridMenu() {
+            const menu = document.getElementById('gridMenu');
+            menu.classList.toggle('hidden');
+            menu.classList.toggle('flex');
+
+            if (!menu.classList.contains('hidden')) {
+                const gridList = document.getElementById('gridList');
+                gridList.innerHTML = '';
+                slideTitles.forEach((title, idx) => {
+                    const btn = document.createElement('button');
+                    btn.className = `p-3 rounded-xl border text-left text-xs font-bold transition ${idx === currentSlide ? 'bg-brand-600 text-white border-brand-600 shadow-md' : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-brand-50 hover:border-brand-200'}`;
+                    btn.innerText = title;
+                    btn.onclick = () => goToSlide(idx);
+                    gridList.appendChild(btn);
+                });
+            }
+        }
+
+        // Keyboard Navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === 'Space') nextSlide();
+            if (e.key === 'ArrowLeft') prevSlide();
+            if (e.key === 'm' || e.key === 'M') toggleGridMenu();
+        });
+    </script>
+</body>
+</html>
