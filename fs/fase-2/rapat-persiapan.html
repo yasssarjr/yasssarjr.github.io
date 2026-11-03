@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,10 +8,11 @@
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts: Plus Jakarta Sans -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <!-- Phosphor Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
-    
+
     <script>
         tailwind.config = {
             theme: {
@@ -44,7 +46,7 @@
             }
         }
     </script>
-    
+
     <style>
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
@@ -82,39 +84,139 @@
         }
 
         /* ===== CHART ENHANCEMENTS ===== */
-        .chart-seg { transition: opacity .25s, filter .25s, stroke-width .25s; cursor: pointer; }
-        .chart-root.hovering .chart-seg:not(.on) { opacity: .25; }
-        .chart-root.hovering .chart-seg.on { filter: drop-shadow(0 4px 8px rgba(2,101,210,.35)); }
-        .chart-root.hovering .legend-row:not(.on) { opacity: .45; }
-        .legend-row { transition: opacity .25s, background .25s, transform .25s; cursor: pointer; }
-        .legend-row.on { background: #f0f7ff; transform: translateX(3px); }
-        .slide.active .seg-grow { animation: segGrow 1.1s cubic-bezier(.16,1,.3,1) both; animation-delay: var(--d, 0s); }
-        @keyframes segGrow { from { stroke-dasharray: 0 100; } to { stroke-dasharray: var(--len) var(--rest); } }
-        .slide.active .bar-grow { animation: barGrow 1s cubic-bezier(.16,1,.3,1) both; animation-delay: var(--d, 0s); transform-origin: left center; }
-        @keyframes barGrow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
-        .slide.active .col-grow { animation: colGrow 1s cubic-bezier(.16,1,.3,1) both; animation-delay: var(--d, 0s); transform-origin: bottom center; }
-        @keyframes colGrow { from { transform: scaleY(0); } to { transform: scaleY(1); } }
-        .slide.active .pop-in { animation: popIn .6s cubic-bezier(.16,1,.3,1) both; animation-delay: var(--d, .6s); }
-        @keyframes popIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
-        .col-item:hover .col-bar { filter: brightness(1.1) drop-shadow(0 6px 10px rgba(2,101,210,.3)); }
-        .shimmer { background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.45) 50%, rgba(255,255,255,0) 100%); background-size: 200% 100%; animation: shimmer 2.8s infinite linear; }
-        @keyframes shimmer { from { background-position: 200% 0; } to { background-position: -200% 0; } }
+        .chart-seg {
+            transition: opacity .25s, filter .25s, stroke-width .25s;
+            cursor: pointer;
+        }
+
+        .chart-root.hovering .chart-seg:not(.on) {
+            opacity: .25;
+        }
+
+        .chart-root.hovering .chart-seg.on {
+            filter: drop-shadow(0 4px 8px rgba(2, 101, 210, .35));
+        }
+
+        .chart-root.hovering .legend-row:not(.on) {
+            opacity: .45;
+        }
+
+        .legend-row {
+            transition: opacity .25s, background .25s, transform .25s;
+            cursor: pointer;
+        }
+
+        .legend-row.on {
+            background: #f0f7ff;
+            transform: translateX(3px);
+        }
+
+        .slide.active .seg-grow {
+            animation: segGrow 1.1s cubic-bezier(.16, 1, .3, 1) both;
+            animation-delay: var(--d, 0s);
+        }
+
+        @keyframes segGrow {
+            from {
+                stroke-dasharray: 0 100;
+            }
+
+            to {
+                stroke-dasharray: var(--len) var(--rest);
+            }
+        }
+
+        .slide.active .bar-grow {
+            animation: barGrow 1s cubic-bezier(.16, 1, .3, 1) both;
+            animation-delay: var(--d, 0s);
+            transform-origin: left center;
+        }
+
+        @keyframes barGrow {
+            from {
+                transform: scaleX(0);
+            }
+
+            to {
+                transform: scaleX(1);
+            }
+        }
+
+        .slide.active .col-grow {
+            animation: colGrow 1s cubic-bezier(.16, 1, .3, 1) both;
+            animation-delay: var(--d, 0s);
+            transform-origin: bottom center;
+        }
+
+        @keyframes colGrow {
+            from {
+                transform: scaleY(0);
+            }
+
+            to {
+                transform: scaleY(1);
+            }
+        }
+
+        .slide.active .pop-in {
+            animation: popIn .6s cubic-bezier(.16, 1, .3, 1) both;
+            animation-delay: var(--d, .6s);
+        }
+
+        @keyframes popIn {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        .col-item:hover .col-bar {
+            filter: brightness(1.1) drop-shadow(0 6px 10px rgba(2, 101, 210, .3));
+        }
+
+        .shimmer {
+            background-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, .45) 50%, rgba(255, 255, 255, 0) 100%);
+            background-size: 200% 100%;
+            animation: shimmer 2.8s infinite linear;
+        }
+
+        @keyframes shimmer {
+            from {
+                background-position: 200% 0;
+            }
+
+            to {
+                background-position: -200% 0;
+            }
+        }
     </style>
 </head>
+
 <body class="h-screen w-screen flex flex-col justify-between select-none bg-grid-pattern relative">
 
     <!-- ACCENT BACKGROUND GLOWS -->
-    <div class="absolute top-0 left-1/4 w-96 h-96 bg-blue-200/50 rounded-full filter blur-3xl pointer-events-none animate-pulse-subtle"></div>
-    <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-cyan-200/40 rounded-full filter blur-3xl pointer-events-none animate-pulse-subtle"></div>
+    <div
+        class="absolute top-0 left-1/4 w-96 h-96 bg-blue-200/50 rounded-full filter blur-3xl pointer-events-none animate-pulse-subtle">
+    </div>
+    <div
+        class="absolute bottom-0 right-1/4 w-96 h-96 bg-cyan-200/40 rounded-full filter blur-3xl pointer-events-none animate-pulse-subtle">
+    </div>
 
     <!-- TOP BAR -->
-    <header class="w-full z-40 px-6 py-4 flex justify-between items-center bg-white/80 backdrop-blur-md border-b border-slate-200 shadow-sm">
+    <header
+        class="w-full z-40 px-6 py-4 flex justify-between items-center bg-white/80 backdrop-blur-md border-b border-slate-200 shadow-sm">
         <div class="flex items-center space-x-3">
             <div class="p-2.5 bg-brand-600 text-white rounded-xl shadow-md shadow-brand-500/20">
                 <i class="ph-bold ph-buildings text-xl"></i>
             </div>
             <div>
-                <h1 class="text-xs md:text-sm font-extrabold text-slate-900 tracking-wide uppercase">Reforma Agraria 2026</h1>
+                <h1 class="text-xs md:text-sm font-extrabold text-slate-900 tracking-wide uppercase">Reforma Agraria
+                    2026</h1>
                 <p class="text-[11px] font-medium text-brand-600">Desa Kambunong, Kab. Mamuju Tengah</p>
             </div>
         </div>
@@ -124,25 +226,33 @@
             <div class="hidden sm:flex flex-col items-end">
                 <span id="slideCounter" class="text-xs font-bold text-slate-700">Slide 1 dari 15</span>
                 <div class="w-36 bg-slate-200 h-2 rounded-full overflow-hidden mt-1 p-0.5 border border-slate-300/50">
-                    <div id="progressBar" class="bg-gradient-to-r from-brand-500 to-cyan-500 h-full rounded-full w-[6.67%] transition-all duration-300"></div>
+                    <div id="progressBar"
+                        class="bg-gradient-to-r from-brand-500 to-cyan-500 h-full rounded-full w-[6.67%] transition-all duration-300">
+                    </div>
                 </div>
             </div>
-            <button onclick="toggleGridMenu()" class="p-2.5 bg-slate-100 hover:bg-brand-50 text-slate-700 hover:text-brand-600 rounded-xl transition border border-slate-200 shadow-sm" title="Daftar Slide (Shortcut: M)">
+            <button onclick="toggleGridMenu()"
+                class="p-2.5 bg-slate-100 hover:bg-brand-50 text-slate-700 hover:text-brand-600 rounded-xl transition border border-slate-200 shadow-sm"
+                title="Daftar Slide (Shortcut: M)">
                 <i class="ph-bold ph-squares-four text-xl"></i>
             </button>
         </div>
     </header>
 
     <!-- MAIN PRESENTATION CONTAINER -->
-    <main class="flex-1 relative w-full h-full overflow-y-auto overflow-x-hidden flex items-center justify-center p-4 md:p-8 z-10">
+    <main
+        class="flex-1 relative w-full h-full overflow-y-auto overflow-x-hidden flex items-center justify-center p-4 md:p-8 z-10">
 
         <!-- SLIDE 1: JUDUL UTAMA -->
         <section class="slide active flex-col items-center justify-center text-center max-w-4xl mx-auto w-full">
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-50 border border-brand-200 text-brand-700 text-xs md:text-sm font-semibold mb-6 shadow-sm">
+            <div
+                class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-50 border border-brand-200 text-brand-700 text-xs md:text-sm font-semibold mb-6 shadow-sm">
                 <i class="ph-fill ph-presentation-chart"></i> Rapat Persiapan Asesmen Data 2026
             </div>
             <h1 class="text-3xl md:text-5xl font-extrabold text-slate-900 leading-tight mb-4">
-                Asesmen Data Subjek <br class="hidden md:block"><span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-cyan-600">Reforma Agraria</span>
+                Asesmen Data Subjek <br class="hidden md:block"><span
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-cyan-600">Reforma
+                    Agraria</span>
             </h1>
             <p class="text-slate-600 text-base md:text-xl font-medium mb-8 max-w-2xl">
                 Lokus: Desa Kambunong, Kecamatan Karossa, Kabupaten Mamuju Tengah, Sulawesi Barat
@@ -166,30 +276,39 @@
         <!-- SLIDE 2: IDENTITAS SUBJEK RA -->
         <section class="slide flex-col justify-center max-w-4xl mx-auto w-full">
             <div class="mb-6">
-                <span class="text-xs font-bold text-brand-600 uppercase tracking-widest bg-brand-50 px-3 py-1 rounded-md border border-brand-100">Topik 1 • Slide 2</span>
-                <h2 class="text-2xl md:text-4xl font-extrabold text-slate-900 mt-2">Identitas Subjek Reforma Agraria</h2>
+                <span
+                    class="text-xs font-bold text-brand-600 uppercase tracking-widest bg-brand-50 px-3 py-1 rounded-md border border-brand-100">Topik
+                    1 • Slide 2</span>
+                <h2 class="text-2xl md:text-4xl font-extrabold text-slate-900 mt-2">Identitas Subjek Reforma Agraria
+                </h2>
                 <p class="text-xs font-medium text-slate-500 mt-1">Sumber: Juknis Fasilitasi Pendampingan Usaha 2026</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div class="white-card p-6 rounded-2xl flex flex-col justify-between">
                     <div>
-                        <div class="p-3 bg-brand-50 text-brand-600 w-fit rounded-xl mb-4 border border-brand-100"><i class="ph-bold ph-user-list text-2xl"></i></div>
+                        <div class="p-3 bg-brand-50 text-brand-600 w-fit rounded-xl mb-4 border border-brand-100"><i
+                                class="ph-bold ph-user-list text-2xl"></i></div>
                         <h3 class="text-lg font-bold text-slate-900 mb-2">Definisi Subjek</h3>
-                        <p class="text-sm text-slate-600 leading-relaxed">Perorangan, kelompok, atau badan usaha yang menjadi penerima manfaat kegiatan penataan aset dan/atau penataan akses.</p>
+                        <p class="text-sm text-slate-600 leading-relaxed">Perorangan, kelompok, atau badan usaha yang
+                            menjadi penerima manfaat kegiatan penataan aset dan/atau penataan akses.</p>
                     </div>
                 </div>
                 <div class="white-card p-6 rounded-2xl flex flex-col justify-between">
                     <div>
-                        <div class="p-3 bg-cyan-50 text-cyan-600 w-fit rounded-xl mb-4 border border-cyan-100"><i class="ph-bold ph-star text-2xl"></i></div>
+                        <div class="p-3 bg-cyan-50 text-cyan-600 w-fit rounded-xl mb-4 border border-cyan-100"><i
+                                class="ph-bold ph-star text-2xl"></i></div>
                         <h3 class="text-lg font-bold text-slate-900 mb-2">Prioritas Subjek</h3>
-                        <p class="text-sm text-slate-600 leading-relaxed">Diprioritaskan berasal dari hasil Akses Reforma Agraria (Pemetaan Sosial / Fase 1) Tahun 2025.</p>
+                        <p class="text-sm text-slate-600 leading-relaxed">Diprioritaskan berasal dari hasil Akses
+                            Reforma Agraria (Pemetaan Sosial / Fase 1) Tahun 2024.</p>
                     </div>
                 </div>
                 <div class="white-card p-6 rounded-2xl flex flex-col justify-between">
                     <div>
-                        <div class="p-3 bg-blue-50 text-blue-600 w-fit rounded-xl mb-4 border border-blue-100"><i class="ph-bold ph-check-square-offset text-2xl"></i></div>
+                        <div class="p-3 bg-blue-50 text-blue-600 w-fit rounded-xl mb-4 border border-blue-100"><i
+                                class="ph-bold ph-check-square-offset text-2xl"></i></div>
                         <h3 class="text-lg font-bold text-slate-900 mb-2">Kriteria & Verifikasi</h3>
-                        <p class="text-sm text-slate-600 leading-relaxed">Pengelompokan mencakup verifikasi status gender & kemiskinan ekstrem berbasis data DTSEN.</p>
+                        <p class="text-sm text-slate-600 leading-relaxed">Pengelompokan mencakup verifikasi status
+                            gender & kemiskinan ekstrem berbasis data DTSEN.</p>
                     </div>
                 </div>
             </div>
@@ -198,7 +317,9 @@
         <!-- SLIDE 3: LOKASI ADMINISTRASI & GEOGRAFIS (DENGAN VISUAL MAPS) -->
         <section class="slide flex-col justify-center max-w-4xl mx-auto w-full">
             <div class="mb-4">
-                <span class="text-xs font-bold text-brand-600 uppercase tracking-widest bg-brand-50 px-3 py-1 rounded-md border border-brand-100">Topik 1 • Slide 3</span>
+                <span
+                    class="text-xs font-bold text-brand-600 uppercase tracking-widest bg-brand-50 px-3 py-1 rounded-md border border-brand-100">Topik
+                    1 • Slide 3</span>
                 <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 mt-2">Lokasi Administrasi & Geografis</h2>
                 <p class="text-xs font-medium text-slate-500 mt-1">Desa Kambunong, Kec. Karossa, Kab. Mamuju Tengah</p>
             </div>
@@ -210,14 +331,20 @@
                             <h3 class="text-base font-bold text-slate-900">Administrasi Wilayah</h3>
                         </div>
                         <ul class="space-y-2 text-xs text-slate-700">
-                            <li class="flex justify-between border-b border-slate-100 pb-1.5"><span>Desa:</span> <strong class="text-slate-900">Kambunong</strong></li>
-                            <li class="flex justify-between border-b border-slate-100 pb-1.5"><span>Kecamatan:</span> <strong class="text-slate-900">Karossa</strong></li>
-                            <li class="flex justify-between border-b border-slate-100 pb-1.5"><span>Kabupaten:</span> <strong class="text-slate-900">Mamuju Tengah</strong></li>
-                            <li class="flex justify-between border-b border-slate-100 pb-1.5"><span>Provinsi:</span> <strong class="text-slate-900">Sulawesi Barat</strong></li>
-                            <li class="flex justify-between pt-0.5"><span>Kemendagri:</span> <strong class="text-brand-600">76.06.05.2009</strong></li>
+                            <li class="flex justify-between border-b border-slate-100 pb-1.5"><span>Desa:</span> <strong
+                                    class="text-slate-900">Kambunong</strong></li>
+                            <li class="flex justify-between border-b border-slate-100 pb-1.5"><span>Kecamatan:</span>
+                                <strong class="text-slate-900">Karossa</strong></li>
+                            <li class="flex justify-between border-b border-slate-100 pb-1.5"><span>Kabupaten:</span>
+                                <strong class="text-slate-900">Mamuju Tengah</strong></li>
+                            <li class="flex justify-between border-b border-slate-100 pb-1.5"><span>Provinsi:</span>
+                                <strong class="text-slate-900">Sulawesi Barat</strong></li>
+                            <li class="flex justify-between pt-0.5"><span>Kemendagri:</span> <strong
+                                    class="text-brand-600">76.06.05.2009</strong></li>
                         </ul>
                     </div>
-                    <div class="mt-3 bg-brand-50 p-2.5 rounded-xl border border-brand-100 text-xs text-brand-800 font-medium flex items-center gap-2">
+                    <div
+                        class="mt-3 bg-brand-50 p-2.5 rounded-xl border border-brand-100 text-xs text-brand-800 font-medium flex items-center gap-2">
                         <i class="ph-bold ph-info text-brand-600 text-base"></i> Wilayah pesisir potensial budidaya.
                     </div>
                 </div>
@@ -229,15 +356,11 @@
                             <i class="ph-bold ph-globe-hemisphere-east text-cyan-600 text-lg"></i>
                             <span class="text-xs font-bold text-slate-800">Visualisasi Peta Lokasi</span>
                         </div>
-                        <span class="text-[10px] font-mono text-slate-500 bg-slate-100 px-2 py-0.5 rounded">1°57'10"S 119°33'02"E</span>
+                        <span class="text-[10px] font-mono text-slate-500 bg-slate-100 px-2 py-0.5 rounded">1°57'10"S
+                            119°33'02"E</span>
                     </div>
                     <div class="w-full h-48 rounded-xl overflow-hidden border border-slate-200 relative shadow-inner">
-                        <iframe 
-                            width="100%" 
-                            height="100%" 
-                            style="border:0;" 
-                            allowfullscreen="" 
-                            loading="lazy" 
+                        <iframe width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
                             referrerpolicy="no-referrer-when-downgrade"
                             src="https://maps.google.com/maps?q=-1.95278,119.55056&z=13&output=embed">
                         </iframe>
@@ -249,66 +372,148 @@
         <!-- SLIDE 4: SEKTOR USAHA (DONUT CHART INTERAKTIF) -->
         <section class="slide flex-col justify-center max-w-4xl mx-auto w-full">
             <div class="mb-4">
-                <span class="text-xs font-bold text-brand-600 uppercase tracking-widest bg-brand-50 px-3 py-1 rounded-md border border-brand-100">Topik 1 • Slide 4</span>
-                <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 mt-2">Profil Sektor Usaha Subjek RA (200 KK)</h2>
-                <p class="text-xs font-medium text-slate-500 mt-1">Rincian Angka Riil & Komposisi Sektor Usaha • arahkan kursor ke grafik untuk detail</p>
+                <span
+                    class="text-xs font-bold text-brand-600 uppercase tracking-widest bg-brand-50 px-3 py-1 rounded-md border border-brand-100">Topik
+                    1 • Slide 4</span>
+                <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 mt-2">Profil Sektor Usaha Subjek RA (200
+                    KK)</h2>
+                <p class="text-xs font-medium text-slate-500 mt-1">Rincian Angka Riil & Komposisi Sektor Usaha • arahkan
+                    kursor ke grafik untuk detail</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-12 gap-5">
                 <!-- Donut + Legend -->
                 <div class="md:col-span-7 white-card p-5 rounded-2xl chart-root" data-chart>
-                    <h3 class="text-xs font-bold text-slate-700 uppercase mb-3 flex items-center gap-1.5"><i class="ph-bold ph-chart-donut text-brand-600"></i> Distribusi Komoditas</h3>
+                    <h3 class="text-xs font-bold text-slate-700 uppercase mb-3 flex items-center gap-1.5"><i
+                            class="ph-bold ph-chart-donut text-brand-600"></i> Distribusi Komoditas</h3>
                     <div class="flex flex-col sm:flex-row items-center gap-5">
                         <div class="relative w-44 h-44 shrink-0">
-                            <svg viewBox="0 0 200 200" class="w-full h-full -rotate-90"><circle cx="100" cy="100" r="74" fill="none" stroke="#f1f5f9" stroke-width="24"/><circle cx="100" cy="100" r="74" pathLength="100" fill="none" stroke="#06b6d4" stroke-width="24" class="chart-seg seg-grow" data-k="tangkap" stroke-dasharray="44.8 55.2" stroke-dashoffset="0" style="--len:44.8;--rest:55.2;--d:0.1s"/><circle cx="100" cy="100" r="74" pathLength="100" fill="none" stroke="#0265d2" stroke-width="24" class="chart-seg seg-grow" data-k="vaname" stroke-dasharray="24.8 75.2" stroke-dashoffset="-45.5" style="--len:24.8;--rest:75.2;--d:0.25s"/><circle cx="100" cy="100" r="74" pathLength="100" fill="none" stroke="#14b8a6" stroke-width="24" class="chart-seg seg-grow" data-k="rumput" stroke-dasharray="24.3 75.7" stroke-dashoffset="-71.0" style="--len:24.3;--rest:75.7;--d:0.4s"/><circle cx="100" cy="100" r="74" pathLength="100" fill="none" stroke="#6366f1" stroke-width="24" class="chart-seg seg-grow" data-k="bandeng" stroke-dasharray="3.3 96.7" stroke-dashoffset="-96.0" style="--len:3.3;--rest:96.7;--d:0.5499999999999999s"/></svg>
-                            <div class="absolute inset-0 flex flex-col items-center justify-center text-center pointer-events-none">
-                                <span class="c-val text-3xl font-extrabold text-slate-900 leading-none" data-default="200">200</span>
-                                <span class="c-label text-[10px] font-semibold text-slate-500 mt-1 px-5 leading-tight" data-default="Total Subjek RA">Total Subjek RA</span>
+                            <svg viewBox="0 0 200 200" class="w-full h-full -rotate-90">
+                                <circle cx="100" cy="100" r="74" fill="none" stroke="#f1f5f9" stroke-width="24" />
+                                <circle cx="100" cy="100" r="74" pathLength="100" fill="none" stroke="#06b6d4"
+                                    stroke-width="24" class="chart-seg seg-grow" data-k="tangkap"
+                                    stroke-dasharray="44.8 55.2" stroke-dashoffset="0"
+                                    style="--len:44.8;--rest:55.2;--d:0.1s" />
+                                <circle cx="100" cy="100" r="74" pathLength="100" fill="none" stroke="#0265d2"
+                                    stroke-width="24" class="chart-seg seg-grow" data-k="vaname"
+                                    stroke-dasharray="24.8 75.2" stroke-dashoffset="-45.5"
+                                    style="--len:24.8;--rest:75.2;--d:0.25s" />
+                                <circle cx="100" cy="100" r="74" pathLength="100" fill="none" stroke="#14b8a6"
+                                    stroke-width="24" class="chart-seg seg-grow" data-k="rumput"
+                                    stroke-dasharray="24.3 75.7" stroke-dashoffset="-71.0"
+                                    style="--len:24.3;--rest:75.7;--d:0.4s" />
+                                <circle cx="100" cy="100" r="74" pathLength="100" fill="none" stroke="#6366f1"
+                                    stroke-width="24" class="chart-seg seg-grow" data-k="bandeng"
+                                    stroke-dasharray="3.3 96.7" stroke-dashoffset="-96.0"
+                                    style="--len:3.3;--rest:96.7;--d:0.5499999999999999s" />
+                            </svg>
+                            <div
+                                class="absolute inset-0 flex flex-col items-center justify-center text-center pointer-events-none">
+                                <span class="c-val text-3xl font-extrabold text-slate-900 leading-none"
+                                    data-default="200">200</span>
+                                <span class="c-label text-[10px] font-semibold text-slate-500 mt-1 px-5 leading-tight"
+                                    data-default="Total Subjek RA">Total Subjek RA</span>
                             </div>
                         </div>
-                        <div class="flex-1 w-full space-y-0.5"><div class="legend-row flex items-center gap-2.5 p-2 rounded-xl" data-k="tangkap" data-val="91" data-label="Perikanan Tangkap" data-pct="45.5%">
-  <span class="w-2.5 h-8 rounded-full shrink-0" style="background:#06b6d4"></span>
-  <div class="flex-1 min-w-0"><div class="flex justify-between text-xs font-semibold text-slate-700"><span class="flex items-center gap-1.5"><i class="ph-bold ph-anchor" style="color:#06b6d4"></i>Perikanan Tangkap</span><span><b class="text-slate-900">91</b> <span class="text-slate-500">(45,5%)</span></span></div>
-  <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden mt-1"><div class="bar-grow h-full rounded-full" style="width:45.5%;background:#06b6d4;--d:0.3s"></div></div></div></div>
-<div class="legend-row flex items-center gap-2.5 p-2 rounded-xl" data-k="vaname" data-val="51" data-label="Udang Vaname" data-pct="25.5%">
-  <span class="w-2.5 h-8 rounded-full shrink-0" style="background:#0265d2"></span>
-  <div class="flex-1 min-w-0"><div class="flex justify-between text-xs font-semibold text-slate-700"><span class="flex items-center gap-1.5"><i class="ph-bold ph-shrimp" style="color:#0265d2"></i>Udang Vaname</span><span><b class="text-slate-900">51</b> <span class="text-slate-500">(25,5%)</span></span></div>
-  <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden mt-1"><div class="bar-grow h-full rounded-full" style="width:25.5%;background:#0265d2;--d:0.42s"></div></div></div></div>
-<div class="legend-row flex items-center gap-2.5 p-2 rounded-xl" data-k="rumput" data-val="50" data-label="Rumput Laut" data-pct="25.0%">
-  <span class="w-2.5 h-8 rounded-full shrink-0" style="background:#14b8a6"></span>
-  <div class="flex-1 min-w-0"><div class="flex justify-between text-xs font-semibold text-slate-700"><span class="flex items-center gap-1.5"><i class="ph-bold ph-plant" style="color:#14b8a6"></i>Rumput Laut</span><span><b class="text-slate-900">50</b> <span class="text-slate-500">(25,0%)</span></span></div>
-  <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden mt-1"><div class="bar-grow h-full rounded-full" style="width:25.0%;background:#14b8a6;--d:0.54s"></div></div></div></div>
-<div class="legend-row flex items-center gap-2.5 p-2 rounded-xl" data-k="bandeng" data-val="8" data-label="Bandeng & Campur" data-pct="4.0%">
-  <span class="w-2.5 h-8 rounded-full shrink-0" style="background:#6366f1"></span>
-  <div class="flex-1 min-w-0"><div class="flex justify-between text-xs font-semibold text-slate-700"><span class="flex items-center gap-1.5"><i class="ph-bold ph-fish" style="color:#6366f1"></i>Bandeng & Campur</span><span><b class="text-slate-900">8</b> <span class="text-slate-500">(4,0%)</span></span></div>
-  <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden mt-1"><div class="bar-grow h-full rounded-full" style="width:4.0%;background:#6366f1;--d:0.6599999999999999s"></div></div></div></div>
-</div>
+                        <div class="flex-1 w-full space-y-0.5">
+                            <div class="legend-row flex items-center gap-2.5 p-2 rounded-xl" data-k="tangkap"
+                                data-val="91" data-label="Perikanan Tangkap" data-pct="45.5%">
+                                <span class="w-2.5 h-8 rounded-full shrink-0" style="background:#06b6d4"></span>
+                                <div class="flex-1 min-w-0">
+                                    <div class="flex justify-between text-xs font-semibold text-slate-700"><span
+                                            class="flex items-center gap-1.5"><i class="ph-bold ph-anchor"
+                                                style="color:#06b6d4"></i>Perikanan Tangkap</span><span><b
+                                                class="text-slate-900">91</b> <span
+                                                class="text-slate-500">(45,5%)</span></span></div>
+                                    <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden mt-1">
+                                        <div class="bar-grow h-full rounded-full"
+                                            style="width:45.5%;background:#06b6d4;--d:0.3s"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="legend-row flex items-center gap-2.5 p-2 rounded-xl" data-k="vaname"
+                                data-val="51" data-label="Udang Vaname" data-pct="25.5%">
+                                <span class="w-2.5 h-8 rounded-full shrink-0" style="background:#0265d2"></span>
+                                <div class="flex-1 min-w-0">
+                                    <div class="flex justify-between text-xs font-semibold text-slate-700"><span
+                                            class="flex items-center gap-1.5"><i class="ph-bold ph-shrimp"
+                                                style="color:#0265d2"></i>Udang Vaname</span><span><b
+                                                class="text-slate-900">51</b> <span
+                                                class="text-slate-500">(25,5%)</span></span></div>
+                                    <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden mt-1">
+                                        <div class="bar-grow h-full rounded-full"
+                                            style="width:25.5%;background:#0265d2;--d:0.42s"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="legend-row flex items-center gap-2.5 p-2 rounded-xl" data-k="rumput"
+                                data-val="50" data-label="Rumput Laut" data-pct="25.0%">
+                                <span class="w-2.5 h-8 rounded-full shrink-0" style="background:#14b8a6"></span>
+                                <div class="flex-1 min-w-0">
+                                    <div class="flex justify-between text-xs font-semibold text-slate-700"><span
+                                            class="flex items-center gap-1.5"><i class="ph-bold ph-plant"
+                                                style="color:#14b8a6"></i>Rumput Laut</span><span><b
+                                                class="text-slate-900">50</b> <span
+                                                class="text-slate-500">(25,0%)</span></span></div>
+                                    <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden mt-1">
+                                        <div class="bar-grow h-full rounded-full"
+                                            style="width:25.0%;background:#14b8a6;--d:0.54s"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="legend-row flex items-center gap-2.5 p-2 rounded-xl" data-k="bandeng"
+                                data-val="8" data-label="Bandeng & Campur" data-pct="4.0%">
+                                <span class="w-2.5 h-8 rounded-full shrink-0" style="background:#6366f1"></span>
+                                <div class="flex-1 min-w-0">
+                                    <div class="flex justify-between text-xs font-semibold text-slate-700"><span
+                                            class="flex items-center gap-1.5"><i class="ph-bold ph-fish"
+                                                style="color:#6366f1"></i>Bandeng & Campur</span><span><b
+                                                class="text-slate-900">8</b> <span
+                                                class="text-slate-500">(4,0%)</span></span></div>
+                                    <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden mt-1">
+                                        <div class="bar-grow h-full rounded-full"
+                                            style="width:4.0%;background:#6366f1;--d:0.6599999999999999s"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <!-- Sektor summary -->
                 <div class="md:col-span-5 space-y-3">
                     <div class="white-card p-4 rounded-xl border-l-4 border-brand-600">
                         <div class="flex justify-between items-center mb-2">
-                            <h4 class="font-bold text-slate-900 text-sm flex items-center gap-2"><i class="ph-bold ph-waves text-brand-600"></i> Perikanan Budidaya</h4>
-                            <span class="text-xs font-bold bg-brand-50 text-brand-700 px-2 py-0.5 rounded border border-brand-200">109 (54,5%)</span>
+                            <h4 class="font-bold text-slate-900 text-sm flex items-center gap-2"><i
+                                    class="ph-bold ph-waves text-brand-600"></i> Perikanan Budidaya</h4>
+                            <span
+                                class="text-xs font-bold bg-brand-50 text-brand-700 px-2 py-0.5 rounded border border-brand-200">109
+                                (54,5%)</span>
                         </div>
                         <div class="flex h-3 rounded-full overflow-hidden bg-slate-100 border border-slate-200">
-                            <div class="bar-grow" style="width:46.8%;background:#0265d2;--d:.3s"></div><div class="bar-grow" style="width:45.9%;background:#14b8a6;--d:.45s"></div><div class="bar-grow" style="width:7.3%;background:#6366f1;--d:.6s"></div>
+                            <div class="bar-grow" style="width:46.8%;background:#0265d2;--d:.3s"></div>
+                            <div class="bar-grow" style="width:45.9%;background:#14b8a6;--d:.45s"></div>
+                            <div class="bar-grow" style="width:7.3%;background:#6366f1;--d:.6s"></div>
                         </div>
                         <p class="text-[10px] text-slate-500 mt-1.5">Vaname 51 • Rumput Laut 50 • Bandeng/Campur 8</p>
                     </div>
                     <div class="white-card p-4 rounded-xl border-l-4 border-cyan-500">
                         <div class="flex justify-between items-center">
                             <div>
-                                <h4 class="font-bold text-slate-900 text-sm flex items-center gap-2"><i class="ph-bold ph-anchor text-cyan-600"></i> Perikanan Tangkap</h4>
+                                <h4 class="font-bold text-slate-900 text-sm flex items-center gap-2"><i
+                                        class="ph-bold ph-anchor text-cyan-600"></i> Perikanan Tangkap</h4>
                                 <p class="text-[11px] text-slate-500 mt-0.5">Kelompok nelayan lokal</p>
                             </div>
-                            <div class="text-right"><span class="text-2xl font-extrabold text-cyan-600">91</span><span class="text-xs text-slate-500 block">(45,5%)</span></div>
+                            <div class="text-right"><span class="text-2xl font-extrabold text-cyan-600">91</span><span
+                                    class="text-xs text-slate-500 block">(45,5%)</span></div>
                         </div>
                     </div>
                     <div class="white-card p-3 rounded-xl text-center">
                         <div class="flex h-4 rounded-full overflow-hidden border border-slate-200">
-                            <div class="bar-grow flex items-center justify-center text-[9px] font-bold text-white" style="width:54.5%;background:linear-gradient(90deg,#0265d2,#0284c7);--d:.4s">Budidaya 54,5%</div>
-                            <div class="bar-grow flex items-center justify-center text-[9px] font-bold text-white" style="width:45.5%;background:linear-gradient(90deg,#06b6d4,#22d3ee);--d:.55s">Tangkap 45,5%</div>
+                            <div class="bar-grow flex items-center justify-center text-[9px] font-bold text-white"
+                                style="width:54.5%;background:linear-gradient(90deg,#0265d2,#0284c7);--d:.4s">Budidaya
+                                54,5%</div>
+                            <div class="bar-grow flex items-center justify-center text-[9px] font-bold text-white"
+                                style="width:45.5%;background:linear-gradient(90deg,#06b6d4,#22d3ee);--d:.55s">Tangkap
+                                45,5%</div>
                         </div>
                     </div>
                 </div>
@@ -318,47 +523,132 @@
         <!-- SLIDE 5: JENIS HAK / SERTIPIKAT TANAH & LUASAN (GAUGE + RANGE CHART) -->
         <section class="slide flex-col justify-center max-w-4xl mx-auto w-full">
             <div class="mb-4">
-                <span class="text-xs font-bold text-brand-600 uppercase tracking-widest bg-brand-50 px-3 py-1 rounded-md border border-brand-100">Topik 1 • Slide 5</span>
-                <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 mt-2">Jenis Hak / Sertipikat Tanah & Luasan</h2>
-                <p class="text-xs font-medium text-slate-500 mt-1">Data Status Legalisasi Aset & Skala Luas Lahan • arahkan kursor ke grafik untuk detail</p>
+                <span
+                    class="text-xs font-bold text-brand-600 uppercase tracking-widest bg-brand-50 px-3 py-1 rounded-md border border-brand-100">Topik
+                    1 • Slide 5</span>
+                <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 mt-2">Jenis Hak / Sertipikat Tanah &
+                    Luasan</h2>
+                <p class="text-xs font-medium text-slate-500 mt-1">Data Status Legalisasi Aset & Skala Luas Lahan •
+                    arahkan kursor ke grafik untuk detail</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-12 gap-5">
                 <div class="md:col-span-7 white-card p-5 rounded-2xl chart-root" data-chart>
                     <div class="flex justify-between items-center mb-1">
-                        <h3 class="text-xs font-bold text-slate-700 uppercase flex items-center gap-1.5"><i class="ph-bold ph-certificate text-brand-600"></i> Status Legalisasi Aset</h3>
-                        <span class="text-[10px] font-bold bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded border border-emerald-200">71% sudah bersertipikat</span>
+                        <h3 class="text-xs font-bold text-slate-700 uppercase flex items-center gap-1.5"><i
+                                class="ph-bold ph-certificate text-brand-600"></i> Status Legalisasi Aset</h3>
+                        <span
+                            class="text-[10px] font-bold bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded border border-emerald-200">71%
+                            sudah bersertipikat</span>
                     </div>
                     <div class="relative max-w-xs mx-auto">
-                        <svg viewBox="0 0 200 112" class="w-full"><path d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="#f1f5f9" stroke-width="26"/><path d="M 20 100 A 80 80 0 0 1 180 100" pathLength="100" fill="none" stroke="#0265d2" stroke-width="26" class="chart-seg seg-grow" data-k="r24" stroke-dasharray="40.3 59.7" stroke-dashoffset="0" style="--len:40.3;--rest:59.7;--d:0.1s"/><path d="M 20 100 A 80 80 0 0 1 180 100" pathLength="100" fill="none" stroke="#38bdf8" stroke-width="26" class="chart-seg seg-grow" data-k="r25" stroke-dasharray="7.8 92.2" stroke-dashoffset="-41.0" style="--len:7.8;--rest:92.2;--d:0.25s"/><path d="M 20 100 A 80 80 0 0 1 180 100" pathLength="100" fill="none" stroke="#06b6d4" stroke-width="26" class="chart-seg seg-grow" data-k="ptsl" stroke-dasharray="20.8 79.2" stroke-dashoffset="-49.5" style="--len:20.8;--rest:79.2;--d:0.4s"/><path d="M 20 100 A 80 80 0 0 1 180 100" pathLength="100" fill="none" stroke="#f59e0b" stroke-width="26" class="chart-seg seg-grow" data-k="belum" stroke-dasharray="28.3 71.7" stroke-dashoffset="-71.0" style="--len:28.3;--rest:71.7;--d:0.5499999999999999s"/></svg>
+                        <svg viewBox="0 0 200 112" class="w-full">
+                            <path d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="#f1f5f9" stroke-width="26" />
+                            <path d="M 20 100 A 80 80 0 0 1 180 100" pathLength="100" fill="none" stroke="#0265d2"
+                                stroke-width="26" class="chart-seg seg-grow" data-k="r24" stroke-dasharray="40.3 59.7"
+                                stroke-dashoffset="0" style="--len:40.3;--rest:59.7;--d:0.1s" />
+                            <path d="M 20 100 A 80 80 0 0 1 180 100" pathLength="100" fill="none" stroke="#38bdf8"
+                                stroke-width="26" class="chart-seg seg-grow" data-k="r25" stroke-dasharray="7.8 92.2"
+                                stroke-dashoffset="-41.0" style="--len:7.8;--rest:92.2;--d:0.25s" />
+                            <path d="M 20 100 A 80 80 0 0 1 180 100" pathLength="100" fill="none" stroke="#06b6d4"
+                                stroke-width="26" class="chart-seg seg-grow" data-k="ptsl" stroke-dasharray="20.8 79.2"
+                                stroke-dashoffset="-49.5" style="--len:20.8;--rest:79.2;--d:0.4s" />
+                            <path d="M 20 100 A 80 80 0 0 1 180 100" pathLength="100" fill="none" stroke="#f59e0b"
+                                stroke-width="26" class="chart-seg seg-grow" data-k="belum" stroke-dasharray="28.3 71.7"
+                                stroke-dashoffset="-71.0" style="--len:28.3;--rest:71.7;--d:0.5499999999999999s" />
+                        </svg>
                         <div class="absolute inset-x-0 bottom-0 flex flex-col items-center pointer-events-none">
-                            <span class="c-val text-3xl font-extrabold text-slate-900 leading-none" data-default="200">200</span>
-                            <span class="c-label text-[10px] font-semibold text-slate-500 mt-0.5" data-default="Total Subjek RA">Total Subjek RA</span>
+                            <span class="c-val text-3xl font-extrabold text-slate-900 leading-none"
+                                data-default="200">200</span>
+                            <span class="c-label text-[10px] font-semibold text-slate-500 mt-0.5"
+                                data-default="Total Subjek RA">Total Subjek RA</span>
                         </div>
                     </div>
-                    <div class="grid grid-cols-2 gap-1 mt-3"><div class="legend-row flex items-center gap-2 p-2 rounded-xl" data-k="r24" data-val="82" data-label="Redistribusi 2024" data-pct="41.0%">
-  <span class="w-3 h-3 rounded-full shrink-0" style="background:#0265d2"></span><div class="text-[11px] leading-tight"><span class="text-slate-500 block">Redistribusi 2024</span><b class="text-slate-900 text-xs">82 Subjek</b> <span class="text-slate-500">(41,0%)</span></div></div>
-<div class="legend-row flex items-center gap-2 p-2 rounded-xl" data-k="r25" data-val="17" data-label="Redistribusi 2025" data-pct="8.5%">
-  <span class="w-3 h-3 rounded-full shrink-0" style="background:#38bdf8"></span><div class="text-[11px] leading-tight"><span class="text-slate-500 block">Redistribusi 2025</span><b class="text-slate-900 text-xs">17 Subjek</b> <span class="text-slate-500">(8,5%)</span></div></div>
-<div class="legend-row flex items-center gap-2 p-2 rounded-xl" data-k="ptsl" data-val="43" data-label="PTSL (2022)" data-pct="21.5%">
-  <span class="w-3 h-3 rounded-full shrink-0" style="background:#06b6d4"></span><div class="text-[11px] leading-tight"><span class="text-slate-500 block">PTSL (2022)</span><b class="text-slate-900 text-xs">43 Subjek</b> <span class="text-slate-500">(21,5%)</span></div></div>
-<div class="legend-row flex items-center gap-2 p-2 rounded-xl" data-k="belum" data-val="58" data-label="Belum Bersertipikat" data-pct="29.0%">
-  <span class="w-3 h-3 rounded-full shrink-0" style="background:#f59e0b"></span><div class="text-[11px] leading-tight"><span class="text-slate-500 block">Belum Bersertipikat</span><b class="text-slate-900 text-xs">58 Subjek</b> <span class="text-slate-500">(29,0%)</span></div></div>
-</div>
-                    <p class="text-[10px] text-slate-500 mt-2 px-1"><b class="text-brand-700">Redistribusi Tanah total: 99 Subjek (49,5%)</b> • Belum bersertipikat: dalam proses legalisasi • PTSL: pendaftaran sistematis</p>
+                    <div class="grid grid-cols-2 gap-1 mt-3">
+                        <div class="legend-row flex items-center gap-2 p-2 rounded-xl" data-k="r24" data-val="82"
+                            data-label="Redistribusi 2024" data-pct="41.0%">
+                            <span class="w-3 h-3 rounded-full shrink-0" style="background:#0265d2"></span>
+                            <div class="text-[11px] leading-tight"><span class="text-slate-500 block">Redistribusi
+                                    2024</span><b class="text-slate-900 text-xs">82 Subjek</b> <span
+                                    class="text-slate-500">(41,0%)</span></div>
+                        </div>
+                        <div class="legend-row flex items-center gap-2 p-2 rounded-xl" data-k="r25" data-val="17"
+                            data-label="Redistribusi 2025" data-pct="8.5%">
+                            <span class="w-3 h-3 rounded-full shrink-0" style="background:#38bdf8"></span>
+                            <div class="text-[11px] leading-tight"><span class="text-slate-500 block">Redistribusi
+                                    2025</span><b class="text-slate-900 text-xs">17 Subjek</b> <span
+                                    class="text-slate-500">(8,5%)</span></div>
+                        </div>
+                        <div class="legend-row flex items-center gap-2 p-2 rounded-xl" data-k="ptsl" data-val="43"
+                            data-label="PTSL (2022)" data-pct="21.5%">
+                            <span class="w-3 h-3 rounded-full shrink-0" style="background:#06b6d4"></span>
+                            <div class="text-[11px] leading-tight"><span class="text-slate-500 block">PTSL
+                                    (2022)</span><b class="text-slate-900 text-xs">43 Subjek</b> <span
+                                    class="text-slate-500">(21,5%)</span></div>
+                        </div>
+                        <div class="legend-row flex items-center gap-2 p-2 rounded-xl" data-k="belum" data-val="58"
+                            data-label="Belum Bersertipikat" data-pct="29.0%">
+                            <span class="w-3 h-3 rounded-full shrink-0" style="background:#f59e0b"></span>
+                            <div class="text-[11px] leading-tight"><span class="text-slate-500 block">Belum
+                                    Bersertipikat</span><b class="text-slate-900 text-xs">58 Subjek</b> <span
+                                    class="text-slate-500">(29,0%)</span></div>
+                        </div>
+                    </div>
+                    <p class="text-[10px] text-slate-500 mt-2 px-1"><b class="text-brand-700">Redistribusi Tanah total:
+                            99 Subjek (49,5%)</b> • Belum bersertipikat: dalam proses legalisasi • PTSL: pendaftaran
+                        sistematis</p>
                 </div>
                 <div class="md:col-span-5 white-card p-5 rounded-2xl flex flex-col">
-                    <h3 class="text-xs font-bold text-slate-800 uppercase mb-1 flex items-center gap-1.5"><i class="ph-bold ph-arrows-out-cardinal text-brand-600"></i> Variasi Luasan Lahan</h3>
+                    <h3 class="text-xs font-bold text-slate-800 uppercase mb-1 flex items-center gap-1.5"><i
+                            class="ph-bold ph-arrows-out-cardinal text-brand-600"></i> Variasi Luasan Lahan</h3>
                     <p class="text-[10px] text-slate-400 mb-6">Skala logaritmik (m²)</p>
                     <div class="relative h-24 mx-2 mb-6">
-                        <div class="absolute top-0 bottom-0 border-l border-dashed border-slate-200" style="left:0.0%"><span class="absolute -bottom-5 -translate-x-1/2 text-[9px] text-slate-400 font-medium whitespace-nowrap">10</span></div><div class="absolute top-0 bottom-0 border-l border-dashed border-slate-200" style="left:25.0%"><span class="absolute -bottom-5 -translate-x-1/2 text-[9px] text-slate-400 font-medium whitespace-nowrap">100</span></div><div class="absolute top-0 bottom-0 border-l border-dashed border-slate-200" style="left:50.0%"><span class="absolute -bottom-5 -translate-x-1/2 text-[9px] text-slate-400 font-medium whitespace-nowrap">1.000</span></div><div class="absolute top-0 bottom-0 border-l border-dashed border-slate-200" style="left:75.0%"><span class="absolute -bottom-5 -translate-x-1/2 text-[9px] text-slate-400 font-medium whitespace-nowrap">10.000</span></div><div class="absolute top-0 bottom-0 border-l border-dashed border-slate-200" style="left:100.0%"><span class="absolute -bottom-5 -translate-x-1/2 text-[9px] text-slate-400 font-medium whitespace-nowrap">100.000</span></div>
-                        <div class="absolute left-0 right-0 top-3 h-6"><div class="bar-grow absolute h-6 rounded-full bg-gradient-to-r from-slate-400 to-slate-500 shadow" style="left:21.4%;width:28.8%;--d:.3s"></div></div>
-                        <div class="absolute left-0 right-0 top-14 h-6"><div class="bar-grow absolute h-6 rounded-full bg-gradient-to-r from-brand-600 to-cyan-500 shadow-md shadow-brand-500/30" style="left:81.3%;width:5.0%;--d:.5s"><div class="shimmer absolute inset-0 rounded-full"></div></div></div>
+                        <div class="absolute top-0 bottom-0 border-l border-dashed border-slate-200" style="left:0.0%">
+                            <span
+                                class="absolute -bottom-5 -translate-x-1/2 text-[9px] text-slate-400 font-medium whitespace-nowrap">10</span>
+                        </div>
+                        <div class="absolute top-0 bottom-0 border-l border-dashed border-slate-200" style="left:25.0%">
+                            <span
+                                class="absolute -bottom-5 -translate-x-1/2 text-[9px] text-slate-400 font-medium whitespace-nowrap">100</span>
+                        </div>
+                        <div class="absolute top-0 bottom-0 border-l border-dashed border-slate-200" style="left:50.0%">
+                            <span
+                                class="absolute -bottom-5 -translate-x-1/2 text-[9px] text-slate-400 font-medium whitespace-nowrap">1.000</span>
+                        </div>
+                        <div class="absolute top-0 bottom-0 border-l border-dashed border-slate-200" style="left:75.0%">
+                            <span
+                                class="absolute -bottom-5 -translate-x-1/2 text-[9px] text-slate-400 font-medium whitespace-nowrap">10.000</span>
+                        </div>
+                        <div class="absolute top-0 bottom-0 border-l border-dashed border-slate-200"
+                            style="left:100.0%"><span
+                                class="absolute -bottom-5 -translate-x-1/2 text-[9px] text-slate-400 font-medium whitespace-nowrap">100.000</span>
+                        </div>
+                        <div class="absolute left-0 right-0 top-3 h-6">
+                            <div class="bar-grow absolute h-6 rounded-full bg-gradient-to-r from-slate-400 to-slate-500 shadow"
+                                style="left:21.4%;width:28.8%;--d:.3s"></div>
+                        </div>
+                        <div class="absolute left-0 right-0 top-14 h-6">
+                            <div class="bar-grow absolute h-6 rounded-full bg-gradient-to-r from-brand-600 to-cyan-500 shadow-md shadow-brand-500/30"
+                                style="left:81.3%;width:5.0%;--d:.5s">
+                                <div class="shimmer absolute inset-0 rounded-full"></div>
+                            </div>
+                        </div>
                     </div>
                     <div class="space-y-2 mt-auto">
-                        <div class="pop-in p-2.5 bg-slate-50 rounded-xl border border-slate-200 flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-slate-500"></span><div><span class="text-[10px] text-slate-500 block">Pemukiman / Skala Kecil</span><b class="text-xs text-slate-900">72 m² – 1.024 m²</b></div></div>
-                        <div class="pop-in p-2.5 bg-brand-50/60 rounded-xl border border-brand-200 flex items-center gap-2" style="--d:.8s"><span class="w-2.5 h-2.5 rounded-full bg-brand-600"></span><div><span class="text-[10px] text-brand-700 block">Tambak Skala Besar</span><b class="text-xs text-brand-600">17.820 – 28.360 m² <span class="font-normal text-slate-600">(1,78 – 2,83 Ha)</span></b></div></div>
+                        <div
+                            class="pop-in p-2.5 bg-slate-50 rounded-xl border border-slate-200 flex items-center gap-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-slate-500"></span>
+                            <div><span class="text-[10px] text-slate-500 block">Pemukiman / Skala Kecil</span><b
+                                    class="text-xs text-slate-900">72 m² – 1.024 m²</b></div>
+                        </div>
+                        <div class="pop-in p-2.5 bg-brand-50/60 rounded-xl border border-brand-200 flex items-center gap-2"
+                            style="--d:.8s"><span class="w-2.5 h-2.5 rounded-full bg-brand-600"></span>
+                            <div><span class="text-[10px] text-brand-700 block">Tambak Skala Besar</span><b
+                                    class="text-xs text-brand-600">17.820 – 28.360 m² <span
+                                        class="font-normal text-slate-600">(1,78 – 2,83 Ha)</span></b></div>
+                        </div>
                     </div>
-                    <p class="text-[10px] text-slate-500 italic mt-2 text-center">*Luasan bervariasi tergantung kepemilikan subjek RA.</p>
+                    <p class="text-[10px] text-slate-500 italic mt-2 text-center">*Luasan bervariasi tergantung
+                        kepemilikan subjek RA.</p>
                 </div>
             </div>
         </section>
@@ -366,8 +656,11 @@
         <!-- SLIDE 6: KONDISI KELOMPOK USAHA -->
         <section class="slide flex-col justify-center max-w-4xl mx-auto w-full">
             <div class="mb-6">
-                <span class="text-xs font-bold text-brand-600 uppercase tracking-widest bg-brand-50 px-3 py-1 rounded-md border border-brand-100">Topik 1 • Slide 6</span>
-                <h2 class="text-2xl md:text-4xl font-extrabold text-slate-900 mt-2">Kondisi & Keberadaan Kelompok Usaha</h2>
+                <span
+                    class="text-xs font-bold text-brand-600 uppercase tracking-widest bg-brand-50 px-3 py-1 rounded-md border border-brand-100">Topik
+                    1 • Slide 6</span>
+                <h2 class="text-2xl md:text-4xl font-extrabold text-slate-900 mt-2">Kondisi & Keberadaan Kelompok Usaha
+                </h2>
                 <p class="text-xs font-medium text-slate-500 mt-1">Sumber: Tabel Asesmen Data Subjek RA - Kambunong</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -377,7 +670,8 @@
                     </div>
                     <h3 class="text-lg font-bold text-slate-900 mb-2">Status Kelembagaan Saat Ini</h3>
                     <p class="text-sm text-slate-600 leading-relaxed">
-                        Sebagian besar Subjek RA <strong class="text-amber-600 bg-amber-50 px-1.5 py-0.5 rounded">belum teridentifikasi / belum terdaftar secara resmi</strong> dalam kelompok usaha.
+                        Sebagian besar Subjek RA <strong class="text-amber-600 bg-amber-50 px-1.5 py-0.5 rounded">belum
+                            teridentifikasi / belum terdaftar secara resmi</strong> dalam kelompok usaha.
                     </p>
                 </div>
                 <div class="white-card p-6 rounded-2xl border-l-4 border-brand-600">
@@ -386,7 +680,9 @@
                     </div>
                     <h3 class="text-lg font-bold text-slate-900 mb-2">Kebutuhan Intervensi</h3>
                     <p class="text-sm text-slate-600 leading-relaxed">
-                        Usaha masih berjalan mandiri/perorangan. Diperlukan <strong class="text-brand-600 bg-brand-50 px-1.5 py-0.5 rounded">fasilitasi pembentukan kelompok usaha baru</strong> atau penggabungan ke kelompok yang sudah ada.
+                        Usaha masih berjalan mandiri/perorangan. Diperlukan <strong
+                            class="text-brand-600 bg-brand-50 px-1.5 py-0.5 rounded">fasilitasi pembentukan kelompok
+                            usaha baru</strong> atau penggabungan ke kelompok yang sudah ada.
                     </p>
                 </div>
             </div>
@@ -395,26 +691,33 @@
         <!-- SLIDE 7: RIWAYAT BANTUAN / PENDAMPINGAN -->
         <section class="slide flex-col justify-center max-w-4xl mx-auto w-full">
             <div class="mb-6">
-                <span class="text-xs font-bold text-brand-600 uppercase tracking-widest bg-brand-50 px-3 py-1 rounded-md border border-brand-100">Topik 1 • Slide 7</span>
+                <span
+                    class="text-xs font-bold text-brand-600 uppercase tracking-widest bg-brand-50 px-3 py-1 rounded-md border border-brand-100">Topik
+                    1 • Slide 7</span>
                 <h2 class="text-2xl md:text-4xl font-extrabold text-slate-900 mt-2">Riwayat Bantuan & Keberlanjutan</h2>
                 <p class="text-xs font-medium text-slate-500 mt-1">Sumber: Evaluasi Fasilitasi Pendampingan Usaha</p>
             </div>
             <div class="space-y-4">
                 <div class="white-card p-6 rounded-2xl flex items-start gap-4 border-l-4 border-blue-500">
-                    <div class="p-3 bg-blue-50 text-blue-600 rounded-xl shrink-0 border border-blue-100"><i class="ph-bold ph-clock-counter-clockwise text-2xl"></i></div>
+                    <div class="p-3 bg-blue-50 text-blue-600 rounded-xl shrink-0 border border-blue-100"><i
+                            class="ph-bold ph-clock-counter-clockwise text-2xl"></i></div>
                     <div>
                         <h3 class="text-lg font-bold text-slate-900 mb-1">Riwayat Program Sebelumnya</h3>
                         <p class="text-sm text-slate-600 leading-relaxed">
-                            Bantuan lintas sektor periode sebelumnya masih bersifat terbatas dan berfokus utama pada program legalisasi aset pertanahan (Redistribusi Tanah & PTSL).
+                            Bantuan lintas sektor periode sebelumnya masih bersifat terbatas dan berfokus utama pada
+                            program legalisasi aset pertanahan (Redistribusi Tanah & PTSL).
                         </p>
                     </div>
                 </div>
                 <div class="white-card p-6 rounded-2xl flex items-start gap-4 border-l-4 border-brand-600">
-                    <div class="p-3 bg-brand-50 text-brand-600 rounded-xl shrink-0 border border-brand-200"><i class="ph-bold ph-arrows-merge text-2xl"></i></div>
+                    <div class="p-3 bg-brand-50 text-brand-600 rounded-xl shrink-0 border border-brand-200"><i
+                            class="ph-bold ph-arrows-merge text-2xl"></i></div>
                     <div>
                         <h3 class="text-lg font-bold text-slate-900 mb-1">Strategi Keberlanjutan (Fase 2)</h3>
                         <p class="text-sm text-slate-600 leading-relaxed">
-                            Diperlukan penguatan bantuan usaha secara berkelanjutan melalui <strong class="text-brand-600 bg-brand-50 px-1.5 py-0.5 rounded">integrasi program pendampingan usaha lintas dinas</strong> secara terpadu.
+                            Diperlukan penguatan bantuan usaha secara berkelanjutan melalui <strong
+                                class="text-brand-600 bg-brand-50 px-1.5 py-0.5 rounded">integrasi program pendampingan
+                                usaha lintas dinas</strong> secara terpadu.
                         </p>
                     </div>
                 </div>
@@ -424,27 +727,36 @@
         <!-- SLIDE 8: KENDALA PENGEMBANGAN USAHA -->
         <section class="slide flex-col justify-center max-w-4xl mx-auto w-full">
             <div class="mb-6">
-                <span class="text-xs font-bold text-brand-600 uppercase tracking-widest bg-brand-50 px-3 py-1 rounded-md border border-brand-100">Topik 1 • Slide 8</span>
-                <h2 class="text-2xl md:text-4xl font-extrabold text-slate-900 mt-2">Kendala Pengembangan & Pemasaran</h2>
+                <span
+                    class="text-xs font-bold text-brand-600 uppercase tracking-widest bg-brand-50 px-3 py-1 rounded-md border border-brand-100">Topik
+                    1 • Slide 8</span>
+                <h2 class="text-2xl md:text-4xl font-extrabold text-slate-900 mt-2">Kendala Pengembangan & Pemasaran
+                </h2>
                 <p class="text-xs font-medium text-slate-500 mt-1">Identifikasi Hambatan Utama Sektor Kelautan</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div class="white-card p-5 rounded-2xl border-t-4 border-amber-500">
-                    <h3 class="text-base font-bold text-amber-600 mb-2 flex items-center gap-2"><i class="ph-bold ph-cloud-rain"></i> Tambak (Udang/Bandeng)</h3>
+                    <h3 class="text-base font-bold text-amber-600 mb-2 flex items-center gap-2"><i
+                            class="ph-bold ph-cloud-rain"></i> Tambak (Udang/Bandeng)</h3>
                     <p class="text-xs text-slate-600 leading-relaxed">
-                        Cuaca ekstrem tidak menentu menyebabkan bibit mudah stres & mati, serta perubahan pH air tambak yang mendadak.
+                        Cuaca ekstrem tidak menentu menyebabkan bibit mudah stres & mati, serta perubahan pH air tambak
+                        yang mendadak.
                     </p>
                 </div>
                 <div class="white-card p-5 rounded-2xl border-t-4 border-cyan-500">
-                    <h3 class="text-base font-bold text-cyan-600 mb-2 flex items-center gap-2"><i class="ph-bold ph-bug"></i> Rumput Laut</h3>
+                    <h3 class="text-base font-bold text-cyan-600 mb-2 flex items-center gap-2"><i
+                            class="ph-bold ph-bug"></i> Rumput Laut</h3>
                     <p class="text-xs text-slate-600 leading-relaxed">
-                        Gangguan hama laut (penyu), serangan penyakit titik putih/ice-ice, serta penumpukan sampah laut di area tanam.
+                        Gangguan hama laut (penyu), serangan penyakit titik putih/ice-ice, serta penumpukan sampah laut
+                        di area tanam.
                     </p>
                 </div>
                 <div class="white-card p-5 rounded-2xl border-t-4 border-blue-600">
-                    <h3 class="text-base font-bold text-blue-600 mb-2 flex items-center gap-2"><i class="ph-bold ph-waves"></i> Nelayan Tangkap</h3>
+                    <h3 class="text-base font-bold text-blue-600 mb-2 flex items-center gap-2"><i
+                            class="ph-bold ph-waves"></i> Nelayan Tangkap</h3>
                     <p class="text-xs text-slate-600 leading-relaxed">
-                        Gelombang tinggi, keterbatasan BBM, serta minimnya sarana & alat tangkap modern penunjang operasi laut.
+                        Gelombang tinggi, keterbatasan BBM, serta minimnya sarana & alat tangkap modern penunjang
+                        operasi laut.
                     </p>
                 </div>
             </div>
@@ -453,25 +765,36 @@
         <!-- SLIDE 9: PENDAMPINGAN YANG DIHARAPKAN -->
         <section class="slide flex-col justify-center max-w-4xl mx-auto w-full">
             <div class="mb-6">
-                <span class="text-xs font-bold text-brand-600 uppercase tracking-widest bg-brand-50 px-3 py-1 rounded-md border border-brand-100">Topik 1 • Slide 9</span>
-                <h2 class="text-2xl md:text-4xl font-extrabold text-slate-900 mt-2">Dukungan Pendampingan Diharapkan</h2>
+                <span
+                    class="text-xs font-bold text-brand-600 uppercase tracking-widest bg-brand-50 px-3 py-1 rounded-md border border-brand-100">Topik
+                    1 • Slide 9</span>
+                <h2 class="text-2xl md:text-4xl font-extrabold text-slate-900 mt-2">Dukungan Pendampingan Diharapkan
+                </h2>
                 <p class="text-xs font-medium text-slate-500 mt-1">Aspirasi Langsung Subjek RA Desa Kambunong</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div class="white-card p-6 rounded-2xl border-l-4 border-brand-600">
-                    <h3 class="text-lg font-bold text-slate-900 mb-3 flex items-center gap-2"><i class="ph-bold ph-fish text-brand-600"></i> Subjek Perikanan Budidaya</h3>
+                    <h3 class="text-lg font-bold text-slate-900 mb-3 flex items-center gap-2"><i
+                            class="ph-bold ph-fish text-brand-600"></i> Subjek Perikanan Budidaya</h3>
                     <ul class="space-y-2 text-sm text-slate-600">
-                        <li class="flex items-center gap-2"><i class="ph-bold ph-check text-brand-600"></i> Bantuan bibit unggul (udang/bandeng/rumput laut)</li>
-                        <li class="flex items-center gap-2"><i class="ph-bold ph-check text-brand-600"></i> Pupuk & pakan berkualitas tinggi</li>
-                        <li class="flex items-center gap-2"><i class="ph-bold ph-check text-brand-600"></i> Peralatan teknis penunjang budidaya</li>
+                        <li class="flex items-center gap-2"><i class="ph-bold ph-check text-brand-600"></i> Bantuan
+                            bibit unggul (udang/bandeng/rumput laut)</li>
+                        <li class="flex items-center gap-2"><i class="ph-bold ph-check text-brand-600"></i> Pupuk &
+                            pakan berkualitas tinggi</li>
+                        <li class="flex items-center gap-2"><i class="ph-bold ph-check text-brand-600"></i> Peralatan
+                            teknis penunjang budidaya</li>
                     </ul>
                 </div>
                 <div class="white-card p-6 rounded-2xl border-l-4 border-cyan-500">
-                    <h3 class="text-lg font-bold text-slate-900 mb-3 flex items-center gap-2"><i class="ph-bold ph-boat text-cyan-600"></i> Subjek Perikanan Tangkap</h3>
+                    <h3 class="text-lg font-bold text-slate-900 mb-3 flex items-center gap-2"><i
+                            class="ph-bold ph-boat text-cyan-600"></i> Subjek Perikanan Tangkap</h3>
                     <ul class="space-y-2 text-sm text-slate-600">
-                        <li class="flex items-center gap-2"><i class="ph-bold ph-check text-cyan-600"></i> Alat tangkap modern penunjang nelayan</li>
-                        <li class="flex items-center gap-2"><i class="ph-bold ph-check text-cyan-600"></i> Bibit & sarana rumput laut</li>
-                        <li class="flex items-center gap-2"><i class="ph-bold ph-check text-cyan-600"></i> Akses permodalan usaha nelayan</li>
+                        <li class="flex items-center gap-2"><i class="ph-bold ph-check text-cyan-600"></i> Alat tangkap
+                            modern penunjang nelayan</li>
+                        <li class="flex items-center gap-2"><i class="ph-bold ph-check text-cyan-600"></i> Bibit &
+                            sarana rumput laut</li>
+                        <li class="flex items-center gap-2"><i class="ph-bold ph-check text-cyan-600"></i> Akses
+                            permodalan usaha nelayan</li>
                     </ul>
                 </div>
             </div>
@@ -480,53 +803,109 @@
         <!-- SLIDE 10: PENDAPATAN AWAL SUBJEK RA (COLUMN CHART + KPI) -->
         <section class="slide flex-col justify-center max-w-4xl mx-auto w-full">
             <div class="mb-4">
-                <span class="text-xs font-bold text-brand-600 uppercase tracking-widest bg-brand-50 px-3 py-1 rounded-md border border-brand-100">Topik 1 • Slide 10</span>
-                <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 mt-2">Profil Pendapatan Awal Subjek RA (Fase 1)</h2>
-                <p class="text-xs font-medium text-slate-500 mt-1">Rincian Angka Pasti Pendapatan Baseline Ekonomi (per bulan)</p>
+                <span
+                    class="text-xs font-bold text-brand-600 uppercase tracking-widest bg-brand-50 px-3 py-1 rounded-md border border-brand-100">Topik
+                    1 • Slide 10</span>
+                <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 mt-2">Profil Pendapatan Awal Subjek RA
+                    (Fase 1)</h2>
+                <p class="text-xs font-medium text-slate-500 mt-1">Rincian Angka Pasti Pendapatan Baseline Ekonomi (per
+                    bulan)</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-12 gap-5">
                 <div class="md:col-span-5 space-y-2.5">
                     <div class="white-card p-4 rounded-xl border-l-4 border-brand-600">
                         <span class="text-[10px] text-slate-500 uppercase font-bold block">Kategori Dominan</span>
-                        <div class="flex justify-between items-end"><strong class="text-slate-900 text-base">Rp 3.000.000</strong><span class="text-xs font-bold bg-brand-50 text-brand-700 px-2 py-0.5 rounded border border-brand-200">107 Subjek (53,5%)</span></div>
+                        <div class="flex justify-between items-end"><strong class="text-slate-900 text-base">Rp
+                                3.000.000</strong><span
+                                class="text-xs font-bold bg-brand-50 text-brand-700 px-2 py-0.5 rounded border border-brand-200">107
+                                Subjek (53,5%)</span></div>
                     </div>
                     <div class="white-card p-4 rounded-xl border-l-4 border-cyan-500">
                         <span class="text-[10px] text-slate-500 uppercase font-bold block">Kategori Menengah</span>
-                        <div class="flex justify-between items-end"><strong class="text-slate-900 text-base">Rp 2.000.000</strong><span class="text-xs font-bold bg-cyan-50 text-cyan-700 px-2 py-0.5 rounded border border-cyan-200">90 Subjek (45,0%)</span></div>
+                        <div class="flex justify-between items-end"><strong class="text-slate-900 text-base">Rp
+                                2.000.000</strong><span
+                                class="text-xs font-bold bg-cyan-50 text-cyan-700 px-2 py-0.5 rounded border border-cyan-200">90
+                                Subjek (45,0%)</span></div>
                     </div>
                     <div class="grid grid-cols-2 gap-2.5">
-                        <div class="white-card p-3 rounded-xl border-l-4 border-amber-500"><span class="text-[10px] text-slate-500 block">Rp 1.000.000</span><strong class="text-slate-900 text-xs">2 Subjek (1,0%)</strong></div>
-                        <div class="white-card p-3 rounded-xl border-l-4 border-purple-500"><span class="text-[10px] text-slate-500 block">Rp 3.200.000</span><strong class="text-slate-900 text-xs">1 Subjek (0,5%)</strong></div>
+                        <div class="white-card p-3 rounded-xl border-l-4 border-amber-500"><span
+                                class="text-[10px] text-slate-500 block">Rp 1.000.000</span><strong
+                                class="text-slate-900 text-xs">2 Subjek (1,0%)</strong></div>
+                        <div class="white-card p-3 rounded-xl border-l-4 border-purple-500"><span
+                                class="text-[10px] text-slate-500 block">Rp 3.200.000</span><strong
+                                class="text-slate-900 text-xs">1 Subjek (0,5%)</strong></div>
                     </div>
                     <div class="grid grid-cols-2 gap-2.5">
-                        <div class="rounded-xl p-3 text-white bg-gradient-to-br from-brand-600 to-cyan-500 shadow-md shadow-brand-500/20"><span class="text-[10px] opacity-80 block">Rata-rata tertimbang*</span><strong class="text-sm">± Rp 2,53 jt</strong></div>
-                        <div class="rounded-xl p-3 text-white bg-gradient-to-br from-brand-700 to-brand-500 shadow-md shadow-brand-500/20"><span class="text-[10px] opacity-80 block">Median*</span><strong class="text-sm">Rp 3,0 jt</strong></div>
+                        <div
+                            class="rounded-xl p-3 text-white bg-gradient-to-br from-brand-600 to-cyan-500 shadow-md shadow-brand-500/20">
+                            <span class="text-[10px] opacity-80 block">Rata-rata tertimbang*</span><strong
+                                class="text-sm">± Rp 2,53 jt</strong></div>
+                        <div
+                            class="rounded-xl p-3 text-white bg-gradient-to-br from-brand-700 to-brand-500 shadow-md shadow-brand-500/20">
+                            <span class="text-[10px] opacity-80 block">Median*</span><strong class="text-sm">Rp 3,0
+                                jt</strong></div>
                     </div>
                     <p class="text-[10px] text-slate-500 italic">*Dihitung dari seluruh 200 subjek.</p>
                 </div>
                 <div class="md:col-span-7 white-card p-5 rounded-2xl">
                     <div class="flex justify-between items-center mb-4">
-                        <h3 class="text-xs font-bold text-slate-700 uppercase flex items-center gap-1.5"><i class="ph-bold ph-chart-bar text-brand-600"></i> Distribusi Pendapatan</h3>
+                        <h3 class="text-xs font-bold text-slate-700 uppercase flex items-center gap-1.5"><i
+                                class="ph-bold ph-chart-bar text-brand-600"></i> Distribusi Pendapatan</h3>
                         <span class="text-[10px] text-slate-500 bg-slate-100 px-2 py-0.5 rounded">Jumlah Subjek</span>
                     </div>
-                    <div class="relative h-52 mb-1 px-1"><div class="absolute inset-x-0 top-0 bottom-[44px]"><div class="absolute left-0 right-0 border-t border-dashed border-slate-200" style="bottom:25%"></div><div class="absolute left-0 right-0 border-t border-dashed border-slate-200" style="bottom:50%"></div><div class="absolute left-0 right-0 border-t border-dashed border-slate-200" style="bottom:75%"></div><div class="absolute left-0 right-0 border-t border-dashed border-slate-200" style="bottom:100%"></div></div>
-                        <div class="relative flex items-end gap-3 h-full"><div class="col-item flex-1 flex flex-col items-center justify-end h-full min-w-0">
-  <div class="pop-in text-center mb-1.5" style="--d:0.7s"><b class="text-sm text-slate-900 block leading-none">2</b><span class="text-[10px] text-slate-500">1,0%</span></div>
-  <div class="col-bar col-grow w-full max-w-[64px] rounded-t-xl relative overflow-hidden transition" style="height:4.0%;background:linear-gradient(180deg,#fbbf24,#f59e0b);--d:0.15s"><div class="shimmer absolute inset-0"></div></div>
-  <div class="mt-2 text-[11px] font-semibold text-slate-700 text-center">Rp 1,0 jt</div></div>
-<div class="col-item flex-1 flex flex-col items-center justify-end h-full min-w-0">
-  <div class="pop-in text-center mb-1.5" style="--d:0.82s"><b class="text-sm text-slate-900 block leading-none">90</b><span class="text-[10px] text-slate-500">45,0%</span></div>
-  <div class="col-bar col-grow w-full max-w-[64px] rounded-t-xl relative overflow-hidden transition" style="height:84.1%;background:linear-gradient(180deg,#67e8f9,#06b6d4);--d:0.27s"><div class="shimmer absolute inset-0"></div></div>
-  <div class="mt-2 text-[11px] font-semibold text-slate-700 text-center">Rp 2,0 jt</div></div>
-<div class="col-item flex-1 flex flex-col items-center justify-end h-full min-w-0">
-  <div class="pop-in text-center mb-1.5" style="--d:0.94s"><b class="text-sm text-slate-900 block leading-none">107</b><span class="text-[10px] text-slate-500">53,5%</span></div>
-  <div class="col-bar col-grow w-full max-w-[64px] rounded-t-xl relative overflow-hidden transition" style="height:100.0%;background:linear-gradient(180deg,#38bdf8,#0265d2);--d:0.39s"><div class="shimmer absolute inset-0"></div></div>
-  <div class="mt-2 text-[11px] font-semibold text-slate-700 text-center">Rp 3,0 jt</div></div>
-<div class="col-item flex-1 flex flex-col items-center justify-end h-full min-w-0">
-  <div class="pop-in text-center mb-1.5" style="--d:1.06s"><b class="text-sm text-slate-900 block leading-none">1</b><span class="text-[10px] text-slate-500">0,5%</span></div>
-  <div class="col-bar col-grow w-full max-w-[64px] rounded-t-xl relative overflow-hidden transition" style="height:4.0%;background:linear-gradient(180deg,#c084fc,#a855f7);--d:0.51s"><div class="shimmer absolute inset-0"></div></div>
-  <div class="mt-2 text-[11px] font-semibold text-slate-700 text-center">Rp 3,2 jt</div></div>
-</div>
+                    <div class="relative h-52 mb-1 px-1">
+                        <div class="absolute inset-x-0 top-0 bottom-[44px]">
+                            <div class="absolute left-0 right-0 border-t border-dashed border-slate-200"
+                                style="bottom:25%"></div>
+                            <div class="absolute left-0 right-0 border-t border-dashed border-slate-200"
+                                style="bottom:50%"></div>
+                            <div class="absolute left-0 right-0 border-t border-dashed border-slate-200"
+                                style="bottom:75%"></div>
+                            <div class="absolute left-0 right-0 border-t border-dashed border-slate-200"
+                                style="bottom:100%"></div>
+                        </div>
+                        <div class="relative flex items-end gap-3 h-full">
+                            <div class="col-item flex-1 flex flex-col items-center justify-end h-full min-w-0">
+                                <div class="pop-in text-center mb-1.5" style="--d:0.7s"><b
+                                        class="text-sm text-slate-900 block leading-none">2</b><span
+                                        class="text-[10px] text-slate-500">1,0%</span></div>
+                                <div class="col-bar col-grow w-full max-w-[64px] rounded-t-xl relative overflow-hidden transition"
+                                    style="height:4.0%;background:linear-gradient(180deg,#fbbf24,#f59e0b);--d:0.15s">
+                                    <div class="shimmer absolute inset-0"></div>
+                                </div>
+                                <div class="mt-2 text-[11px] font-semibold text-slate-700 text-center">Rp 1,0 jt</div>
+                            </div>
+                            <div class="col-item flex-1 flex flex-col items-center justify-end h-full min-w-0">
+                                <div class="pop-in text-center mb-1.5" style="--d:0.82s"><b
+                                        class="text-sm text-slate-900 block leading-none">90</b><span
+                                        class="text-[10px] text-slate-500">45,0%</span></div>
+                                <div class="col-bar col-grow w-full max-w-[64px] rounded-t-xl relative overflow-hidden transition"
+                                    style="height:84.1%;background:linear-gradient(180deg,#67e8f9,#06b6d4);--d:0.27s">
+                                    <div class="shimmer absolute inset-0"></div>
+                                </div>
+                                <div class="mt-2 text-[11px] font-semibold text-slate-700 text-center">Rp 2,0 jt</div>
+                            </div>
+                            <div class="col-item flex-1 flex flex-col items-center justify-end h-full min-w-0">
+                                <div class="pop-in text-center mb-1.5" style="--d:0.94s"><b
+                                        class="text-sm text-slate-900 block leading-none">107</b><span
+                                        class="text-[10px] text-slate-500">53,5%</span></div>
+                                <div class="col-bar col-grow w-full max-w-[64px] rounded-t-xl relative overflow-hidden transition"
+                                    style="height:100.0%;background:linear-gradient(180deg,#38bdf8,#0265d2);--d:0.39s">
+                                    <div class="shimmer absolute inset-0"></div>
+                                </div>
+                                <div class="mt-2 text-[11px] font-semibold text-slate-700 text-center">Rp 3,0 jt</div>
+                            </div>
+                            <div class="col-item flex-1 flex flex-col items-center justify-end h-full min-w-0">
+                                <div class="pop-in text-center mb-1.5" style="--d:1.06s"><b
+                                        class="text-sm text-slate-900 block leading-none">1</b><span
+                                        class="text-[10px] text-slate-500">0,5%</span></div>
+                                <div class="col-bar col-grow w-full max-w-[64px] rounded-t-xl relative overflow-hidden transition"
+                                    style="height:4.0%;background:linear-gradient(180deg,#c084fc,#a855f7);--d:0.51s">
+                                    <div class="shimmer absolute inset-0"></div>
+                                </div>
+                                <div class="mt-2 text-[11px] font-semibold text-slate-700 text-center">Rp 3,2 jt</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -535,7 +914,9 @@
         <!-- SLIDE 11: REKOMENDASI MODEL PEMBERDAYAAN -->
         <section class="slide flex-col justify-center max-w-4xl mx-auto w-full">
             <div class="mb-6">
-                <span class="text-xs font-bold text-brand-600 uppercase tracking-widest bg-brand-50 px-3 py-1 rounded-md border border-brand-100">Topik 1 • Slide 11</span>
+                <span
+                    class="text-xs font-bold text-brand-600 uppercase tracking-widest bg-brand-50 px-3 py-1 rounded-md border border-brand-100">Topik
+                    1 • Slide 11</span>
                 <h2 class="text-2xl md:text-4xl font-extrabold text-slate-900 mt-2">Rekomendasi Model Pemberdayaan</h2>
                 <p class="text-xs font-medium text-slate-500 mt-1">Sumber: Berita Acara Penyusunan Model Akses RA</p>
             </div>
@@ -545,14 +926,16 @@
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div class="white-card p-5 rounded-2xl flex items-center gap-4">
-                    <div class="p-3 bg-brand-50 text-brand-600 rounded-xl text-xl font-bold border border-brand-200">01</div>
+                    <div class="p-3 bg-brand-50 text-brand-600 rounded-xl text-xl font-bold border border-brand-200">01
+                    </div>
                     <div>
                         <h4 class="font-bold text-slate-900">Empang / Perikanan Budidaya</h4>
                         <p class="text-xs text-slate-500">Fokus optimalisasi tambak udang & bandeng</p>
                     </div>
                 </div>
                 <div class="white-card p-5 rounded-2xl flex items-center gap-4">
-                    <div class="p-3 bg-cyan-50 text-cyan-600 rounded-xl text-xl font-bold border border-cyan-200">02</div>
+                    <div class="p-3 bg-cyan-50 text-cyan-600 rounded-xl text-xl font-bold border border-cyan-200">02
+                    </div>
                     <div>
                         <h4 class="font-bold text-slate-900">Nelayan Tangkap</h4>
                         <p class="text-xs text-slate-500">Penguatan sarana pengolahan hasil tangkapan</p>
@@ -564,13 +947,18 @@
         <!-- SLIDE 12: RENCANA FASILITASI & STAKEHOLDER -->
         <section class="slide flex-col justify-center max-w-4xl mx-auto w-full">
             <div class="mb-6">
-                <span class="text-xs font-bold text-brand-600 uppercase tracking-widest bg-brand-50 px-3 py-1 rounded-md border border-brand-100">Topik 1 • Slide 12</span>
-                <h2 class="text-2xl md:text-4xl font-extrabold text-slate-900 mt-2">Rencana Fasilitasi Pendampingan Usaha</h2>
-                <p class="text-xs font-medium text-slate-500 mt-1">Pelaksana: Dinas Perikanan Kab. Mamuju Tengah & Kantor Pertanahan</p>
+                <span
+                    class="text-xs font-bold text-brand-600 uppercase tracking-widest bg-brand-50 px-3 py-1 rounded-md border border-brand-100">Topik
+                    1 • Slide 12</span>
+                <h2 class="text-2xl md:text-4xl font-extrabold text-slate-900 mt-2">Rencana Fasilitasi Pendampingan
+                    Usaha</h2>
+                <p class="text-xs font-medium text-slate-500 mt-1">Pelaksana: Dinas Perikanan Kab. Mamuju Tengah &
+                    Kantor Pertanahan</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div class="white-card p-6 rounded-2xl border-t-4 border-brand-600">
-                    <span class="text-xs text-brand-600 font-bold uppercase tracking-wider">Sektor Empang / Budidaya</span>
+                    <span class="text-xs text-brand-600 font-bold uppercase tracking-wider">Sektor Empang /
+                        Budidaya</span>
                     <h3 class="text-lg font-bold text-slate-900 mt-1 mb-3">Pelatihan Bandeng Tanpa Duri</h3>
                     <ul class="space-y-2 text-xs text-slate-600">
                         <li><strong class="text-slate-800">Pelaksana:</strong> Dinas Perikanan Mamuju Tengah</li>
@@ -593,12 +981,17 @@
         <!-- SLIDE 13: KERJA SAMA STAKEHOLDER TERBENTUK -->
         <section class="slide flex-col justify-center max-w-4xl mx-auto w-full">
             <div class="mb-6">
-                <span class="text-xs font-bold text-brand-600 uppercase tracking-widest bg-brand-50 px-3 py-1 rounded-md border border-brand-100">Topik 1 • Slide 13</span>
-                <h2 class="text-2xl md:text-4xl font-extrabold text-slate-900 mt-2">Kerja Sama Stakeholder Terbentuk</h2>
-                <p class="text-xs font-medium text-slate-500 mt-1">Berita Acara No: 475/BA-76.06.NT.01.04/VII/2024 (18 Juli 2024)</p>
+                <span
+                    class="text-xs font-bold text-brand-600 uppercase tracking-widest bg-brand-50 px-3 py-1 rounded-md border border-brand-100">Topik
+                    1 • Slide 13</span>
+                <h2 class="text-2xl md:text-4xl font-extrabold text-slate-900 mt-2">Kerja Sama Stakeholder Terbentuk
+                </h2>
+                <p class="text-xs font-medium text-slate-500 mt-1">Berita Acara No: 475/BA-76.06.NT.01.04/VII/2024 (18
+                    Juli 2024)</p>
             </div>
             <div class="white-card p-6 rounded-2xl">
-                <h3 class="text-xs font-bold text-brand-600 uppercase mb-4 tracking-wider">Pihak Terlibat & Penandatangan</h3>
+                <h3 class="text-xs font-bold text-brand-600 uppercase mb-4 tracking-wider">Pihak Terlibat &
+                    Penandatangan</h3>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs text-slate-700">
                     <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
                         <strong class="text-slate-900 block mb-1">Dinas Perikanan Kab. Mamuju Tengah</strong>
@@ -610,7 +1003,8 @@
                     </div>
                     <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
                         <strong class="text-slate-900 block mb-1">Kantor Pertanahan Kab. Mamuju Tengah</strong>
-                        <p class="text-slate-500">Rahman Yusuf, S.H. (Kakantah), Nurfuad Mudjid, S.H., A. Suci Febrianti M, S.H., Arman, S.E., Yairus, S.E.</p>
+                        <p class="text-slate-500">Rahman Yusuf, S.H. (Kakantah), Nurfuad Mudjid, S.H., A. Suci Febrianti
+                            M, S.H., Arman, S.E., Yairus, S.E.</p>
                     </div>
                 </div>
             </div>
@@ -619,32 +1013,306 @@
         <!-- SLIDE 14: KALENDER KERJA FS FASE 2 -->
         <section class="slide flex-col justify-center max-w-5xl mx-auto w-full">
             <div class="mb-4">
-                <span class="text-xs font-bold text-brand-600 uppercase tracking-widest bg-brand-50 px-3 py-1 rounded-md border border-brand-100">Topik 1 • Slide 14</span>
-                <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 mt-2">Kalender Kerja Pelaksanaan Kegiatan FS Fase 2</h2>
+                <span
+                    class="text-xs font-bold text-brand-600 uppercase tracking-widest bg-brand-50 px-3 py-1 rounded-md border border-brand-100">Topik
+                    1 • Slide 14</span>
+                <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 mt-2">Kalender Kerja Pelaksanaan Kegiatan
+                    FS Fase 2</h2>
                 <p class="text-xs font-medium text-slate-500 mt-1">Timeline Target November - Desember 2026</p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4"><div class="white-card p-4 rounded-2xl"><div class="flex items-center gap-2 border-b border-slate-200 pb-2 mb-3"><i class="ph-bold ph-calendar text-xl text-brand-600"></i><span class="font-bold text-slate-800 text-sm">November 2026</span></div><div class="grid grid-cols-8 gap-1 mb-1"><div></div><div class="text-[9px] font-bold text-center text-rose-400 uppercase">Min</div><div class="text-[9px] font-bold text-center text-slate-400 uppercase">Sen</div><div class="text-[9px] font-bold text-center text-slate-400 uppercase">Sel</div><div class="text-[9px] font-bold text-center text-slate-400 uppercase">Rab</div><div class="text-[9px] font-bold text-center text-slate-400 uppercase">Kam</div><div class="text-[9px] font-bold text-center text-slate-400 uppercase">Jum</div><div class="text-[9px] font-bold text-center text-slate-400 uppercase">Sab</div></div><div class="grid grid-cols-8 gap-1 mb-1 pop-in" style="--d:0.1s"><div class="rounded-md flex items-center justify-center text-[8px] font-extrabold text-white" style="background:#0265d2">W1</div><div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold" style="background:#0265d21f;color:#0265d2">1</div><div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold" style="background:#0265d21f;color:#0265d2">2</div><div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold" style="background:#0265d21f;color:#0265d2">3</div><div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold" style="background:#0265d21f;color:#0265d2">4</div><div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold" style="background:#0265d21f;color:#0265d2">5</div><div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold" style="background:#0265d21f;color:#0265d2">6</div><div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold" style="background:#0265d21f;color:#0265d2">7</div></div><div class="grid grid-cols-8 gap-1 mb-1 pop-in" style="--d:0.2s"><div class="rounded-md flex items-center justify-center text-[8px] font-extrabold text-white" style="background:#2563eb">W2</div><div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold" style="background:#2563eb1f;color:#2563eb">8</div><div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold" style="background:#2563eb1f;color:#2563eb">9</div><div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold" style="background:#2563eb1f;color:#2563eb">10</div><div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold" style="background:#2563eb1f;color:#2563eb">11</div><div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold" style="background:#2563eb1f;color:#2563eb">12</div><div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold" style="background:#2563eb1f;color:#2563eb">13</div><div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold" style="background:#2563eb1f;color:#2563eb">14</div></div><div class="grid grid-cols-8 gap-1 mb-1 pop-in" style="--d:0.30000000000000004s"><div class="rounded-md flex items-center justify-center text-[8px] font-extrabold text-white" style="background:#0891b2">W3</div><div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold" style="background:#0891b21f;color:#0891b2">15</div><div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold" style="background:#0891b21f;color:#0891b2">16</div><div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold" style="background:#0891b21f;color:#0891b2">17</div><div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold" style="background:#0891b21f;color:#0891b2">18</div><div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold" style="background:#0891b21f;color:#0891b2">19</div><div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold" style="background:#0891b21f;color:#0891b2">20</div><div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold" style="background:#0891b21f;color:#0891b2">21</div></div><div class="grid grid-cols-8 gap-1 mb-1 pop-in" style="--d:0.4s"><div class="rounded-md flex items-center justify-center text-[8px] font-extrabold text-white" style="background:#4f46e5">W4</div><div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold" style="background:#4f46e51f;color:#4f46e5">22</div><div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold" style="background:#4f46e51f;color:#4f46e5">23</div><div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold" style="background:#4f46e51f;color:#4f46e5">24</div><div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold" style="background:#4f46e51f;color:#4f46e5">25</div><div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold" style="background:#4f46e51f;color:#4f46e5">26</div><div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold" style="background:#4f46e51f;color:#4f46e5">27</div><div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold" style="background:#4f46e51f;color:#4f46e5">28</div></div><div class="grid grid-cols-8 gap-1 mb-1 pop-in" style="--d:0.5s"><div class="rounded-md flex items-center justify-center text-[8px] font-extrabold text-white" style="background:#0d9488">DW1</div><div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold" style="background:#0d94881f;color:#0d9488">29</div><div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold" style="background:#0d94881f;color:#0d9488">30</div><div></div><div></div><div></div><div></div><div></div></div></div><div class="white-card p-4 rounded-2xl"><div class="flex items-center gap-2 border-b border-slate-200 pb-2 mb-3"><i class="ph-bold ph-calendar-check text-xl text-brand-600"></i><span class="font-bold text-slate-800 text-sm">Desember 2026</span></div><div class="grid grid-cols-8 gap-1 mb-1"><div></div><div class="text-[9px] font-bold text-center text-rose-400 uppercase">Min</div><div class="text-[9px] font-bold text-center text-slate-400 uppercase">Sen</div><div class="text-[9px] font-bold text-center text-slate-400 uppercase">Sel</div><div class="text-[9px] font-bold text-center text-slate-400 uppercase">Rab</div><div class="text-[9px] font-bold text-center text-slate-400 uppercase">Kam</div><div class="text-[9px] font-bold text-center text-slate-400 uppercase">Jum</div><div class="text-[9px] font-bold text-center text-slate-400 uppercase">Sab</div></div><div class="grid grid-cols-8 gap-1 mb-1 pop-in" style="--d:0.1s"><div class="rounded-md flex items-center justify-center text-[8px] font-extrabold text-white" style="background:#0d9488">DW1</div><div></div><div></div><div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold" style="background:#0d94881f;color:#0d9488">1</div><div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold" style="background:#0d94881f;color:#0d9488">2</div><div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold" style="background:#0d94881f;color:#0d9488">3</div><div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold" style="background:#0d94881f;color:#0d9488">4</div><div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold" style="background:#0d94881f;color:#0d9488">5</div></div><div class="grid grid-cols-8 gap-1 mb-1 pop-in" style="--d:0.2s"><div class="rounded-md flex items-center justify-center text-[8px] font-extrabold text-white" style="background:#059669">DW2</div><div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold" style="background:#0596691f;color:#059669">6</div><div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold" style="background:#0596691f;color:#059669">7</div><div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold" style="background:#0596691f;color:#059669">8</div><div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold" style="background:#0596691f;color:#059669">9</div><div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold" style="background:#0596691f;color:#059669">10</div><div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold" style="background:#0596691f;color:#059669">11</div><div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold" style="background:#0596691f;color:#059669">12</div></div><div class="grid grid-cols-8 gap-1 mb-1 pop-in" style="--d:0.30000000000000004s"><div></div><div class="h-7 rounded-md flex items-center justify-center text-[11px] font-medium text-rose-400 bg-slate-50">13</div><div class="h-7 rounded-md flex items-center justify-center text-[11px] font-medium text-slate-400 bg-slate-50">14</div><div class="h-7 rounded-md flex items-center justify-center text-[11px] font-medium text-slate-400 bg-slate-50">15</div><div class="h-7 rounded-md flex items-center justify-center text-[11px] font-medium text-slate-400 bg-slate-50">16</div><div class="h-7 rounded-md flex items-center justify-center text-[11px] font-medium text-slate-400 bg-slate-50">17</div><div class="h-7 rounded-md flex items-center justify-center text-[11px] font-medium text-slate-400 bg-slate-50">18</div><div class="h-7 rounded-md flex items-center justify-center text-[11px] font-medium text-slate-400 bg-slate-50">19</div></div><div class="grid grid-cols-8 gap-1 mb-1 pop-in" style="--d:0.4s"><div></div><div class="h-7 rounded-md flex items-center justify-center text-[11px] font-medium text-rose-400 bg-slate-50">20</div><div class="h-7 rounded-md flex items-center justify-center text-[11px] font-medium text-slate-400 bg-slate-50">21</div><div class="h-7 rounded-md flex items-center justify-center text-[11px] font-medium text-slate-400 bg-slate-50">22</div><div class="h-7 rounded-md flex items-center justify-center text-[11px] font-medium text-slate-400 bg-slate-50">23</div><div class="h-7 rounded-md flex items-center justify-center text-[11px] font-medium text-slate-400 bg-slate-50">24</div><div class="h-7 rounded-md flex items-center justify-center text-[11px] font-medium text-slate-400 bg-slate-50">25</div><div class="h-7 rounded-md flex items-center justify-center text-[11px] font-medium text-slate-400 bg-slate-50">26</div></div><div class="grid grid-cols-8 gap-1 mb-1 pop-in" style="--d:0.5s"><div></div><div class="h-7 rounded-md flex items-center justify-center text-[11px] font-medium text-rose-400 bg-slate-50">27</div><div class="h-7 rounded-md flex items-center justify-center text-[11px] font-medium text-slate-400 bg-slate-50">28</div><div class="h-7 rounded-md flex items-center justify-center text-[11px] font-medium text-slate-400 bg-slate-50">29</div><div class="h-7 rounded-md flex items-center justify-center text-[11px] font-medium text-slate-400 bg-slate-50">30</div><div class="h-7 rounded-md flex items-center justify-center text-[11px] font-medium text-slate-400 bg-slate-50">31</div><div></div><div></div></div></div></div>
-            <div class="grid grid-cols-2 md:grid-cols-6 gap-2.5"><div class="white-card p-3 rounded-xl border-l-4" style="border-left-color:#0265d2"><span class="inline-block px-1.5 py-0.5 text-white font-bold text-[9px] rounded mb-1.5" style="background:#0265d2">NOV W1</span><h4 class="font-bold text-slate-900 text-[11px] leading-tight">Rapat Persiapan</h4><p class="text-[10px] font-semibold mt-0.5" style="color:#0265d2">Tahap Inisiasi</p><p class="text-[9px] text-slate-400 mt-0.5">1–7 Nov</p></div><div class="white-card p-3 rounded-xl border-l-4" style="border-left-color:#2563eb"><span class="inline-block px-1.5 py-0.5 text-white font-bold text-[9px] rounded mb-1.5" style="background:#2563eb">NOV W2</span><h4 class="font-bold text-slate-900 text-[11px] leading-tight">Perdin Kelompok</h4><p class="text-[10px] font-semibold mt-0.5" style="color:#2563eb">Fasilitasi Kelompok</p><p class="text-[9px] text-slate-400 mt-0.5">8–14 Nov</p></div><div class="white-card p-3 rounded-xl border-l-4" style="border-left-color:#0891b2"><span class="inline-block px-1.5 py-0.5 text-white font-bold text-[9px] rounded mb-1.5" style="background:#0891b2">NOV W3</span><h4 class="font-bold text-slate-900 text-[11px] leading-tight">Rapat Kerja Sama</h4><p class="text-[10px] font-semibold mt-0.5" style="color:#0891b2">Fasilitasi Mitra</p><p class="text-[9px] text-slate-400 mt-0.5">15–21 Nov</p></div><div class="white-card p-3 rounded-xl border-l-4" style="border-left-color:#4f46e5"><span class="inline-block px-1.5 py-0.5 text-white font-bold text-[9px] rounded mb-1.5" style="background:#4f46e5">NOV W4</span><h4 class="font-bold text-slate-900 text-[11px] leading-tight">Perdin Usaha</h4><p class="text-[10px] font-semibold mt-0.5" style="color:#4f46e5">Pendampingan</p><p class="text-[9px] text-slate-400 mt-0.5">22–28 Nov</p></div><div class="white-card p-3 rounded-xl border-l-4" style="border-left-color:#0d9488"><span class="inline-block px-1.5 py-0.5 text-white font-bold text-[9px] rounded mb-1.5" style="background:#0d9488">DES W1</span><h4 class="font-bold text-slate-900 text-[11px] leading-tight">Diseminasi</h4><p class="text-[10px] font-semibold mt-0.5" style="color:#0d9488">Akses RA</p><p class="text-[9px] text-slate-400 mt-0.5">29 Nov–5 Des</p></div><div class="white-card p-3 rounded-xl border-l-4" style="border-left-color:#059669"><span class="inline-block px-1.5 py-0.5 text-white font-bold text-[9px] rounded mb-1.5" style="background:#059669">DES W2</span><h4 class="font-bold text-slate-900 text-[11px] leading-tight">Penyusunan Laporan</h4><p class="text-[10px] font-semibold mt-0.5" style="color:#059669">Finalisasi</p><p class="text-[9px] text-slate-400 mt-0.5">6–12 Des</p></div></div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                <div class="white-card p-4 rounded-2xl">
+                    <div class="flex items-center gap-2 border-b border-slate-200 pb-2 mb-3"><i
+                            class="ph-bold ph-calendar text-xl text-brand-600"></i><span
+                            class="font-bold text-slate-800 text-sm">November 2026</span></div>
+                    <div class="grid grid-cols-8 gap-1 mb-1">
+                        <div></div>
+                        <div class="text-[9px] font-bold text-center text-rose-400 uppercase">Min</div>
+                        <div class="text-[9px] font-bold text-center text-slate-400 uppercase">Sen</div>
+                        <div class="text-[9px] font-bold text-center text-slate-400 uppercase">Sel</div>
+                        <div class="text-[9px] font-bold text-center text-slate-400 uppercase">Rab</div>
+                        <div class="text-[9px] font-bold text-center text-slate-400 uppercase">Kam</div>
+                        <div class="text-[9px] font-bold text-center text-slate-400 uppercase">Jum</div>
+                        <div class="text-[9px] font-bold text-center text-slate-400 uppercase">Sab</div>
+                    </div>
+                    <div class="grid grid-cols-8 gap-1 mb-1 pop-in" style="--d:0.1s">
+                        <div class="rounded-md flex items-center justify-center text-[8px] font-extrabold text-white"
+                            style="background:#0265d2">W1</div>
+                        <div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold"
+                            style="background:#0265d21f;color:#0265d2">1</div>
+                        <div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold"
+                            style="background:#0265d21f;color:#0265d2">2</div>
+                        <div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold"
+                            style="background:#0265d21f;color:#0265d2">3</div>
+                        <div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold"
+                            style="background:#0265d21f;color:#0265d2">4</div>
+                        <div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold"
+                            style="background:#0265d21f;color:#0265d2">5</div>
+                        <div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold"
+                            style="background:#0265d21f;color:#0265d2">6</div>
+                        <div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold"
+                            style="background:#0265d21f;color:#0265d2">7</div>
+                    </div>
+                    <div class="grid grid-cols-8 gap-1 mb-1 pop-in" style="--d:0.2s">
+                        <div class="rounded-md flex items-center justify-center text-[8px] font-extrabold text-white"
+                            style="background:#2563eb">W2</div>
+                        <div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold"
+                            style="background:#2563eb1f;color:#2563eb">8</div>
+                        <div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold"
+                            style="background:#2563eb1f;color:#2563eb">9</div>
+                        <div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold"
+                            style="background:#2563eb1f;color:#2563eb">10</div>
+                        <div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold"
+                            style="background:#2563eb1f;color:#2563eb">11</div>
+                        <div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold"
+                            style="background:#2563eb1f;color:#2563eb">12</div>
+                        <div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold"
+                            style="background:#2563eb1f;color:#2563eb">13</div>
+                        <div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold"
+                            style="background:#2563eb1f;color:#2563eb">14</div>
+                    </div>
+                    <div class="grid grid-cols-8 gap-1 mb-1 pop-in" style="--d:0.30000000000000004s">
+                        <div class="rounded-md flex items-center justify-center text-[8px] font-extrabold text-white"
+                            style="background:#0891b2">W3</div>
+                        <div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold"
+                            style="background:#0891b21f;color:#0891b2">15</div>
+                        <div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold"
+                            style="background:#0891b21f;color:#0891b2">16</div>
+                        <div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold"
+                            style="background:#0891b21f;color:#0891b2">17</div>
+                        <div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold"
+                            style="background:#0891b21f;color:#0891b2">18</div>
+                        <div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold"
+                            style="background:#0891b21f;color:#0891b2">19</div>
+                        <div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold"
+                            style="background:#0891b21f;color:#0891b2">20</div>
+                        <div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold"
+                            style="background:#0891b21f;color:#0891b2">21</div>
+                    </div>
+                    <div class="grid grid-cols-8 gap-1 mb-1 pop-in" style="--d:0.4s">
+                        <div class="rounded-md flex items-center justify-center text-[8px] font-extrabold text-white"
+                            style="background:#4f46e5">W4</div>
+                        <div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold"
+                            style="background:#4f46e51f;color:#4f46e5">22</div>
+                        <div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold"
+                            style="background:#4f46e51f;color:#4f46e5">23</div>
+                        <div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold"
+                            style="background:#4f46e51f;color:#4f46e5">24</div>
+                        <div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold"
+                            style="background:#4f46e51f;color:#4f46e5">25</div>
+                        <div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold"
+                            style="background:#4f46e51f;color:#4f46e5">26</div>
+                        <div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold"
+                            style="background:#4f46e51f;color:#4f46e5">27</div>
+                        <div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold"
+                            style="background:#4f46e51f;color:#4f46e5">28</div>
+                    </div>
+                    <div class="grid grid-cols-8 gap-1 mb-1 pop-in" style="--d:0.5s">
+                        <div class="rounded-md flex items-center justify-center text-[8px] font-extrabold text-white"
+                            style="background:#0d9488">DW1</div>
+                        <div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold"
+                            style="background:#0d94881f;color:#0d9488">29</div>
+                        <div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold"
+                            style="background:#0d94881f;color:#0d9488">30</div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+                <div class="white-card p-4 rounded-2xl">
+                    <div class="flex items-center gap-2 border-b border-slate-200 pb-2 mb-3"><i
+                            class="ph-bold ph-calendar-check text-xl text-brand-600"></i><span
+                            class="font-bold text-slate-800 text-sm">Desember 2026</span></div>
+                    <div class="grid grid-cols-8 gap-1 mb-1">
+                        <div></div>
+                        <div class="text-[9px] font-bold text-center text-rose-400 uppercase">Min</div>
+                        <div class="text-[9px] font-bold text-center text-slate-400 uppercase">Sen</div>
+                        <div class="text-[9px] font-bold text-center text-slate-400 uppercase">Sel</div>
+                        <div class="text-[9px] font-bold text-center text-slate-400 uppercase">Rab</div>
+                        <div class="text-[9px] font-bold text-center text-slate-400 uppercase">Kam</div>
+                        <div class="text-[9px] font-bold text-center text-slate-400 uppercase">Jum</div>
+                        <div class="text-[9px] font-bold text-center text-slate-400 uppercase">Sab</div>
+                    </div>
+                    <div class="grid grid-cols-8 gap-1 mb-1 pop-in" style="--d:0.1s">
+                        <div class="rounded-md flex items-center justify-center text-[8px] font-extrabold text-white"
+                            style="background:#0d9488">DW1</div>
+                        <div></div>
+                        <div></div>
+                        <div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold"
+                            style="background:#0d94881f;color:#0d9488">1</div>
+                        <div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold"
+                            style="background:#0d94881f;color:#0d9488">2</div>
+                        <div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold"
+                            style="background:#0d94881f;color:#0d9488">3</div>
+                        <div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold"
+                            style="background:#0d94881f;color:#0d9488">4</div>
+                        <div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold"
+                            style="background:#0d94881f;color:#0d9488">5</div>
+                    </div>
+                    <div class="grid grid-cols-8 gap-1 mb-1 pop-in" style="--d:0.2s">
+                        <div class="rounded-md flex items-center justify-center text-[8px] font-extrabold text-white"
+                            style="background:#059669">DW2</div>
+                        <div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold"
+                            style="background:#0596691f;color:#059669">6</div>
+                        <div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold"
+                            style="background:#0596691f;color:#059669">7</div>
+                        <div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold"
+                            style="background:#0596691f;color:#059669">8</div>
+                        <div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold"
+                            style="background:#0596691f;color:#059669">9</div>
+                        <div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold"
+                            style="background:#0596691f;color:#059669">10</div>
+                        <div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold"
+                            style="background:#0596691f;color:#059669">11</div>
+                        <div class="h-7 rounded-md flex items-center justify-center text-[11px] font-bold"
+                            style="background:#0596691f;color:#059669">12</div>
+                    </div>
+                    <div class="grid grid-cols-8 gap-1 mb-1 pop-in" style="--d:0.30000000000000004s">
+                        <div></div>
+                        <div
+                            class="h-7 rounded-md flex items-center justify-center text-[11px] font-medium text-rose-400 bg-slate-50">
+                            13</div>
+                        <div
+                            class="h-7 rounded-md flex items-center justify-center text-[11px] font-medium text-slate-400 bg-slate-50">
+                            14</div>
+                        <div
+                            class="h-7 rounded-md flex items-center justify-center text-[11px] font-medium text-slate-400 bg-slate-50">
+                            15</div>
+                        <div
+                            class="h-7 rounded-md flex items-center justify-center text-[11px] font-medium text-slate-400 bg-slate-50">
+                            16</div>
+                        <div
+                            class="h-7 rounded-md flex items-center justify-center text-[11px] font-medium text-slate-400 bg-slate-50">
+                            17</div>
+                        <div
+                            class="h-7 rounded-md flex items-center justify-center text-[11px] font-medium text-slate-400 bg-slate-50">
+                            18</div>
+                        <div
+                            class="h-7 rounded-md flex items-center justify-center text-[11px] font-medium text-slate-400 bg-slate-50">
+                            19</div>
+                    </div>
+                    <div class="grid grid-cols-8 gap-1 mb-1 pop-in" style="--d:0.4s">
+                        <div></div>
+                        <div
+                            class="h-7 rounded-md flex items-center justify-center text-[11px] font-medium text-rose-400 bg-slate-50">
+                            20</div>
+                        <div
+                            class="h-7 rounded-md flex items-center justify-center text-[11px] font-medium text-slate-400 bg-slate-50">
+                            21</div>
+                        <div
+                            class="h-7 rounded-md flex items-center justify-center text-[11px] font-medium text-slate-400 bg-slate-50">
+                            22</div>
+                        <div
+                            class="h-7 rounded-md flex items-center justify-center text-[11px] font-medium text-slate-400 bg-slate-50">
+                            23</div>
+                        <div
+                            class="h-7 rounded-md flex items-center justify-center text-[11px] font-medium text-slate-400 bg-slate-50">
+                            24</div>
+                        <div
+                            class="h-7 rounded-md flex items-center justify-center text-[11px] font-medium text-slate-400 bg-slate-50">
+                            25</div>
+                        <div
+                            class="h-7 rounded-md flex items-center justify-center text-[11px] font-medium text-slate-400 bg-slate-50">
+                            26</div>
+                    </div>
+                    <div class="grid grid-cols-8 gap-1 mb-1 pop-in" style="--d:0.5s">
+                        <div></div>
+                        <div
+                            class="h-7 rounded-md flex items-center justify-center text-[11px] font-medium text-rose-400 bg-slate-50">
+                            27</div>
+                        <div
+                            class="h-7 rounded-md flex items-center justify-center text-[11px] font-medium text-slate-400 bg-slate-50">
+                            28</div>
+                        <div
+                            class="h-7 rounded-md flex items-center justify-center text-[11px] font-medium text-slate-400 bg-slate-50">
+                            29</div>
+                        <div
+                            class="h-7 rounded-md flex items-center justify-center text-[11px] font-medium text-slate-400 bg-slate-50">
+                            30</div>
+                        <div
+                            class="h-7 rounded-md flex items-center justify-center text-[11px] font-medium text-slate-400 bg-slate-50">
+                            31</div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-6 gap-2.5">
+                <div class="white-card p-3 rounded-xl border-l-4" style="border-left-color:#0265d2"><span
+                        class="inline-block px-1.5 py-0.5 text-white font-bold text-[9px] rounded mb-1.5"
+                        style="background:#0265d2">NOV W1</span>
+                    <h4 class="font-bold text-slate-900 text-[11px] leading-tight">Rapat Persiapan</h4>
+                    <p class="text-[10px] font-semibold mt-0.5" style="color:#0265d2">Tahap Inisiasi</p>
+                    <p class="text-[9px] text-slate-400 mt-0.5">1–7 Nov</p>
+                </div>
+                <div class="white-card p-3 rounded-xl border-l-4" style="border-left-color:#2563eb"><span
+                        class="inline-block px-1.5 py-0.5 text-white font-bold text-[9px] rounded mb-1.5"
+                        style="background:#2563eb">NOV W2</span>
+                    <h4 class="font-bold text-slate-900 text-[11px] leading-tight">Perdin Kelompok</h4>
+                    <p class="text-[10px] font-semibold mt-0.5" style="color:#2563eb">Fasilitasi Kelompok</p>
+                    <p class="text-[9px] text-slate-400 mt-0.5">8–14 Nov</p>
+                </div>
+                <div class="white-card p-3 rounded-xl border-l-4" style="border-left-color:#0891b2"><span
+                        class="inline-block px-1.5 py-0.5 text-white font-bold text-[9px] rounded mb-1.5"
+                        style="background:#0891b2">NOV W3</span>
+                    <h4 class="font-bold text-slate-900 text-[11px] leading-tight">Rapat Kerja Sama</h4>
+                    <p class="text-[10px] font-semibold mt-0.5" style="color:#0891b2">Fasilitasi Mitra</p>
+                    <p class="text-[9px] text-slate-400 mt-0.5">15–21 Nov</p>
+                </div>
+                <div class="white-card p-3 rounded-xl border-l-4" style="border-left-color:#4f46e5"><span
+                        class="inline-block px-1.5 py-0.5 text-white font-bold text-[9px] rounded mb-1.5"
+                        style="background:#4f46e5">NOV W4</span>
+                    <h4 class="font-bold text-slate-900 text-[11px] leading-tight">Perdin Usaha</h4>
+                    <p class="text-[10px] font-semibold mt-0.5" style="color:#4f46e5">Pendampingan</p>
+                    <p class="text-[9px] text-slate-400 mt-0.5">22–28 Nov</p>
+                </div>
+                <div class="white-card p-3 rounded-xl border-l-4" style="border-left-color:#0d9488"><span
+                        class="inline-block px-1.5 py-0.5 text-white font-bold text-[9px] rounded mb-1.5"
+                        style="background:#0d9488">DES W1</span>
+                    <h4 class="font-bold text-slate-900 text-[11px] leading-tight">Diseminasi</h4>
+                    <p class="text-[10px] font-semibold mt-0.5" style="color:#0d9488">Akses RA</p>
+                    <p class="text-[9px] text-slate-400 mt-0.5">29 Nov–5 Des</p>
+                </div>
+                <div class="white-card p-3 rounded-xl border-l-4" style="border-left-color:#059669"><span
+                        class="inline-block px-1.5 py-0.5 text-white font-bold text-[9px] rounded mb-1.5"
+                        style="background:#059669">DES W2</span>
+                    <h4 class="font-bold text-slate-900 text-[11px] leading-tight">Penyusunan Laporan</h4>
+                    <p class="text-[10px] font-semibold mt-0.5" style="color:#059669">Finalisasi</p>
+                    <p class="text-[9px] text-slate-400 mt-0.5">6–12 Des</p>
+                </div>
+            </div>
         </section>
 
         <!-- SLIDE 15: TERIMA KASIH -->
         <section class="slide flex-col items-center justify-center text-center max-w-3xl mx-auto w-full">
-            <div class="p-5 bg-brand-600 text-white rounded-3xl shadow-xl shadow-brand-500/30 mb-6"><i class="ph-bold ph-handshake text-5xl"></i></div>
-            <h2 class="text-4xl md:text-6xl font-extrabold leading-tight"><span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-cyan-600">Terima Kasih</span></h2>
-            <p class="text-slate-600 text-base md:text-lg font-medium mt-4">Asesmen Data Subjek Reforma Agraria - Desa Kambunong</p>
+            <div class="p-5 bg-brand-600 text-white rounded-3xl shadow-xl shadow-brand-500/30 mb-6"><i
+                    class="ph-bold ph-handshake text-5xl"></i></div>
+            <h2 class="text-4xl md:text-6xl font-extrabold leading-tight"><span
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-cyan-600">Terima
+                    Kasih</span></h2>
+            <p class="text-slate-600 text-base md:text-lg font-medium mt-4">Asesmen Data Subjek Reforma Agraria - Desa
+                Kambunong</p>
             <p class="text-xs md:text-sm text-slate-500 mt-1">Kec. Karossa, Kab. Mamuju Tengah, Sulawesi Barat</p>
-            <div class="mt-8 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-50 border border-brand-200 text-brand-700 text-xs md:text-sm font-semibold shadow-sm"><i class="ph-fill ph-buildings"></i> Kantor Pertanahan Kabupaten Mamuju Tengah © 2026</div>
+            <div
+                class="mt-8 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-50 border border-brand-200 text-brand-700 text-xs md:text-sm font-semibold shadow-sm">
+                <i class="ph-fill ph-buildings"></i> Kantor Pertanahan Kabupaten Mamuju Tengah © 2026</div>
         </section>
 
     </main>
 
     <!-- NAVIGATION CONTROLS BOTTOM BAR -->
-    <footer class="w-full z-40 px-6 py-4 bg-white/80 backdrop-blur-md border-t border-slate-200 flex justify-between items-center shadow-sm">
-        <button onclick="prevSlide()" class="flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl font-semibold text-xs md:text-sm transition border border-slate-200">
+    <footer
+        class="w-full z-40 px-6 py-4 bg-white/80 backdrop-blur-md border-t border-slate-200 flex justify-between items-center shadow-sm">
+        <button onclick="prevSlide()"
+            class="flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl font-semibold text-xs md:text-sm transition border border-slate-200">
             <i class="ph-bold ph-caret-left"></i> Sebelumnya
         </button>
-        <span class="text-xs text-slate-400 font-medium hidden md:inline">Gunakan tombol Keyboard ← → untuk navigasi</span>
-        <button onclick="nextSlide()" class="flex items-center gap-2 px-5 py-2 bg-brand-600 hover:bg-brand-700 text-white rounded-xl font-semibold text-xs md:text-sm transition shadow-md shadow-brand-500/20">
+        <span class="text-xs text-slate-400 font-medium hidden md:inline">Gunakan tombol Keyboard ← → untuk
+            navigasi</span>
+        <button onclick="nextSlide()"
+            class="flex items-center gap-2 px-5 py-2 bg-brand-600 hover:bg-brand-700 text-white rounded-xl font-semibold text-xs md:text-sm transition shadow-md shadow-brand-500/20">
             Selanjutnya <i class="ph-bold ph-caret-right"></i>
         </button>
     </footer>
@@ -654,7 +1322,8 @@
         <div class="max-w-4xl mx-auto w-full bg-white p-6 rounded-2xl shadow-xl">
             <div class="flex justify-between items-center mb-6 border-b pb-4">
                 <h2 class="text-lg font-bold text-slate-900">Daftar Slide Presentasi</h2>
-                <button onclick="toggleGridMenu()" class="p-2 bg-slate-100 text-slate-600 rounded-lg"><i class="ph-bold ph-x text-xl"></i></button>
+                <button onclick="toggleGridMenu()" class="p-2 bg-slate-100 text-slate-600 rounded-lg"><i
+                        class="ph-bold ph-x text-xl"></i></button>
             </div>
             <div id="gridList" class="grid grid-cols-2 md:grid-cols-4 gap-3"></div>
         </div>
@@ -667,10 +1336,10 @@
         const totalSlides = slides.length;
 
         const slideTitles = [
-            "1. Judul Utama", "2. Identitas Subjek RA", "3. Lokasi Administrasi", 
-            "4. Sektor Usaha", "5. Jenis Hak & Luas", "6. Kelompok Usaha", 
-            "7. Riwayat Bantuan", "8. Kendala Usaha", "9. Jenis Pendampingan", 
-            "10. Pendapatan Awal", "11. Rekomendasi Model", "12. Rencana Fasilitasi", 
+            "1. Judul Utama", "2. Identitas Subjek RA", "3. Lokasi Administrasi",
+            "4. Sektor Usaha", "5. Jenis Hak & Luas", "6. Kelompok Usaha",
+            "7. Riwayat Bantuan", "8. Kendala Usaha", "9. Jenis Pendampingan",
+            "10. Pendapatan Awal", "11. Rekomendasi Model", "12. Rencana Fasilitasi",
             "13. Kerja Sama Stakeholder", "14. Kalender Kegiatan FS Fase 2", "15. Terima Kasih"
         ];
 
@@ -753,4 +1422,5 @@
         });
     </script>
 </body>
+
 </html>
